@@ -48,21 +48,21 @@ input,textarea,select,button{font:inherit;color:inherit}
 <section id="top" style="position:relative;height:var(--heroLen);background:var(--dk)">
   <div style="position:sticky;top:0;height:100vh;overflow:hidden">
     <div id="stage" style="position:absolute;inset:0">
-      <!-- One layer per look; all five are the same 4:5 portrait, so a uniform 50% 24% crop keeps the face framed -->
+      <!-- Hero layers: Unsplash stock (PLACEHOLDER until real client photos). imgix face-crops to 4:5 at 1000w/1600w; auto=format serves AVIF/WebP per browser -->
       <div data-hl="0" style="position:absolute;inset:0;opacity:1;transform:scale(1.02);background:var(--dk);will-change:opacity,transform">
-        <picture><source type="image/avif" srcset="assets/hero/look-01-natural-1600.avif"><source type="image/webp" srcset="assets/hero/look-01-natural-1000.webp 1000w, assets/hero/look-01-natural-1600.webp 1600w" sizes="100vw"><img src="assets/hero/look-01-natural-1600.webp" alt="" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%"></picture>
+        <img src="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format" srcset="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?w=1000&h=1250&fit=crop&crop=faces&q=80&auto=format 1000w, https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format 1600w" sizes="100vw" alt="" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%">
       </div>
       <div data-hl="1" style="position:absolute;inset:0;opacity:0;transform:scale(1.02);background:var(--dk);will-change:opacity,transform">
-        <picture><source type="image/avif" srcset="assets/hero/look-02-long-curls-1600.avif"><source type="image/webp" srcset="assets/hero/look-02-long-curls-1000.webp 1000w, assets/hero/look-02-long-curls-1600.webp 1600w" sizes="100vw"><img src="assets/hero/look-02-long-curls-1600.webp" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%"></picture>
+        <img src="https://images.unsplash.com/photo-1665615836129-e231360860bf?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format" srcset="https://images.unsplash.com/photo-1665615836129-e231360860bf?w=1000&h=1250&fit=crop&crop=faces&q=80&auto=format 1000w, https://images.unsplash.com/photo-1665615836129-e231360860bf?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format 1600w" sizes="100vw" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%">
       </div>
       <div data-hl="2" style="position:absolute;inset:0;opacity:0;transform:scale(1.02);background:var(--dk);will-change:opacity,transform">
-        <picture><source type="image/avif" srcset="assets/hero/look-03-milk-tea-brown-1600.avif"><source type="image/webp" srcset="assets/hero/look-03-milk-tea-brown-1000.webp 1000w, assets/hero/look-03-milk-tea-brown-1600.webp 1600w" sizes="100vw"><img src="assets/hero/look-03-milk-tea-brown-1600.webp" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%"></picture>
+        <img src="https://images.unsplash.com/photo-1551687758-4a278cfc6cbe?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format" srcset="https://images.unsplash.com/photo-1551687758-4a278cfc6cbe?w=1000&h=1250&fit=crop&crop=faces&q=80&auto=format 1000w, https://images.unsplash.com/photo-1551687758-4a278cfc6cbe?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format 1600w" sizes="100vw" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%">
       </div>
       <div data-hl="3" style="position:absolute;inset:0;opacity:0;transform:scale(1.02);background:var(--dk);will-change:opacity,transform">
-        <picture><source type="image/avif" srcset="assets/hero/look-04-short-bob-1600.avif"><source type="image/webp" srcset="assets/hero/look-04-short-bob-1000.webp 1000w, assets/hero/look-04-short-bob-1600.webp 1600w" sizes="100vw"><img src="assets/hero/look-04-short-bob-1600.webp" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%"></picture>
+        <img src="https://images.unsplash.com/photo-1554175308-e37121817631?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format" srcset="https://images.unsplash.com/photo-1554175308-e37121817631?w=1000&h=1250&fit=crop&crop=faces&q=80&auto=format 1000w, https://images.unsplash.com/photo-1554175308-e37121817631?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format 1600w" sizes="100vw" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%">
       </div>
       <div data-hl="4" style="position:absolute;inset:0;opacity:0;transform:scale(1.02);background:var(--dk);will-change:opacity,transform">
-        <picture><source type="image/avif" srcset="assets/hero/look-05-rebonding-1600.avif"><source type="image/webp" srcset="assets/hero/look-05-rebonding-1000.webp 1000w, assets/hero/look-05-rebonding-1600.webp 1600w" sizes="100vw"><img src="assets/hero/look-05-rebonding-1600.webp" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%"></picture>
+        <img src="https://images.unsplash.com/photo-1589525231707-f2de2428f59c?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format" srcset="https://images.unsplash.com/photo-1589525231707-f2de2428f59c?w=1000&h=1250&fit=crop&crop=faces&q=80&auto=format 1000w, https://images.unsplash.com/photo-1589525231707-f2de2428f59c?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format 1600w" sizes="100vw" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%">
       </div>
     </div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,14,.55) 0%,rgba(20,16,14,.12) 32%,rgba(20,16,14,.18) 58%,rgba(20,16,14,.88) 100%)"></div>
@@ -435,12 +435,13 @@ input,textarea,select,button{font:inherit;color:inherit}
           <option value="Facebook">Facebook</option>
           <option value="Google">Google</option>
           <option value="A friend">A friend</option>
+          <option value="Other">Other</option>
         </select>
       </label>
     </div>
 
-    <p style="margin:0 0 10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)">Message Lily will receive</p>
-    <pre id="enqMessage" style="margin:0 0 18px;padding:18px;background:#fff;border:1px solid rgba(30,24,21,.18);font:13.5px/1.7 'Public Sans',system-ui,sans-serif;white-space:pre-wrap;color:rgba(30,24,21,.85)"></pre>
+    <p style="margin:0 0 10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)">Message Lily will receive <span style="text-transform:none;letter-spacing:.02em;opacity:.65">— edit freely before sending</span></p>
+    <textarea id="enqMessage" rows="11" spellcheck="false" style="margin:0 0 18px;padding:18px;background:#fff;border:1px solid rgba(30,24,21,.18);font:13.5px/1.7 'Public Sans',system-ui,sans-serif;color:rgba(30,24,21,.85);width:100%;box-sizing:border-box;resize:vertical"></textarea>
 
     <div id="enqImgWrap" style="display:none;gap:12px;align-items:center;margin-bottom:18px;padding:12px;background:rgba(232,137,107,.1)">
       <div id="enqImg" role="img" aria-label="Attached inspiration" style="width:56px;height:56px;flex:0 0 auto;background-size:cover;background-position:center"></div>
@@ -500,7 +501,7 @@ var state = {
   aiText:'', aiBusy:false, ai:null,
   inspImg:'', inspBusy:false, insp:false,
   vizPhoto:'', vizLook:1, vizBusy:false, viz:null,
-  enqOpen:false, enq:null, enqName:'', enqSource:'TikTok', copied:false,
+  enqOpen:false, enq:null, enqName:'', enqSource:'TikTok', enqEdited:false, copied:false,
   ownerOpen:false, leads:[]
 };
 var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -780,7 +781,7 @@ function renderViz(){
 
 /* ================= Enquiry drawer ================= */
 function openEnq(ctx){
-  state.enqOpen = true; state.enq = ctx || {}; state.copied = false;
+  state.enqOpen = true; state.enq = ctx || {}; state.copied = false; state.enqEdited = false;
   renderEnquiry();
 }
 function closeEnq(){
@@ -791,7 +792,8 @@ function message(){
   var c = state.enq || {};
   var name = state.enqName.trim();
   var L = ['Hi Lily 👋', ''];
-  L.push('I found you on ' + state.enqSource + ' and used the website' + (c.origin ? ' ' + c.origin : '') + '.');
+  var found = {'TikTok':'on TikTok','Instagram':'on Instagram','Facebook':'on Facebook','Google':'on Google','A friend':'through a friend','Other':'through another channel'};
+  L.push('I found you ' + (found[state.enqSource] || 'online') + ' and used the website' + (c.origin ? ' ' + c.origin : '') + '.');
   L.push('');
   if (c.service) L.push('Interested in: ' + c.service);
   if (c.goal) L.push('What I want: ' + c.goal);
@@ -802,8 +804,9 @@ function message(){
   return L.join('\n');
 }
 function refreshMessage(){
-  $('enqMessage').textContent = message();
-  $('waLink').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(message());
+  var box = $('enqMessage');
+  if (!state.enqEdited) box.value = message();
+  $('waLink').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(box.value);
 }
 function renderEnquiry(){
   setVis($('enqWrap'), state.enqOpen, 'flex');
@@ -1001,9 +1004,10 @@ function init(){
   $('enqBackdrop').addEventListener('click', closeEnq);
   $('enqName').addEventListener('input', function(e){ state.enqName = e.target.value; refreshMessage(); });
   $('enqSource').addEventListener('change', function(e){ state.enqSource = e.target.value; refreshMessage(); });
+  $('enqMessage').addEventListener('input', function(){ state.enqEdited = true; refreshMessage(); });
   $('waLink').addEventListener('click', function(){ saveLead(); });
   $('copyMsg').addEventListener('click', function(){
-    try { navigator.clipboard.writeText(message()); } catch(e){}
+    try { navigator.clipboard.writeText($('enqMessage').value); } catch(e){}
     saveLead();
     state.copied = true;
     renderEnquiry();
