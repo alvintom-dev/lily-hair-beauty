@@ -59,6 +59,7 @@ cp "$SRC_DIR/index.html" "$DIST_DIR/"
 # are the retired stock photos — scraped shots of identifiable people, one of them
 # a public figure. They must never be published from a commercial salon site.
 cp -R "$SRC_DIR/images/hair_styles" "$DIST_DIR/images/"
+cp -R "$SRC_DIR/images/cards" "$DIST_DIR/images/"   # faded service-card backgrounds (single size; kept out of the six-variant check)
 
 # assets/hero/ is a superseded render set that nothing on the page references.
 # lily-logo.png is the design source and is not referenced by the page — not published.

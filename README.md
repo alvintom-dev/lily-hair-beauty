@@ -43,6 +43,7 @@ the quotes, and leave the quotes, commas and brackets exactly as they are.
 | **Booking time slots** | `var TIMES` | The times a customer can pick. |
 | **The quiz questions** | `var QUIZ` | The four "Find my look" questions and their answers. If you rename a service, update `recommend()` too — it matches on service names. |
 | **Address** | `Lot 8054` | It appears in five places. Change every one. |
+| **The domain** | `lily-beauty.baratech.my` | Four places in `index.html`: the canonical link, two social tags and the structured data. Change every one if the site ever moves domains. The site itself works from any domain, on any static host, unchanged. |
 
 ### A worked example
 
@@ -51,7 +52,7 @@ Say Lily starts closing at 7 PM instead of 6 PM.
 1. Open `index.html`.
 2. Find `var HOURS`. You'll see:
    ```js
-   var HOURS = {open:9, close:18, shutDays:[0]};
+   var HOURS = {open:9, close:18, shutDays:[1]};
    ```
 3. Change `close:18` to `close:19` — 19 is 7 PM on a 24-hour clock.
 4. Save the file, then [publish](#publishing-your-changes).
@@ -133,17 +134,13 @@ put the link on TikTok or a shop sign.
 - [ ] **Real photos.** Every photo is a studio reference shot of one model, not a client.
       A note on the "Transformations" section says so — delete it once real work replaces
       them. **Always get written permission before publishing a client's photo.**
-- [ ] **Check the map pin.** Sibu Jaya Shopping Centre 2 isn't in the mapping databases,
-      so the map searches for the address rather than pointing at a known spot. The proper
-      fix is a free Google Business Profile for the salon — it fixes the pin *and* makes
-      the salon show up in Google Maps searches. Worth doing regardless.
+- [ ] **Claim the Google Maps listing.** The salon already exists on Google Maps as
+      "Lily Hair & Beauty House", and the site's map pin points at it. Claiming the
+      listing (a free Google Business Profile) lets Lily control its hours, photos and
+      reviews instead of leaving them to Google. Worth doing regardless.
 - [ ] **Add a styling price.** The price list has no styling, blow-dry or updo service, but
       the "Boho Braid" look is one. It currently says "price on request". Send the price and
       it becomes a proper service.
-- [ ] **Decide about "Owner view".** There's a small link at the very bottom of the page.
-      It lists enquiries, but only ones made on *that same phone or laptop* — it's a
-      demonstration, not a real inbox. Ask a developer to remove it if you'd rather
-      customers didn't see it.
 
 ---
 
@@ -177,6 +174,7 @@ on Windows) to skip your browser's saved copy.
 index.html      the whole website — text, layout and design in one file
 404.html        the "page not found" page
 images/         the photos, each saved in six sizes
+images/cards/   faded hair-texture backgrounds behind the service cards (one size, generated from the photos above)
 assets/         the logo and the browser tab icon
 deploy.sh       publishes the site
 add-photo.sh    prepares a new photo in all six sizes

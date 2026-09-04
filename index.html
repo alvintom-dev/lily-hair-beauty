@@ -40,8 +40,14 @@
   --sans:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--gr);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:var(--gr)}
+body{margin:0;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* ---------- backdrop ---------- */
+/* Faint line-art tile (scissors, strands, comb) so the plain sections don't feel
+   empty. The page background lives on <html> because a negative-z child only
+   paints above the canvas background when body itself is transparent. The tile
+   is a ~1 KB SVG; its lightness is baked into the strokes, so the layer runs at
+   full opacity. The slow drift is applied from paintNav(). */
 /* height:auto is required, not cosmetic — the width/height attributes become a
    presentational height hint, and that silently overrides any aspect-ratio. */
 img{max-width:100%;height:auto}
@@ -57,12 +63,19 @@ input,textarea,select,button{font-family:inherit;font-size:16px;color:inherit}
 
 /* ---------- shared utilities ---------- */
 .wrap{max-width:1240px;margin:0 auto}
-.sect{padding:var(--sec) var(--pad)}
-.eyebrow{margin:0 0 14px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)}
-.h2{margin:0;font-size:clamp(28px,4.4vw,56px);line-height:1.05}
+.sect{padding:var(--sec) var(--pad);position:relative;isolation:isolate}
+/* decorative hair strands drawn once as a <symbol> and reused per section; sits under the content, above the section background */
+.strand{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;color:var(--accDk);opacity:.18}
+.strand.ink{color:var(--ink);opacity:.11}
+.strand.flip{transform:scaleX(-1)}
+.strand path{vector-effect:non-scaling-stroke}
+.eyebrow{margin:0 0 14px;font-size:11.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--accDk)}
+.h2{margin:0;font-size:clamp(30px,4.6vw,58px);line-height:1.05;color:#0F0C0A;-webkit-text-stroke:.55px #0F0C0A;letter-spacing:-.005em}
+.h2::after{content:"";display:block;width:46px;height:3px;border-radius:2px;background:var(--acc);margin-top:14px}
+#lookName.h2::after{display:none}
+#studio .h2{color:#fff;-webkit-text-stroke:.55px #fff}
 .lede{margin:0;max-width:38ch;font-size:14.5px;line-height:1.6;color:var(--mut)}
 .secHead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:clamp(28px,5vw,56px)}
-.note{margin:clamp(24px,4vw,40px) 0 0;padding:14px 18px;background:rgba(232,137,107,.1);border-left:2px solid var(--acc);font:12.5px/1.6 ui-monospace,Menlo,monospace;color:rgba(30,24,21,.72)}
 .hv{transition:background .25s ease,color .25s ease,border-color .25s ease,opacity .25s ease,transform .25s ease}
 .hv-accBg:hover{background:var(--accDk)!important;color:#fff!important}
 .hv-inkToAcc:hover{background:var(--acc)!important}
@@ -213,7 +226,21 @@ body.menu #burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 #svcGrid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line)}
 @media (min-width:600px){#svcGrid{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1000px){#svcGrid{grid-template-columns:repeat(3,1fr)}}
-.svc{background:var(--gr);padding:clamp(22px,3vw,34px);display:flex;flex-direction:column}
+.svc{--svcPad:clamp(22px,3vw,34px);--svcBand:150px;background:var(--gr);padding:var(--svcPad);display:flex;flex-direction:column;position:relative;overflow:hidden}
+/* hair-texture band across the top of each card, blending into the card so the text sits on cream */
+.svc .bg{position:relative;height:var(--svcBand);margin:calc(var(--svcPad) * -1) calc(var(--svcPad) * -1) 20px;overflow:hidden;pointer-events:none;flex:0 0 auto}
+.svc .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block;filter:saturate(.9)}
+.svc .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(251,248,245,0) 40%,rgba(251,248,245,.55) 78%,var(--gr) 100%)}
+@media (max-width:599px){.svc{--svcBand:128px}}
+/* phones: four cards, the rest behind a "see more" bottom sheet */
+#svcMore{display:none;margin:18px auto 0}
+@media (max-width:599px){#svcGrid.collapsed .svc:nth-child(n+5){display:none} #svcGrid.collapsed+div>#svcMore{display:inline-flex}}
+#svcWrap{align-items:flex-end}
+#svcSheet{position:relative;width:100%;max-height:88svh;overflow-y:auto;overscroll-behavior:contain;background:var(--gr);border-radius:18px 18px 0 0;padding:10px clamp(16px,3vw,28px) max(clamp(20px,3vh,30px),env(safe-area-inset-bottom));box-shadow:0 -12px 40px rgba(20,16,14,.3);transform:translateY(102%);transition:transform .4s cubic-bezier(.32,.72,.35,1)}
+#svcWrap.open #svcSheet{transform:none}
+#svcList{display:grid;gap:1px;background:var(--line)}
+#svcList .svc{--svcPad:18px;--svcBand:110px;padding:var(--svcPad)}
+.grab{width:44px;height:4px;border-radius:999px;background:rgba(30,24,21,.18);margin:2px auto 16px}
 .svc h3{margin:0;font-size:23px}
 .svc .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:16px;border-top:1px dashed rgba(30,24,21,.22)}
 .pill{font-size:11.5px;letter-spacing:.1em;color:var(--mut);border:1px solid rgba(30,24,21,.2);border-radius:999px;padding:6px 12px;white-space:nowrap}
@@ -258,9 +285,6 @@ body.menu #burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
   #grabber{display:none}
 }
 #grabber{width:44px;height:4px;border-radius:999px;background:rgba(30,24,21,.18);margin:2px auto 16px}
-#ownerWrap{align-items:center;justify-content:center;padding:clamp(12px,3vw,32px);z-index:90}
-#ownerPanel{position:relative;width:min(720px,100%);max-height:90svh;overflow-y:auto;overscroll-behavior:contain;background:var(--gr);padding:clamp(22px,4vw,38px);transform:translateY(18px);transition:transform .3s ease}
-#ownerWrap.open #ownerPanel{transform:none}
 .xBtn{background:transparent;border:1px solid rgba(30,24,21,.2);border-radius:50%;width:42px;height:42px;flex:0 0 auto;cursor:pointer;font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center}
 .ovlHead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px}
 
@@ -273,6 +297,7 @@ body.menu #fab,body.lock #fab,#fab.hide{opacity:0;transform:translateY(20px) sca
 </style>
 </head>
 <body>
+
 
 <a href="#looks" class="sr">Skip to content</a>
 
@@ -339,7 +364,19 @@ body.menu #fab,body.lock #fab,#fab.hide{opacity:0;transform:translateY(20px) sca
   </div>
 </section>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="strandSym" viewBox="0 0 1440 600" preserveAspectRatio="none">
+    <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+      <path d="M-20 140 C 260 40, 520 260, 820 190 S 1300 40, 1460 120"/>
+      <path d="M-20 158 C 270 60, 530 280, 830 210 S 1310 62, 1460 140"/>
+      <path d="M-20 176 C 280 82, 540 300, 840 232 S 1320 86, 1460 162"/>
+      <path d="M-20 470 C 300 540, 560 380, 880 430 S 1280 520, 1460 440"/>
+      <path d="M-20 488 C 310 560, 570 400, 890 450 S 1290 540, 1460 460"/>
+    </g>
+  </symbol>
+</svg>
 <section id="looks" class="sect" style="border-bottom:1px solid var(--line)">
+  <svg class="strand" aria-hidden="true"><use href="#strandSym" width="100%" height="100%"/></svg>
   <div id="lookGrid">
     <div>
       <p id="lookNum" class="eyebrow">Look 01 — selected</p>
@@ -360,17 +397,18 @@ body.menu #fab,body.lock #fab,#fab.hide{opacity:0;transform:translateY(20px) sca
 </section>
 
 <section id="work" class="sect">
+  <svg class="strand ink flip" aria-hidden="true"><use href="#strandSym" width="100%" height="100%"/></svg>
   <div class="wrap">
     <header class="secHead">
       <h2 class="h2">Transformations</h2>
-      <p class="lede">Drag the handle on each frame to see where it started. Every look here began as a conversation.</p>
+      <p class="lede">Drag the handle to see where each look starts — and where it can go. Reference photos; your hair writes the final version.</p>
     </header>
     <div id="baList"></div>
-    <p class="note">PLACEHOLDER IMAGERY — studio reference shots stand in for Lily's own before/after pairs. Swap each pair for real client work (with permission) before launch.</p>
   </div>
 </section>
 
 <section id="gallery" class="sect" style="border-top:1px solid var(--line)">
+  <svg class="strand flip" aria-hidden="true"><use href="#strandSym" width="100%" height="100%"/></svg>
   <div class="wrap">
     <header class="secHead">
       <h2 class="h2">Gallery</h2>
@@ -381,17 +419,19 @@ body.menu #fab,body.lock #fab,#fab.hide{opacity:0;transform:translateY(20px) sca
 </section>
 
 <section id="services" class="sect" style="border-top:1px solid var(--line)">
+  <svg class="strand ink" aria-hidden="true"><use href="#strandSym" width="100%" height="100%"/></svg>
   <div class="wrap">
     <header class="secHead" style="margin-bottom:clamp(24px,4vw,40px)">
       <h2 class="h2">Services</h2>
       <p class="lede">Not sure which one you need? <a href="#finder">Answer four questions</a> and we'll narrow it down.</p>
     </header>
-    <p class="note" style="margin:0 0 clamp(24px,3vw,36px)">Prices are a guide. Where a range is shown, the final price depends on your hair's length, thickness and condition — Lily confirms before starting.</p>
     <div id="svcGrid"></div>
+    <div style="text-align:center"><button id="svcMore" class="btn btn-line hv hv-accLine" type="button">See more services</button></div>
   </div>
 </section>
 
 <section id="finder" class="sect" style="background:#F3EDE7">
+  <svg class="strand" aria-hidden="true"><use href="#strandSym" width="100%" height="100%"/></svg>
   <div style="max-width:840px;margin:0 auto">
     <p class="eyebrow">Find my service · works without AI</p>
     <h2 class="h2" style="margin-bottom:clamp(24px,4vw,40px)">Four questions.<br>One recommendation.</h2>
@@ -427,6 +467,7 @@ body.menu #fab,body.lock #fab,#fab.hide{opacity:0;transform:translateY(20px) sca
 </section>
 
 <section id="book" class="sect" style="border-top:1px solid var(--line)">
+  <svg class="strand ink flip" aria-hidden="true"><use href="#strandSym" width="100%" height="100%"/></svg>
   <div style="max-width:840px;margin:0 auto">
     <p class="eyebrow">Reserve your spot</p>
     <h2 class="h2">Book an Appointment</h2>
@@ -554,6 +595,7 @@ body.menu #fab,body.lock #fab,#fab.hide{opacity:0;transform:translateY(20px) sca
 </section>
 
 <section class="sect">
+  <svg class="strand flip" aria-hidden="true"><use href="#strandSym" width="100%" height="100%"/></svg>
   <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(28px,5vw,64px);align-items:center">
     <div>
       <p class="eyebrow">Seen us on TikTok?</p>
@@ -577,6 +619,7 @@ body.menu #fab,body.lock #fab,#fab.hide{opacity:0;transform:translateY(20px) sca
 </section>
 
 <section id="contact" class="sect" style="border-top:1px solid var(--line)">
+  <svg class="strand ink" aria-hidden="true"><use href="#strandSym" width="100%" height="100%"/></svg>
   <div class="wrap">
     <header class="secHead" style="margin-bottom:clamp(24px,4vw,44px)">
       <h2 class="h2">Find Us</h2>
@@ -634,7 +677,6 @@ body.menu #fab,body.lock #fab,#fab.hide{opacity:0;transform:translateY(20px) sca
     </div>
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding-top:22px;font-size:12.5px;color:rgba(255,255,255,.45)">
       <span>© 2026 Lily Hair and Beauty House</span>
-      <button id="openOwner" style="background:transparent;border:0;color:rgba(255,255,255,.45);font-size:12.5px;cursor:pointer;text-decoration:underline;padding:8px 0">Owner view — enquiries (<span id="leadCount">0</span>)</button>
     </div>
   </div>
 </footer>
@@ -644,6 +686,20 @@ body.menu #fab,body.lock #fab,#fab.hide{opacity:0;transform:translateY(20px) sca
   <span>WhatsApp Lily</span>
 </button>
 
+<div id="svcWrap" class="ovl" role="dialog" aria-modal="true" aria-labelledby="svcSheetTitle">
+  <div class="ovlBg"></div>
+  <div id="svcSheet">
+    <div class="grab"></div>
+    <div class="ovlHead" style="margin-bottom:12px">
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Services</p>
+        <h3 id="svcSheetTitle" style="margin:0;font-size:clamp(21px,3vw,30px)">Everything Lily offers</h3>
+      </div>
+      <button id="closeSvc" class="xBtn" aria-label="Close services">×</button>
+    </div>
+    <div id="svcList"></div>
+  </div>
+</div>
 <div id="mapWrap" class="ovl" role="dialog" aria-modal="true" aria-labelledby="mapTitle">
   <div class="ovlBg" data-close="map"></div>
   <div id="mapSheet">
@@ -658,14 +714,14 @@ body.menu #fab,body.lock #fab,#fab.hide{opacity:0;transform:translateY(20px) sca
       <button id="closeMap" class="xBtn" aria-label="Close map">×</button>
     </div>
     <div style="aspect-ratio:16/10;background:rgba(30,24,21,.06);overflow:hidden;border-radius:8px">
-      <iframe id="mapFrame" title="Map to Lily Hair and Beauty House, Sibu Jaya" data-src="https://www.google.com/maps?q=Lily%20Hair%20and%20Beauty%20House%2C%20Lot%208054%20Block%201%2C%20Sibu%20Jaya%20Shopping%20Centre%202%2C%20Sibu%20Jaya%2C%2096000%20Sibu%2C%20Sarawak%2C%20Malaysia&amp;z=17&amp;hl=en&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen style="border:0;width:100%;height:100%;display:block"></iframe>
+      <iframe id="mapFrame" title="Map to Lily Hair and Beauty House, Sibu Jaya" data-src="https://www.google.com/maps?q=Lily%20Hair%20%26%20Beauty%20House%2C%20Sibu%20Jaya%2C%20Sarawak&amp;z=17&amp;hl=en&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen style="border:0;width:100%;height:100%;display:block"></iframe>
     </div>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px">
-      <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Lily%20Hair%20and%20Beauty%20House%2C%20Lot%208054%20Block%201%2C%20Sibu%20Jaya%20Shopping%20Centre%202%2C%20Sibu%20Jaya%2C%2096000%20Sibu%2C%20Sarawak%2C%20Malaysia" target="_blank" rel="noopener" class="btn btn-acc hv hv-accBg">Directions</a>
-      <a href="https://waze.com/ul?q=Lily%20Hair%20and%20Beauty%20House%2C%20Lot%208054%20Block%201%2C%20Sibu%20Jaya%20Shopping%20Centre%202%2C%20Sibu%20Jaya%2C%2096000%20Sibu%2C%20Sarawak%2C%20Malaysia&amp;navigate=yes" target="_blank" rel="noopener" class="btn btn-line hv hv-accLine">Open in Waze</a>
+      <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Lily%20Hair%20%26%20Beauty%20House%2C%20Sibu%20Jaya%2C%20Sarawak" target="_blank" rel="noopener" class="btn btn-acc hv hv-accBg">Directions</a>
+      <a href="https://waze.com/ul?q=Lily%20Hair%20%26%20Beauty%20House%2C%20Sibu%20Jaya%2C%20Sarawak&amp;navigate=yes" target="_blank" rel="noopener" class="btn btn-line hv hv-accLine">Open in Waze</a>
       <button id="mapTalk" class="btn btn-line hv hv-accLine">Message Lily</button>
     </div>
-    <p style="margin:14px 0 0;font:11.5px/1.5 ui-monospace,Menlo,monospace;color:rgba(30,24,21,.5)">Inside Sibu Jaya Shopping Centre 2. Message Lily if you can't find the lot.</p>
+    <p style="margin:14px 0 0;font:11.5px/1.5 ui-monospace,Menlo,monospace;color:rgba(30,24,21,.5)">The pin is Google's own listing for Lily Hair &amp; Beauty House. Message Lily if you can't find the lot.</p>
   </div>
 </div>
 
@@ -713,23 +769,6 @@ body.menu #fab,body.lock #fab,#fab.hide{opacity:0;transform:translateY(20px) sca
     </div>
     <p style="margin:16px 0 0;font:12px/1.6 ui-monospace,Menlo,monospace;color:rgba(30,24,21,.5)">Goes to +60 19-864 7308.</p>
   </aside>
-</div>
-
-<div id="ownerWrap" class="ovl" role="dialog" aria-modal="true" aria-labelledby="ownerTitle">
-  <div class="ovlBg" data-close="owner"></div>
-  <div id="ownerPanel">
-    <div class="ovlHead">
-      <div>
-        <p class="eyebrow" style="margin-bottom:8px">Owner view</p>
-        <h3 id="ownerTitle" style="margin:0;font-size:clamp(23px,3.4vw,34px)">New enquiries</h3>
-      </div>
-      <button id="closeOwner" class="xBtn" aria-label="Close">×</button>
-    </div>
-    <div id="leadsList" style="display:none;flex-direction:column;gap:1px;background:var(--line)"></div>
-    <button id="clearLeads" style="display:none;margin-top:18px;background:transparent;border:0;padding:8px 0;font-size:12.5px;color:var(--mut);text-decoration:underline;cursor:pointer">Clear all</button>
-    <p id="noLeads" style="margin:0;padding:26px;background:#fff;border:1px solid var(--line);font-size:14.5px;line-height:1.6;color:rgba(30,24,21,.7)">No enquiries yet. Send one from anywhere on the site and it lands here — service, goal and where they found Lily, ready for a reply.</p>
-    <p style="margin:20px 0 0;font:12px/1.6 ui-monospace,Menlo,monospace;color:rgba(30,24,21,.5)">DEMO STORAGE — enquiries are kept in this browser only, so the funnel is visible without a backend.</p>
-  </div>
 </div>
 
 <script type="application/ld+json">
@@ -827,19 +866,19 @@ var BA = [
    before:IMG+'01-front-see-through-bangs', beforeAlt:'Before — natural black hair with a soft fringe',
    after:IMG+'03-back-milk-tea-balayage',   afterAlt:'After — warm milk tea balayage through the mid-lengths',
    body:'A warmer, softer colour designed for a natural everyday look. The root was left deliberately deep so the regrowth line blends away instead of announcing itself six weeks later.',
-   quote:'She wanted something she would not have to touch up every six weeks.',
+   quote:'Built for someone who does not want a touch-up every six weeks.',
    service:'Hair Dye', goal:'The Milk Tea balayage look', extra:'I want a warmer colour that grows out naturally without a hard root line.'},
   {kicker:'Hair Cut', title:'Long to Short Bob', flip:true,
    before:IMG+'05-back-rebonding-glass-hair', beforeAlt:'Before — long straight hair past the shoulders',
    after:IMG+'02-side-short-bob',             afterAlt:'After — a short jaw-length bob',
    body:'Years of length taken off in one appointment. The weight sits forward along the jaw, so the shape holds its outline all day without needing to be re-styled after lunch.',
-   quote:'Her brief: short enough to feel like a decision, not so short that it needs daily work.',
+   quote:'Short enough to feel like a decision — not so short it needs daily work.',
    service:'Hair Cut', goal:'The Short Bob look', extra:'I am ready to take real length off and go to a jaw-length bob.'},
   {kicker:'Creative colour', title:'Black to Blue Lavender', flip:false,
    before:IMG+'04-back-boho-braid',           beforeAlt:'Before — natural black hair braided back',
    after:IMG+'06-back-blue-lavender-ombre',   afterAlt:'After — blue melting into lavender through the lengths',
    body:'Lifted first, then toned in two passes so the blue falls into lavender rather than stopping in a band. Dark hair needs the lift before the colour, and the lift is what the condition has to survive.',
-   quote:'Booked as two visits, six weeks apart, to protect the ends.',
+   quote:'Best done as two visits, six weeks apart, to protect the ends.',
    service:'Hair Dye', goal:'The Blue Lavender ombré look', extra:'I have dark hair and I want a blue-to-lavender ombré. Please tell me honestly what it would take.'}
 ];
 var QUIZ = [
@@ -848,7 +887,8 @@ var QUIZ = [
   {id:'concern',q:'What bothers you most about it?',opts:['Dry and frizzy','Damaged or breaking','Flat, no volume','Grown-out colour','Itchy or oily scalp','Nothing in particular']},
   {id:'maint',q:'How much styling are you happy to do daily?',opts:['As little as possible','A few minutes','I enjoy styling']}
 ];
-var TIMES = ['9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM'];
+// Last slot is 5 PM — an hour before close, so no one requests a time the shop is shut.
+var TIMES = ['9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM'];
 
 /* ================= State ================= */
 var state = {
@@ -856,8 +896,7 @@ var state = {
   aiText:'', aiBusy:false, ai:null,
   inspImg:'', inspBusy:false, insp:false,
   vizPhoto:'', vizLook:1, vizBusy:false, viz:null,
-  enq:null, enqName:'', enqSource:'TikTok', enqEdited:false, copied:false, bookSlot:'',
-  leads:[]
+  enq:null, enqName:'', enqSource:'TikTok', enqEdited:false, copied:false, bookSlot:''
 };
 var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 var st = null;                // ScrollTrigger instance (null => native scroll fallback)
@@ -1193,23 +1232,39 @@ function buildGallery(){
 }
 
 /* ================= Services ================= */
+function svcSlug(name){ return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''); }
+function svcCard(s){
+  var bg = svcSlug(s.name);
+  return '<div class="svc">' +
+    '<div class="bg" aria-hidden="true"><picture><source type="image/avif" srcset="images/cards/' + bg + '.avif"><img src="images/cards/' + bg + '.webp" alt="" width="640" height="480" loading="lazy" decoding="async"></picture></div>' +
+    '<h3>' + esc(s.name) + '</h3>' +
+    '<p style="margin:12px 0 0;font-size:14.5px;line-height:1.6;color:rgba(30,24,21,.75)">' + esc(s.desc) + '</p>' +
+    '<p style="margin:16px 0 0;font-size:13px;color:var(--mut)">Suits: ' + esc(s.suits) + '</p>' +
+    '<div class="row"><span style="font-family:var(--serif);font-size:20px;color:var(--acc)">' + esc(s.price) + '</span>' + (s.dur ? '<span class="pill">' + esc(s.dur) + '</span>' : '') + '</div>' +
+    '<button data-ask="' + esc(s.name) + '" class="hv hv-accTxt" style="margin-top:18px;background:transparent;border:0;padding:12px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--acc);color:var(--ink);align-self:flex-start">Ask Lily →</button>' +
+    '</div>';
+}
+var SVC_VISIBLE = 4; // cards shown on phones before "see more"
 function buildServices(){
-  var html = '';
-  SERVICE_INFO.forEach(function(s){
-    html += '<div class="svc">' +
-      '<h3>' + esc(s.name) + '</h3>' +
-      '<p style="margin:12px 0 0;font-size:14.5px;line-height:1.6;color:rgba(30,24,21,.75)">' + esc(s.desc) + '</p>' +
-      '<p style="margin:16px 0 0;font-size:13px;color:var(--mut)">Suits: ' + esc(s.suits) + '</p>' +
-      '<div class="row"><span style="font-family:var(--serif);font-size:20px;color:var(--acc)">' + esc(s.price) + '</span>' + (s.dur ? '<span class="pill">' + esc(s.dur) + '</span>' : '') + '</div>' +
-      '<button data-ask="' + esc(s.name) + '" class="hv hv-accTxt" style="margin-top:18px;background:transparent;border:0;padding:12px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--acc);color:var(--ink);align-self:flex-start">Ask Lily →</button>' +
-      '</div>';
-  });
-  var grid = $('svcGrid');
+  var html = SERVICE_INFO.map(svcCard).join('');
+  var grid = $('svcGrid'), list = $('svcList'), more = $('svcMore'), wrap = $('svcWrap');
   grid.innerHTML = html;
-  grid.addEventListener('click', function(e){
+  if (list) list.innerHTML = html;
+  if (SERVICE_INFO.length > SVC_VISIBLE) grid.classList.add('collapsed');
+  if (more){
+    more.textContent = 'See ' + (SERVICE_INFO.length - SVC_VISIBLE) + ' more services';
+    more.addEventListener('click', function(){ openOvl(wrap); });
+  }
+  var closeBtn = $('closeSvc');
+  if (closeBtn) closeBtn.addEventListener('click', function(){ closeOvl(wrap); });
+  function onAsk(e){
     var b = e.target.closest ? e.target.closest('[data-ask]') : null;
-    if (b) openEnq({service:b.getAttribute('data-ask'), origin:'services'});
-  });
+    if (!b) return;
+    if (openStack.indexOf(wrap) > -1) closeOvl(wrap);   // hand off from the sheet to the enquiry drawer
+    openEnq({service:b.getAttribute('data-ask'), origin:'services'});
+  }
+  grid.addEventListener('click', onAsk);
+  if (list) list.addEventListener('click', onAsk);
 }
 
 /* ================= Quiz ================= */
@@ -1402,63 +1457,6 @@ function renderEnquiry(){
   if (hasImg) $('enqImg').style.backgroundImage = "url('" + state.enq.image + "')";
   $('copyMsg').textContent = state.copied ? 'Copied ✓' : 'Copy message instead';
 }
-function saveLead(){
-  var c = state.enq || {};
-  persist([{
-    id: Date.now(),
-    name: state.enqName.trim() || 'Unnamed enquiry',
-    service: c.service || 'General enquiry',
-    goal: c.goal || 'Not specified',
-    source: state.enqSource,
-    origin: c.origin || 'website',
-    status: 'New',
-    at: new Date().toLocaleString()
-  }].concat(state.leads));
-}
-function loadLeads(){ try { return JSON.parse(localStorage.getItem('lily.leads.v1') || '[]'); } catch(e){ return []; } }
-function persist(leads){
-  state.leads = leads;
-  try { localStorage.setItem('lily.leads.v1', JSON.stringify(leads)); } catch(e){}
-  $('leadCount').textContent = String(leads.length);
-  renderOwner();
-}
-
-/* ================= Owner view ================= */
-function renderOwner(){
-  var has = state.leads.length > 0;
-  setVis($('leadsList'), has, 'flex');
-  setVis($('clearLeads'), has);
-  setVis($('noLeads'), !has);
-  var box = $('leadsList');
-  box.innerHTML = '';
-  state.leads.forEach(function(l){
-    var row = document.createElement('div');
-    row.style.cssText = 'background:var(--gr);padding:18px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start';
-    var left = document.createElement('div');
-    [['margin:0 0 4px;font-size:17px', l.name],
-     ['margin:0 0 6px;font-size:14px;color:var(--acc)', l.service],
-     ['margin:0 0 6px;font-size:13.5px;line-height:1.5;color:rgba(30,24,21,.7)', l.goal],
-     ['margin:0;font:11.5px ui-monospace,Menlo,monospace;color:var(--mut)', String(l.source).toUpperCase() + ' / ' + l.origin + ' / ' + l.at]
-    ].forEach(function(pair){
-      var p = document.createElement('p');
-      p.style.cssText = pair[0];
-      p.textContent = pair[1];
-      left.appendChild(p);
-    });
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.textContent = l.status;
-    btn.style.cssText = 'background:transparent;border:1px solid rgba(30,24,21,.2);border-radius:999px;padding:9px 15px;font-size:12px;cursor:pointer;white-space:nowrap;min-height:40px';
-    btn.addEventListener('click', function(){
-      persist(state.leads.map(function(x){
-        return x.id === l.id ? Object.assign({}, x, {status: x.status === 'New' ? 'Contacted' : 'New'}) : x;
-      }));
-    });
-    row.appendChild(left); row.appendChild(btn);
-    box.appendChild(row);
-  });
-}
-
 /* ================= Booking ================= */
 function buildBookService(){
   var sel = $('bookService');
@@ -1501,7 +1499,6 @@ function sendBooking(){
   if (ph) L.push('Phone: ' + ph);
   if (notes){ L.push(''); L.push(notes); }
   window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(L.join('\n')), '_blank', 'noopener');
-  persist([{id:Date.now(), name:name, service:svc, goal:'Booking' + (d ? ': ' + d : '') + (state.bookSlot ? ' ' + state.bookSlot : ''), source:'Booking form', origin:'booking', status:'New', at:new Date().toLocaleString()}].concat(state.leads));
   setTimeout(function(){ msg.textContent = 'Sent to WhatsApp — Lily replies to confirm.'; }, 700);
 }
 
@@ -1598,8 +1595,6 @@ function openMap(){
 
 /* ================= Wire up ================= */
 function init(){
-  state.leads = loadLeads();
-
   if (!SHOW_AI_STUDIO){
     setVis($('studio'), false);
     document.querySelectorAll('a[href="#studio"]').forEach(function(a){ a.style.display = 'none'; });
@@ -1694,18 +1689,12 @@ function init(){
   $('enqName').addEventListener('input', function(e){ state.enqName = e.target.value; refreshMessage(); });
   $('enqSource').addEventListener('change', function(e){ state.enqSource = e.target.value; refreshMessage(); });
   $('enqMessage').addEventListener('input', function(){ state.enqEdited = true; refreshMessage(); });
-  $('waLink').addEventListener('click', saveLead);
   $('copyMsg').addEventListener('click', function(){
     var txt = $('enqMessage').value;
-    var done = function(){ saveLead(); state.copied = true; renderEnquiry(); };
+    var done = function(){ state.copied = true; renderEnquiry(); };
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, done);
     else done();
   });
-
-  // owner view
-  $('openOwner').addEventListener('click', function(){ renderOwner(); openOvl($('ownerWrap')); });
-  $('closeOwner').addEventListener('click', function(){ closeOvl($('ownerWrap')); });
-  $('clearLeads').addEventListener('click', function(){ persist([]); });
 
   // booking
   var d = $('bookDate');
@@ -1736,8 +1725,6 @@ function init(){
   renderStudio();
   renderInsp();
   renderViz();
-  renderOwner();
-  $('leadCount').textContent = String(state.leads.length);
   paint(0);
   paintNav();
 

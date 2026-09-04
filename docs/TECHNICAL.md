@@ -133,6 +133,13 @@ Desktop first load ≈ 150 KB, of which GSAP is 113 KB. Mobile ≈ 35 KB plus on
 - Everything below the fold is `loading="lazy"`.
 - The Google Maps iframe loads only when the map sheet is first opened.
 - `prefers-reduced-motion` collapses the hero to one screen and disables transitions.
+- The `#bgFx` backdrop is a ~1 KB SVG line-art tile (`assets/bg-pattern.svg` — strands,
+  a curl, scissors, a comb; motifs kept inside the tile so the repeat is seamless).
+  Its lightness is baked into the strokes. The drift runs inside the existing scroll
+  rAF via `paintNav()`; static below 900px and under reduced-motion. The page
+  background lives on `<html>` because a negative-`z-index` child only paints above
+  the canvas when `body` is transparent. `deploy.sh` copies the SVG by name — new
+  asset files must be added to its whitelist or they never publish.
 
 ## Hosting
 
@@ -147,6 +154,11 @@ when that repo is checked out alongside this one.
 
 Note the wrangler OAuth token carries `pages (write)` but **not** DNS write, so a new
 custom domain needs its CNAME created by hand in the dashboard.
+
+The production domain appears in `index.html` in four places — the canonical link,
+`og:url`, `og:image` and the JSON-LD `image`. `og:image` must stay absolute; social
+scrapers don't resolve relative URLs. Nothing else is domain- or host-specific: `dist/`
+serves unchanged from any static host.
 
 ### Elsewhere
 
@@ -214,11 +226,38 @@ Stay as-is while the two of you are the only editors. The moment Lily wants to c
 price without messaging anyone, do the Sveltia option properly rather than the half-measure
 — a JSON file she can still break is not much of an improvement over what exists now.
 
+---
+
+## Future: AI-enhanced quiz (shelved)
+
+Decided and designed, deliberately not built yet. The Style Finder would keep its
+rule-based result — rendered instantly, as today — while a background call upgrades only
+the prose when an AI endpoint answers. Every failure mode (endpoint down, no credits,
+timeout, bad JSON, flag off, non-Cloudflare host) is invisible: the local result stays.
+
+Agreed design:
+
+- **Flag:** `AI_QUIZ = true` in `index.html` (same pattern as `SHOW_AI_STUDIO`). Ships
+  on; set `false` to kill the feature entirely.
+- **Endpoint:** a Cloudflare Pages Function, `POST /api/recommend`, accepting only the
+  four fixed quiz answers (whitelisted strings, no free text), returning `{why, tip}`.
+- **Provider:** Kimi (Moonshot) OpenAI-compatible chat API. Key in `wrangler secret`,
+  model name in an env var. Low temperature, strict JSON, length-capped client-side.
+- **Scope:** prose only. `recommend()` always picks the service, so the model can never
+  invent one Lily doesn't offer.
+- **Client:** fetch with a ~3s timeout after the local result renders; swap the "why"
+  paragraph on success, silently discard otherwise. No badge, no loading state.
+- **Prerequisites (why it's shelved):** a Cloudflare rate-limit rule on
+  `/api/recommend/*`, Bot Fight Mode, and a spending cap on the Kimi key. The endpoint
+  spends real money, so abuse protection comes first.
+- **Portability:** the enhancement is Cloudflare-only. On any other host the endpoint
+  404s and the quiz behaves exactly as it does today — the static site loses nothing.
+
 ## Known limitations
 
-- **Leads are `localStorage` only.** The "Owner view" shows enquiries stored in the
-  *visitor's* browser, so Lily sees nothing unless she made them herself. It demonstrates
-  the funnel; it is not an inbox. A real one needs a backend.
+- **There is no inbox.** Enquiries and booking requests go to Lily's WhatsApp and nowhere
+  else. (The pre-launch "Owner view" demo — `localStorage`-only leads — was removed.) A
+  real inbox would need a backend.
 - **The AI Studio is off** (`SHOW_AI_STUDIO = false`). Its three tools run on local keyword
   matching, with no model behind them.
 - **The gallery repeats the hero photos.** Six source images serve four sections. Fine for
