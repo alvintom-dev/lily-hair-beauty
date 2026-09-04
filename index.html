@@ -2,366 +2,550 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lily Hair and Beauty House — One look is only the beginning</title>
-<meta name="description" content="Lily Hair and Beauty House — a small independent hair studio. Cuts, colour, treatments, rebonding, perms and occasion styling. Scroll through five looks, find yours, message Lily directly.">
-<link rel="icon" type="image/png" href="assets/lily-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lily Hair and Beauty House — Hair Salon in Sibu Jaya, Sarawak</title>
+<meta name="description" content="Lily Hair and Beauty House, Sibu Jaya. Haircuts from RM20, perms, rebonding, colour and hair treatments. Open Tue–Sun, 9am–6pm. Message Lily on WhatsApp.">
+<meta name="theme-color" content="#14100E">
+<link rel="canonical" href="https://lily-beauty.baratech.my/">
+
+<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lily-beauty.baratech.my/">
+<meta property="og:title" content="Lily Hair and Beauty House — Sibu Jaya">
+<meta property="og:description" content="One look is only the beginning. Haircuts, perms, rebonding, colour and treatments in Sibu Jaya, Sarawak.">
+<!-- social scrapers do not resolve relative URLs -->
+<meta property="og:image" content="https://lily-beauty.baratech.my/assets/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<!-- srcset/sizes must mirror the first hero card exactly, or the preload fetches a
+     candidate the picture element then ignores and both are downloaded -->
+<link rel="preload" as="image" type="image/avif" fetchpriority="high"
+      imagesrcset="images/hair_styles/01-front-see-through-bangs-400.avif 400w, images/hair_styles/01-front-see-through-bangs-800.avif 800w, images/hair_styles/01-front-see-through-bangs-1200.avif 1200w"
+      imagesizes="(max-width:680px) 62vw, 30vw">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"></noscript>
+
 <style>
-:root{--gr:#FBF8F5;--ink:#1E1815;--acc:#E8896B;--dk:#14100E;--mut:rgba(30,24,21,.58);--heroLen:520vh}
+:root{
+  --gr:#FBF8F5;--ink:#1E1815;--acc:#E8896B;--accDk:#C9694B;--dk:#14100E;
+  --mut:rgba(30,24,21,.58);--line:rgba(30,24,21,.12);--wa:#25D366;
+  --heroLen:520vh;--navH:62px;
+  --pad:clamp(20px,5vw,64px);--sec:clamp(56px,8vw,110px);
+  --serif:'Gilda Display',Georgia,'Times New Roman',serif;
+  --sans:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--gr);color:var(--ink);font-family:'Public Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--gr);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* height:auto is required, not cosmetic — the width/height attributes become a
+   presentational height hint, and that silently overrides any aspect-ratio. */
+img{max-width:100%;height:auto}
 a{color:var(--acc);text-decoration:none}
-a:hover{color:#C9694B}
-input,textarea,select,button{font:inherit;color:inherit}
+a:hover{color:var(--accDk)}
+h1,h2,h3{font-family:var(--serif);font-weight:400}
+/* 16px minimum stops iOS Safari from zooming the page on field focus */
+input,textarea,select,button{font-family:inherit;font-size:16px;color:inherit}
 ::selection{background:var(--acc);color:#fff}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-/* small screens: keep logo + CTA, drop section links so the nav never wraps */
-@media (max-width:680px){#nav .navLinks a{display:none}#nav .navLinks{justify-content:flex-end}}
-/* hover utilities (replaces the artifact's style-hover attributes) */
-.hv{transition:background .3s ease,color .3s ease,border-color .3s ease,opacity .3s ease}
-.hv-accBg:hover{background:#C9694B!important;color:#fff!important}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ---------- shared utilities ---------- */
+.wrap{max-width:1240px;margin:0 auto}
+.sect{padding:var(--sec) var(--pad)}
+.eyebrow{margin:0 0 14px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)}
+.h2{margin:0;font-size:clamp(28px,4.4vw,56px);line-height:1.05}
+.lede{margin:0;max-width:38ch;font-size:14.5px;line-height:1.6;color:var(--mut)}
+.secHead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:clamp(28px,5vw,56px)}
+.note{margin:clamp(24px,4vw,40px) 0 0;padding:14px 18px;background:rgba(232,137,107,.1);border-left:2px solid var(--acc);font:12.5px/1.6 ui-monospace,Menlo,monospace;color:rgba(30,24,21,.72)}
+.hv{transition:background .25s ease,color .25s ease,border-color .25s ease,opacity .25s ease,transform .25s ease}
+.hv-accBg:hover{background:var(--accDk)!important;color:#fff!important}
 .hv-inkToAcc:hover{background:var(--acc)!important}
 .hv-accLine:hover{border-color:var(--acc)!important;color:var(--acc)!important}
 .hv-accTxt:hover{color:var(--acc)!important}
-.hv-whiteLine:hover{border-color:#fff!important;color:#fff!important}
+.hv-whiteLine:hover{border-color:#fff!important;background:rgba(255,255,255,.1)!important}
 .hv-opt:hover{border-color:var(--acc)!important;background:rgba(232,137,107,.08)!important}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:48px;padding:14px 26px;border:0;text-align:center}
+.btn-acc{background:var(--acc);color:#fff}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-line{background:transparent;border:1px solid rgba(30,24,21,.28);color:var(--ink)}
+.btn-wht{background:transparent;border:1px solid rgba(255,255,255,.45);color:#fff}
+.field{display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.field input,.field select,.field textarea{background:#fff;border:1px solid rgba(30,24,21,.18);padding:14px;font-size:16px;letter-spacing:0;text-transform:none;color:var(--ink);min-height:48px;width:100%;border-radius:0}
+.field textarea{min-height:auto;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--acc);outline:none}
+
+/* ---------- nav ---------- */
+#nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px var(--pad);color:#fff;transition:background .4s ease,color .4s ease,border-color .4s ease;border-bottom:1px solid transparent}
+#nav.past{background:rgba(251,248,245,.94);color:var(--ink);border-bottom-color:var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+#navLogo{display:flex;align-items:center;gap:10px;color:inherit}
+#navLogo img{height:34px;width:auto;display:block}
+.navLinks{display:flex;align-items:center;gap:clamp(12px,2.2vw,28px);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+.navLinks a{color:inherit;opacity:.85}
+.navLinks a:hover{opacity:1;color:inherit}
+#navTalk{border:1px solid currentColor;background:transparent;color:inherit;border-radius:999px;padding:9px 18px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;min-height:40px}
+#burger{display:none;width:44px;height:44px;flex:0 0 auto;flex-direction:column;align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer;color:inherit;padding:0}
+#burger span{display:block;width:22px;height:1.5px;background:currentColor;border-radius:2px;transition:transform .3s ease,opacity .2s ease}
+#burger span+span{margin-top:5px}
+body.menu #burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+body.menu #burger span:nth-child(2){opacity:0}
+body.menu #burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+/* burger takes over before the 4 links + CTA can crowd the logo */
+@media (max-width:900px){
+  .navLinks{display:none}
+  #burger{display:flex}
+  body.menu #nav{background:var(--dk);color:#fff;border-bottom-color:rgba(255,255,255,.12)}
+}
+#mobileNav{position:fixed;inset:0;z-index:55;display:none;flex-direction:column;justify-content:center;gap:6px;padding:var(--navH) clamp(24px,7vw,48px) 40px;background:var(--dk);color:#fff;opacity:0;transition:opacity .28s ease}
+#mobileNav.open{opacity:1}
+#mobileNav a{display:block;padding:15px 0;font-family:var(--serif);font-size:clamp(26px,7vw,38px);color:#fff;border-bottom:1px solid rgba(255,255,255,.1);transform:translateY(14px);opacity:0;transition:transform .4s cubic-bezier(.22,.8,.3,1),opacity .4s ease}
+#mobileNav.open a{transform:none;opacity:1}
+#mobileNav.open a:nth-child(1){transition-delay:.05s}
+#mobileNav.open a:nth-child(2){transition-delay:.1s}
+#mobileNav.open a:nth-child(3){transition-delay:.15s}
+#mobileNav.open a:nth-child(4){transition-delay:.2s}
+#mobileNav.open a:nth-child(5){transition-delay:.25s}
+#mnavTalk{margin-top:28px;width:100%;background:var(--acc);color:#fff;opacity:0;transform:translateY(14px);transition:transform .4s cubic-bezier(.22,.8,.3,1) .3s,opacity .4s ease .3s}
+#mobileNav.open #mnavTalk{opacity:1;transform:none}
+#mnavMeta{margin:26px 0 0;font-size:13px;line-height:1.7;color:rgba(255,255,255,.5)}
+
+/* ---------- hero ---------- */
+#top{position:relative;height:var(--heroLen);background:var(--dk)}
+#heroPin{position:sticky;top:0;height:100svh;overflow:hidden}
+#stage{position:absolute;inset:0;display:flex;align-items:center;overflow:hidden}
+#heroStrip{display:flex;align-items:center;gap:clamp(18px,3vw,48px);padding:0 clamp(20px,6vw,80px);will-change:transform}
+.hc{position:relative;flex:0 0 auto;width:clamp(200px,30vw,380px)}
+/* a button cannot legally contain the heading and divs the card needs, so the whole
+   card is covered by one transparent hit target instead */
+.hcHit{position:absolute;inset:0;background:transparent;border:0;padding:0;cursor:pointer;border-radius:14px}
+.hcHit:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
+.hcFrame{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:14px;background:#241c18;box-shadow:0 24px 60px rgba(0,0,0,.45);clip-path:inset(12% 8% round 14px);transition:clip-path .9s cubic-bezier(.22,.8,.3,1)}
+.hcFrame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.hcCap{margin-top:14px;opacity:0;transform:translateY(20px);transition:opacity .7s ease .1s,transform .7s cubic-bezier(.22,.8,.3,1) .1s}
+/* revealed by IntersectionObserver, so it works with and without GSAP */
+.hc.in .hcFrame{clip-path:inset(0 round 14px)}
+.hc.in .hcCap{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.hcFrame{clip-path:inset(0 round 14px)}.hcCap{opacity:1;transform:none}}
+/* Below ~340px (tiny handsets, or a zoomed-in page) the card captions and the
+   hero's progress row run into each other. The counter already says where you
+   are, so the captions are the half that goes. */
+@media (max-width:340px),(max-height:560px){.hcCap{display:none}}
+.hcCap h3{margin:6px 0 0;font-size:clamp(16px,1.5vw,22px);line-height:1.15;color:#fff}
+.heroScrim1{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,14,.6) 0%,rgba(20,16,14,.12) 32%,rgba(20,16,14,.2) 58%,rgba(20,16,14,.9) 100%)}
+/* keeps the headline readable where it crosses the cards behind it.
+   Narrow screens get a vertical wash (the copy spans the full width there);
+   wide screens get the side-lit gradient the layout was designed around. */
+.heroScrim2{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,14,.14) 0%,rgba(20,16,14,.38) 40%,rgba(20,16,14,.46) 70%,rgba(20,16,14,.7) 100%)}
+@media (min-width:820px){
+  .heroScrim2{background:linear-gradient(100deg,rgba(20,16,14,.86) 0%,rgba(20,16,14,.66) 28%,rgba(20,16,14,.3) 50%,rgba(20,16,14,0) 72%)}
+}
+#heroUI{position:absolute;inset:0;display:grid;grid-template-rows:1fr auto;padding:clamp(78px,10vh,120px) var(--pad) max(clamp(18px,3vh,32px),env(safe-area-inset-bottom))}
+#heroCopy{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;max-width:min(760px,90vw)}
+#heroHead h1{margin:0;font-size:clamp(38px,7.6vw,104px);line-height:.98;letter-spacing:-.01em;text-wrap:balance}
+#heroEnd{position:absolute;left:0;opacity:0;pointer-events:none;color:#fff}
+#heroEnd h2{margin:0;font-size:clamp(38px,7.6vw,104px);line-height:.98}
+/* The horizontal walk needs a tall scroll track. Below the GSAP breakpoint the strip
+   is shorter and unscrubbed, so a phone or tablet should not pay for the full track.
+   Kept in CSS (not JS) so it re-evaluates on resize and rotation. */
+@media (max-width:900px){:root{--heroLen:360vh}}
+@media (prefers-reduced-motion:reduce){:root{--heroLen:100svh}}
+
+/* ---------- looks ---------- */
+#lookGrid{display:grid;grid-template-columns:1fr;gap:clamp(28px,5vw,64px);align-items:start;max-width:1240px;margin:0 auto}
+@media (min-width:860px){#lookGrid{grid-template-columns:1fr 1fr}}
+/* the photo leads on one column; the grid item is the media wrapper, not the stage */
+#lookMedia{order:-1}
+#lookStage{position:relative;aspect-ratio:4/5;overflow:hidden;background:#241c18;border-radius:12px}
+@media (min-width:860px){#lookMedia{order:0}
+  #lookStage,#lookThumbs{max-width:460px;margin-left:auto}}
+#lookStage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;transition:opacity .45s ease}
+#lookThumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:10px}
+.lookThumb{position:relative;aspect-ratio:1;overflow:hidden;border:0;padding:0;cursor:pointer;background:#241c18;border-radius:8px;opacity:.5;transition:opacity .25s ease,box-shadow .25s ease}
+.lookThumb img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block}
+.lookThumb[aria-current="true"]{opacity:1;box-shadow:0 0 0 2px var(--acc)}
+.lookThumb:hover{opacity:.85}
+#lookDl{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin:26px 0 0;font-size:14.5px}
+#lookDl dt{color:var(--mut)}
+#lookDl dd{margin:0}
+
+/* ---------- before / after ---------- */
+.ba{display:grid;grid-template-columns:1fr;gap:clamp(22px,4vw,56px);align-items:center;padding-bottom:clamp(36px,6vw,72px);margin-bottom:clamp(36px,6vw,72px);border-bottom:1px solid var(--line)}
+.ba:last-of-type{padding-bottom:0;margin-bottom:0;border-bottom:0}
+@media (min-width:820px){
+  .ba{grid-template-columns:1fr 1fr}
+  .ba.flip .baFrame{order:2}
+}
+/* on one column the photo always leads, whatever the desktop order is */
+.baFrame{order:-1;position:relative;aspect-ratio:4/5;overflow:hidden;background:#241c18;border-radius:12px;touch-action:pan-y}
+@media (min-width:820px){.baFrame{order:0;width:100%;max-width:460px;justify-self:start}
+  .ba.flip .baFrame{justify-self:end}}
+.baFrame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block;pointer-events:none;-webkit-user-drag:none}
+.baBefore{filter:saturate(.62) contrast(.94) brightness(.97)}
+.baAfterWrap{position:absolute;inset:0;clip-path:inset(0 0 0 var(--p,50%));will-change:clip-path}
+/* dashed divider, drawn twice so it reads on both light and dark hair */
+.baLine{position:absolute;top:0;bottom:0;left:var(--p,50%);width:2px;margin-left:-1px;pointer-events:none;background-image:repeating-linear-gradient(to bottom,rgba(0,0,0,.35) 0 11px,transparent 11px 20px);}
+.baLine::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(to bottom,#fff 0 11px,transparent 11px 20px)}
+.baHandle{position:absolute;top:50%;left:var(--p,50%);width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;border:1.5px solid rgba(255,255,255,.9);background:rgba(20,16,14,.42);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:ew-resize;padding:0;box-shadow:0 4px 18px rgba(0,0,0,.35);touch-action:none;transition:transform .18s ease,background .18s ease}
+.baHandle:hover,.baHandle:focus-visible{transform:scale(1.08);background:rgba(20,16,14,.62)}
+.baHandle.drag{transform:scale(1.14);background:rgba(20,16,14,.72);cursor:grabbing}
+.baHandle svg{display:block;pointer-events:none}
+.baHint{position:absolute;left:50%;top:calc(50% + 34px);transform:translateX(-50%);white-space:nowrap;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);text-shadow:0 1px 6px rgba(0,0,0,.7);pointer-events:none;transition:opacity .3s ease}
+.baFrame.touched .baHint{opacity:0}
+.baTag{position:absolute;bottom:14px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.65);pointer-events:none}
+.baTag.l{left:14px}
+.baTag.r{right:14px}
+
+/* ---------- gallery ---------- */
+#galGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.4vw,16px)}
+@media (min-width:600px){#galGrid{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1000px){#galGrid{grid-template-columns:repeat(6,1fr)}}
+.galTile{position:relative;aspect-ratio:4/5;overflow:hidden;border:0;padding:0;cursor:pointer;background:var(--dk)}
+.galTile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block;transition:transform .6s ease}
+.galTile:hover img{transform:scale(1.05)}
+.galTile span{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(20,16,14,.72);color:#fff;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+
+/* ---------- services ---------- */
+#svcGrid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line)}
+@media (min-width:600px){#svcGrid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){#svcGrid{grid-template-columns:repeat(3,1fr)}}
+.svc{background:var(--gr);padding:clamp(22px,3vw,34px);display:flex;flex-direction:column}
+.svc h3{margin:0;font-size:23px}
+.svc .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:16px;border-top:1px dashed rgba(30,24,21,.22)}
+.pill{font-size:11.5px;letter-spacing:.1em;color:var(--mut);border:1px solid rgba(30,24,21,.2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+
+/* ---------- contact ---------- */
+#contactGrid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line)}
+@media (min-width:560px){#contactGrid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){#contactGrid{grid-template-columns:repeat(4,1fr)}}
+.cCard{background:var(--gr);padding:clamp(20px,3vw,30px)}
+.cCard p.k{margin:0 0 12px;display:flex;align-items:center;gap:9px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)}
+.cCard p.v{margin:0;font-size:14.5px;line-height:1.65;color:rgba(30,24,21,.75)}
+/* opening hours */
+.oh{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;margin:0;font-size:14.5px;line-height:1.65}
+.oh dt{color:var(--mut);white-space:nowrap}
+.oh dd{margin:0;color:rgba(30,24,21,.75)}
+.ohNow{display:inline-flex;align-items:center;gap:8px;margin:14px 0 0;padding:7px 13px;border-radius:999px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase}
+.ohNow.isOpen{background:rgba(23,138,74,.12);color:#12703C}
+.ohNow.isShut{background:rgba(30,24,21,.07);color:rgba(30,24,21,.62)}
+.ohDot{width:7px;height:7px;border-radius:50%;background:currentColor;flex:0 0 auto}
+
+/* ---------- overlays ---------- */
+.ovl{position:fixed;inset:0;z-index:80;display:none;opacity:0;transition:opacity .28s ease}
+.ovl.show{display:flex}
+.ovl.open{opacity:1}
+.ovlBg{position:absolute;inset:0;background:rgba(20,16,14,.6)}
+/* enquiry drawer: slides in from the right, becomes a bottom sheet on phones */
+#enqWrap{justify-content:flex-end}
+#enqPanel{position:relative;width:min(480px,100vw);height:100%;overflow-y:auto;overscroll-behavior:contain;background:var(--gr);padding:clamp(22px,4vw,38px);transform:translateX(100%);transition:transform .4s cubic-bezier(.32,.72,.35,1)}
+#enqWrap.open #enqPanel{transform:none}
+@media (max-width:680px){
+  #enqWrap{align-items:flex-end}
+  #enqPanel{width:100%;height:auto;max-height:92svh;border-radius:18px 18px 0 0;transform:translateY(100%);padding-bottom:max(24px,env(safe-area-inset-bottom))}
+  #enqWrap.open #enqPanel{transform:none}
+}
+#mapWrap{align-items:flex-end}
+#mapSheet{position:relative;width:100%;max-height:90svh;overflow-y:auto;overscroll-behavior:contain;background:var(--gr);border-radius:18px 18px 0 0;padding:10px clamp(16px,3vw,28px) max(clamp(20px,3vh,30px),env(safe-area-inset-bottom));box-shadow:0 -12px 40px rgba(20,16,14,.3);transform:translateY(102%);transition:transform .4s cubic-bezier(.32,.72,.35,1)}
+#mapWrap.open #mapSheet{transform:none}
+@media (min-width:820px){
+  #mapWrap{align-items:center;justify-content:center;padding:32px}
+  #mapSheet{width:min(880px,100%);border-radius:14px;transform:translateY(24px) scale(.98);opacity:0;transition:transform .35s cubic-bezier(.32,.72,.35,1),opacity .3s ease}
+  #mapWrap.open #mapSheet{transform:none;opacity:1}
+  #grabber{display:none}
+}
+#grabber{width:44px;height:4px;border-radius:999px;background:rgba(30,24,21,.18);margin:2px auto 16px}
+#ownerWrap{align-items:center;justify-content:center;padding:clamp(12px,3vw,32px);z-index:90}
+#ownerPanel{position:relative;width:min(720px,100%);max-height:90svh;overflow-y:auto;overscroll-behavior:contain;background:var(--gr);padding:clamp(22px,4vw,38px);transform:translateY(18px);transition:transform .3s ease}
+#ownerWrap.open #ownerPanel{transform:none}
+.xBtn{background:transparent;border:1px solid rgba(30,24,21,.2);border-radius:50%;width:42px;height:42px;flex:0 0 auto;cursor:pointer;font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center}
+.ovlHead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px}
+
+/* ---------- floating WhatsApp ---------- */
+#fab{position:fixed;right:clamp(14px,4vw,26px);bottom:max(clamp(14px,4vw,26px),env(safe-area-inset-bottom));z-index:50;display:flex;align-items:center;gap:10px;background:var(--wa);color:#fff;border:0;border-radius:999px;padding:14px 20px;font-size:13.5px;letter-spacing:.04em;cursor:pointer;box-shadow:0 10px 30px rgba(37,211,102,.35);opacity:0;transform:translateY(20px) scale(.9);pointer-events:none;transition:opacity .35s ease,transform .35s cubic-bezier(.22,.8,.3,1)}
+#fab.on{opacity:1;transform:none;pointer-events:auto}
+#fab span{display:none}
+@media (min-width:600px){#fab span{display:inline}}
+body.menu #fab,body.lock #fab,#fab.hide{opacity:0;transform:translateY(20px) scale(.9);pointer-events:none}
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
-<nav id="nav" style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(16px,4vw,44px);color:#fff;transition:background .4s ease,color .4s ease,border-color .4s ease;border-bottom:1px solid rgba(255,255,255,0)">
-  <a href="#top" style="display:flex;align-items:center;gap:10px;color:inherit"><img src="assets/lily-logo.png" alt="Lily Hair and Beauty House" style="height:34px;width:auto;display:block"></a>
-  <div class="navLinks" style="display:flex;align-items:center;gap:clamp(12px,2.2vw,28px);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">
-    <a href="#work" style="color:inherit;opacity:.85">Work</a>
-    <a href="#services" style="color:inherit;opacity:.85">Services</a>
-    <a href="#studio" style="color:inherit;opacity:.85">AI Studio</a>
-    <button id="navTalk" class="hv" style="border:1px solid currentColor;background:transparent;color:inherit;border-radius:999px;padding:9px 18px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Talk to Lily</button>
+<a href="#looks" class="sr">Skip to content</a>
+
+<nav id="nav">
+  <a href="#top" id="navLogo" aria-label="Lily Hair and Beauty House — home">
+    <img src="assets/lily-logo-220.webp" srcset="assets/lily-logo-220.webp 220w, assets/lily-logo-440.webp 440w" sizes="72px" width="220" height="105" alt="Lily Hair and Beauty House">
+  </a>
+  <div class="navLinks">
+    <a href="#looks">Looks</a>
+    <a href="#work">Transformations</a>
+    <a href="#services">Services</a>
+    <a href="#book">Book</a>
+    <a href="#contact">Find Us</a>
+    <button id="navTalk" class="hv">Talk to Lily</button>
   </div>
+  <button id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<section id="top" style="position:relative;height:var(--heroLen);background:var(--dk)">
-  <div style="position:sticky;top:0;height:100vh;overflow:hidden">
-    <div id="stage" style="position:absolute;inset:0">
-      <!-- Hero layers: Unsplash stock (PLACEHOLDER until real client photos). imgix face-crops to 4:5 at 1000w/1600w; auto=format serves AVIF/WebP per browser -->
-      <div data-hl="0" style="position:absolute;inset:0;opacity:1;transform:scale(1.02);background:var(--dk);will-change:opacity,transform">
-        <img src="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format" srcset="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?w=1000&h=1250&fit=crop&crop=faces&q=80&auto=format 1000w, https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format 1600w" sizes="100vw" alt="" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%">
-      </div>
-      <div data-hl="1" style="position:absolute;inset:0;opacity:0;transform:scale(1.02);background:var(--dk);will-change:opacity,transform">
-        <img src="https://images.unsplash.com/photo-1665615836129-e231360860bf?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format" srcset="https://images.unsplash.com/photo-1665615836129-e231360860bf?w=1000&h=1250&fit=crop&crop=faces&q=80&auto=format 1000w, https://images.unsplash.com/photo-1665615836129-e231360860bf?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format 1600w" sizes="100vw" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%">
-      </div>
-      <div data-hl="2" style="position:absolute;inset:0;opacity:0;transform:scale(1.02);background:var(--dk);will-change:opacity,transform">
-        <img src="https://images.unsplash.com/photo-1551687758-4a278cfc6cbe?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format" srcset="https://images.unsplash.com/photo-1551687758-4a278cfc6cbe?w=1000&h=1250&fit=crop&crop=faces&q=80&auto=format 1000w, https://images.unsplash.com/photo-1551687758-4a278cfc6cbe?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format 1600w" sizes="100vw" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%">
-      </div>
-      <div data-hl="3" style="position:absolute;inset:0;opacity:0;transform:scale(1.02);background:var(--dk);will-change:opacity,transform">
-        <img src="https://images.unsplash.com/photo-1554175308-e37121817631?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format" srcset="https://images.unsplash.com/photo-1554175308-e37121817631?w=1000&h=1250&fit=crop&crop=faces&q=80&auto=format 1000w, https://images.unsplash.com/photo-1554175308-e37121817631?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format 1600w" sizes="100vw" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%">
-      </div>
-      <div data-hl="4" style="position:absolute;inset:0;opacity:0;transform:scale(1.02);background:var(--dk);will-change:opacity,transform">
-        <img src="https://images.unsplash.com/photo-1589525231707-f2de2428f59c?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format" srcset="https://images.unsplash.com/photo-1589525231707-f2de2428f59c?w=1000&h=1250&fit=crop&crop=faces&q=80&auto=format 1000w, https://images.unsplash.com/photo-1589525231707-f2de2428f59c?w=1600&h=2000&fit=crop&crop=faces&q=80&auto=format 1600w" sizes="100vw" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%">
-      </div>
-    </div>
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,14,.55) 0%,rgba(20,16,14,.12) 32%,rgba(20,16,14,.18) 58%,rgba(20,16,14,.88) 100%)"></div>
-    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(20,16,14,.62) 0%,rgba(20,16,14,.34) 34%,rgba(20,16,14,0) 62%)"></div>
-    <div style="position:absolute;inset:0;opacity:.2;mix-blend-mode:overlay;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
+<div id="mobileNav" aria-hidden="true">
+  <a href="#looks">Looks</a>
+  <a href="#work">Transformations</a>
+  <a href="#services">Services</a>
+  <a href="#book">Book</a>
+  <a href="#contact">Find Us</a>
+  <button id="mnavTalk" class="btn">WhatsApp Lily</button>
+  <p id="mnavMeta">Lot 8054, Block 1, Sibu Jaya Shopping Centre 2<br>Sibu Jaya, 96000 Sibu, Sarawak<br><span id="hoursMenu" style="opacity:.75"></span></p>
+</div>
 
-    <div style="position:absolute;inset:0;display:grid;grid-template-rows:1fr auto;padding:clamp(78px,10vh,120px) clamp(20px,5vw,64px) clamp(18px,3vh,32px)">
-      <div style="position:relative;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;max-width:min(760px,88vw)">
+<section id="top">
+  <div id="heroPin">
+    <div id="stage">
+      <!-- Horizontal style walk: six angles of the same model, scrubbed sideways by scroll. Cards built by buildHeroStrip(). -->
+      <div id="heroStrip"></div>
+    </div>
+    <div class="heroScrim1"></div>
+    <div class="heroScrim2"></div>
+
+    <div id="heroUI">
+      <div id="heroCopy">
         <div id="heroHead" style="color:#fff">
-          <p style="margin:0 0 18px;font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;opacity:.72">Lily Hair and Beauty House</p>
-          <h1 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(40px,7.6vw,104px);line-height:.98;letter-spacing:-.01em;text-wrap:balance">One look is only<br>the beginning.</h1>
-          <p style="margin:22px 0 0;max-width:34ch;font-size:clamp(14.5px,1.5vw,17px);line-height:1.6;color:rgba(255,255,255,.78)">Scroll to watch one head of hair become five different looks. Pick the one that feels like you.</p>
+          <p class="eyebrow" style="color:rgba(255,255,255,.72);letter-spacing:.28em;font-size:11.5px;margin-bottom:18px">Lily Hair and Beauty House · Sibu Jaya</p>
+          <h1>One look is only<br>the beginning.</h1>
+          <p style="margin:22px 0 0;max-width:34ch;font-size:clamp(14.5px,1.5vw,17px);line-height:1.6;color:rgba(255,255,255,.78)">Scroll to watch one head of hair become six different looks. Pick the one that feels like you.</p>
         </div>
-        <div id="heroEnd" style="position:absolute;left:0;opacity:0;pointer-events:none;color:#fff">
-          <p style="margin:0 0 18px;font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;opacity:.72">Five looks. One chair.</p>
-          <h2 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(40px,7.6vw,104px);line-height:.98">Which look<br>is yours?</h2>
+        <div id="heroEnd">
+          <p class="eyebrow" style="color:rgba(255,255,255,.72);letter-spacing:.28em;font-size:11.5px;margin-bottom:18px">Six looks. One chair.</p>
+          <h2>Which look<br>is yours?</h2>
         </div>
       </div>
 
       <div style="display:flex;flex-direction:column;gap:clamp(14px,2.4vh,22px)">
-        <div style="display:flex;gap:clamp(14px,3vw,34px);overflow-x:auto;padding-bottom:2px">
-          <button data-rail="0" class="railBtn" style="flex:0 0 auto;display:flex;flex-direction:column;gap:3px;text-align:left;background:transparent;border:0;border-top:1px solid rgba(255,255,255,.28);padding:10px 0 0;color:#fff;cursor:pointer;min-width:92px;transition:border-color .3s,opacity .3s;opacity:.5"><span style="font-size:10.5px;letter-spacing:.2em">01</span><span style="font-family:'Gilda Display',Georgia,serif;font-size:15px;white-space:nowrap">Natural</span></button>
-          <button data-rail="1" class="railBtn" style="flex:0 0 auto;display:flex;flex-direction:column;gap:3px;text-align:left;background:transparent;border:0;border-top:1px solid rgba(255,255,255,.28);padding:10px 0 0;color:#fff;cursor:pointer;min-width:92px;transition:border-color .3s,opacity .3s;opacity:.5"><span style="font-size:10.5px;letter-spacing:.2em">02</span><span style="font-family:'Gilda Display',Georgia,serif;font-size:15px;white-space:nowrap">Long Curls</span></button>
-          <button data-rail="2" class="railBtn" style="flex:0 0 auto;display:flex;flex-direction:column;gap:3px;text-align:left;background:transparent;border:0;border-top:1px solid rgba(255,255,255,.28);padding:10px 0 0;color:#fff;cursor:pointer;min-width:92px;transition:border-color .3s,opacity .3s;opacity:.5"><span style="font-size:10.5px;letter-spacing:.2em">03</span><span style="font-family:'Gilda Display',Georgia,serif;font-size:15px;white-space:nowrap">Milk Tea Brown</span></button>
-          <button data-rail="3" class="railBtn" style="flex:0 0 auto;display:flex;flex-direction:column;gap:3px;text-align:left;background:transparent;border:0;border-top:1px solid rgba(255,255,255,.28);padding:10px 0 0;color:#fff;cursor:pointer;min-width:92px;transition:border-color .3s,opacity .3s;opacity:.5"><span style="font-size:10.5px;letter-spacing:.2em">04</span><span style="font-family:'Gilda Display',Georgia,serif;font-size:15px;white-space:nowrap">Short Bob</span></button>
-          <button data-rail="4" class="railBtn" style="flex:0 0 auto;display:flex;flex-direction:column;gap:3px;text-align:left;background:transparent;border:0;border-top:1px solid rgba(255,255,255,.28);padding:10px 0 0;color:#fff;cursor:pointer;min-width:92px;transition:border-color .3s,opacity .3s;opacity:.5"><span style="font-size:10.5px;letter-spacing:.2em">05</span><span style="font-family:'Gilda Display',Georgia,serif;font-size:15px;white-space:nowrap">Rebonding</span></button>
+        <div style="display:flex;align-items:center;gap:16px;max-width:520px">
+          <span id="heroCount" style="font-family:var(--serif);font-size:15px;letter-spacing:.06em;color:#fff;min-width:64px">01 / 06</span>
+          <div style="flex:1;height:2px;background:rgba(255,255,255,.22);border-radius:999px;overflow:hidden"><div id="heroProg" style="height:100%;width:0;background:var(--acc)"></div></div>
         </div>
-        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
-          <a href="#finder" class="hv hv-accBg" style="background:var(--acc);color:#fff;border-radius:999px;padding:15px 28px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;min-height:48px;display:inline-flex;align-items:center">Find My Look</a>
-          <a href="#work" class="hv hv-whiteLine" style="border:1px solid rgba(255,255,255,.45);color:#fff;border-radius:999px;padding:15px 26px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;min-height:48px;display:inline-flex;align-items:center">Explore Lily's Work</a>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+          <a href="#finder" class="btn btn-acc hv hv-accBg">Find My Look</a>
+          <a href="#work" class="btn btn-wht hv hv-whiteLine">Explore Lily's Work</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="looks" style="padding:clamp(46px,7vw,86px) clamp(20px,5vw,64px);border-bottom:1px solid rgba(30,24,21,.1)">
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,64px);align-items:start;max-width:1240px;margin:0 auto">
+<section id="looks" class="sect" style="border-bottom:1px solid var(--line)">
+  <div id="lookGrid">
     <div>
-      <p id="lookNum" style="margin:0 0 14px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)">Look 01 — selected</p>
-      <h2 id="lookName" style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(32px,4.6vw,60px);line-height:1.04">Natural</h2>
-      <p id="lookDesc" style="margin:18px 0 0;max-width:44ch;font-size:16px;line-height:1.65;color:rgba(30,24,21,.72)"></p>
-      <dl style="display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin:26px 0 0;font-size:14px">
-        <dt style="color:var(--mut)">Service</dt><dd id="lookService" style="margin:0"></dd>
-        <dt style="color:var(--mut)">Works with</dt><dd id="lookSuits" style="margin:0"></dd>
-        <dt style="color:var(--mut)">Upkeep</dt><dd id="lookUpkeep" style="margin:0"></dd>
+      <p id="lookNum" class="eyebrow">Look 01 — selected</p>
+      <h2 id="lookName" class="h2" style="font-size:clamp(30px,4.6vw,60px);line-height:1.04">See-through Bangs</h2>
+      <p id="lookDesc" style="margin:18px 0 0;max-width:44ch;font-size:16px;line-height:1.65;color:rgba(30,24,21,.75)"></p>
+      <dl id="lookDl">
+        <dt>Service</dt><dd id="lookService"></dd>
+        <dt>Works with</dt><dd id="lookSuits"></dd>
+        <dt>Upkeep</dt><dd id="lookUpkeep"></dd>
       </dl>
-      <button id="wantLook" class="hv hv-inkToAcc" style="margin-top:30px;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:16px 30px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:50px">I Want This Look</button>
+      <button id="wantLook" class="btn btn-ink hv hv-inkToAcc" style="margin-top:28px;padding:16px 30px;min-height:50px">I Want This Look</button>
     </div>
-    <div style="display:flex;gap:10px">
-      <div id="lookImgA" style="flex:1;aspect-ratio:3/4;background-size:cover;background-position:50% 30%"></div>
-      <div id="lookImgB" style="flex:1;aspect-ratio:3/4;margin-top:clamp(20px,5vw,56px);background-size:cover;background-position:50% 30%"></div>
+    <div id="lookMedia">
+      <div id="lookStage"></div>
+      <div id="lookThumbs" aria-label="Choose a look"></div>
     </div>
   </div>
 </section>
 
-<section id="work" style="padding:clamp(56px,8vw,110px) clamp(20px,5vw,64px)">
-  <div style="max-width:1240px;margin:0 auto">
-    <header style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:clamp(32px,5vw,56px)">
-      <h2 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(30px,4.4vw,56px);line-height:1.05">Transformations</h2>
-      <p style="margin:0;max-width:38ch;font-size:14.5px;line-height:1.6;color:var(--mut)">Drag each frame to see where it started. Every look here began as a conversation.</p>
+<section id="work" class="sect">
+  <div class="wrap">
+    <header class="secHead">
+      <h2 class="h2">Transformations</h2>
+      <p class="lede">Drag the handle on each frame to see where it started. Every look here began as a conversation.</p>
     </header>
-
-    <article data-ba="0" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,56px);align-items:center;padding-bottom:clamp(40px,6vw,72px);margin-bottom:clamp(40px,6vw,72px);border-bottom:1px solid rgba(30,24,21,.1)">
-      <div style="position:relative;aspect-ratio:4/5;overflow:hidden;cursor:col-resize;user-select:none">
-        <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1581674210501-c760093514e8?auto=format&amp;fit=crop&amp;crop=faces&amp;w=1100&amp;h=1375&amp;q=80');background-size:cover;background-position:center;filter:saturate(.7)"></div>
-        <div data-ba-after style="position:absolute;inset:0;clip-path:inset(0 0 0 50%);background-image:url('https://images.unsplash.com/photo-1614020863825-28a0bb7e3c3c?auto=format&amp;fit=crop&amp;crop=faces&amp;w=1100&amp;h=1375&amp;q=80');background-size:cover;background-position:center"></div>
-        <div data-ba-line style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(255,255,255,.9);pointer-events:none"></div>
-        <span style="position:absolute;left:14px;bottom:14px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)">Before</span>
-        <span style="position:absolute;right:14px;bottom:14px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)">After</span>
-        <input data-ba-range type="range" min="0" max="100" value="50" aria-label="Reveal the transformation" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:col-resize;margin:0">
-      </div>
-      <div>
-        <p style="margin:0 0 12px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--acc)">Colour</p>
-        <h3 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.1">Soft Brown Transformation</h3>
-        <p style="margin:16px 0 0;max-width:42ch;font-size:15.5px;line-height:1.65;color:rgba(30,24,21,.72)">A warmer, softer colour designed for a more natural everyday look. Grown-out ends were blended so the regrowth line disappears instead of announcing itself.</p>
-        <p style="margin:14px 0 0;font-size:13.5px;line-height:1.6;color:var(--mut)"><em>She wanted something she wouldn't have to touch up every six weeks.</em></p>
-        <button id="wantStory0" class="hv hv-accLine" style="margin-top:24px;background:transparent;border:1px solid rgba(30,24,21,.3);border-radius:999px;padding:14px 26px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:48px">I Want This Look</button>
-      </div>
-    </article>
-
-    <article data-ba="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,56px);align-items:center;padding-bottom:clamp(40px,6vw,72px);margin-bottom:clamp(40px,6vw,72px);border-bottom:1px solid rgba(30,24,21,.1)">
-      <div>
-        <p style="margin:0 0 12px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--acc)">Smoothing</p>
-        <h3 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.1">Frizz to Silk</h3>
-        <p style="margin:16px 0 0;max-width:42ch;font-size:15.5px;line-height:1.65;color:rgba(30,24,21,.72)">Thick, humidity-reactive hair brought down to something that behaves after a five minute dry. Not poker straight — it still has body.</p>
-        <p style="margin:14px 0 0;font-size:13.5px;line-height:1.6;color:var(--mut)"><em>Her brief: smoother, but it still has to look like my hair.</em></p>
-        <button id="wantStory1" class="hv hv-accLine" style="margin-top:24px;background:transparent;border:1px solid rgba(30,24,21,.3);border-radius:999px;padding:14px 26px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:48px">I Want This Look</button>
-      </div>
-      <div style="position:relative;aspect-ratio:4/5;overflow:hidden;cursor:col-resize;user-select:none">
-        <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1629397685944-7073f5589754?auto=format&amp;fit=crop&amp;crop=faces&amp;w=1100&amp;h=1375&amp;q=80');background-size:cover;background-position:center;filter:saturate(.7)"></div>
-        <div data-ba-after style="position:absolute;inset:0;clip-path:inset(0 0 0 50%);background-image:url('https://images.unsplash.com/photo-1547547700-b3954043b1b8?auto=format&amp;fit=crop&amp;crop=faces&amp;w=1100&amp;h=1375&amp;q=80');background-size:cover;background-position:center"></div>
-        <div data-ba-line style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(255,255,255,.9);pointer-events:none"></div>
-        <span style="position:absolute;left:14px;bottom:14px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)">Before</span>
-        <span style="position:absolute;right:14px;bottom:14px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)">After</span>
-        <input data-ba-range type="range" min="0" max="100" value="50" aria-label="Reveal the transformation" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:col-resize;margin:0">
-      </div>
-    </article>
-
-    <article data-ba="2" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,56px);align-items:center">
-      <div style="position:relative;aspect-ratio:4/5;overflow:hidden;cursor:col-resize;user-select:none">
-        <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1597586124394-fbd6ef244026?auto=format&amp;fit=crop&amp;crop=faces&amp;w=1100&amp;h=1375&amp;q=80');background-size:cover;background-position:center;filter:saturate(.7)"></div>
-        <div data-ba-after style="position:absolute;inset:0;clip-path:inset(0 0 0 50%);background-image:url('https://images.unsplash.com/photo-1560869713-bf165a9cfac1?auto=format&amp;fit=crop&amp;crop=faces&amp;w=1100&amp;h=1375&amp;q=80');background-size:cover;background-position:center"></div>
-        <div data-ba-line style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(255,255,255,.9);pointer-events:none"></div>
-        <span style="position:absolute;left:14px;bottom:14px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)">Before</span>
-        <span style="position:absolute;right:14px;bottom:14px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)">After</span>
-        <input data-ba-range type="range" min="0" max="100" value="50" aria-label="Reveal the transformation" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:col-resize;margin:0">
-      </div>
-      <div>
-        <p style="margin:0 0 12px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--acc)">Cut and lightening</p>
-        <h3 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.1">Lighter, Looser</h3>
-        <p style="margin:16px 0 0;max-width:42ch;font-size:15.5px;line-height:1.65;color:rgba(30,24,21,.72)">Length kept, weight removed. A few shades lighter through the mid-lengths so it catches light without going brassy.</p>
-        <p style="margin:14px 0 0;font-size:13.5px;line-height:1.6;color:var(--mut)"><em>Two appointments, six weeks apart, to protect the condition.</em></p>
-        <button id="wantStory2" class="hv hv-accLine" style="margin-top:24px;background:transparent;border:1px solid rgba(30,24,21,.3);border-radius:999px;padding:14px 26px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:48px">I Want This Look</button>
-      </div>
-    </article>
-
-    <p style="margin:clamp(28px,4vw,44px) 0 0;padding:14px 18px;background:rgba(232,137,107,.1);border-left:2px solid var(--acc);font:12.5px/1.6 ui-monospace,Menlo,monospace;color:rgba(30,24,21,.72)">PLACEHOLDER IMAGERY — stock photography stands in for Lily's own before/after shots. Swap each pair for real client work before launch.</p>
+    <div id="baList"></div>
+    <p class="note">PLACEHOLDER IMAGERY — studio reference shots stand in for Lily's own before/after pairs. Swap each pair for real client work (with permission) before launch.</p>
   </div>
 </section>
 
-<section id="services" style="padding:clamp(56px,8vw,110px) clamp(20px,5vw,64px);border-top:1px solid rgba(30,24,21,.1)">
-  <div style="max-width:1240px;margin:0 auto">
-    <header style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:clamp(28px,4vw,44px)">
-      <h2 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(30px,4.4vw,56px);line-height:1.05">Services</h2>
-      <p style="margin:0;max-width:38ch;font-size:14.5px;line-height:1.6;color:var(--mut)">Not sure which one you need? <a href="#finder">Answer four questions</a> and we'll narrow it down.</p>
+<section id="gallery" class="sect" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <header class="secHead">
+      <h2 class="h2">Gallery</h2>
+      <p class="lede">A glimpse of what leaves the chair. Tap any style — the message to Lily writes itself.</p>
     </header>
-    <p style="margin:0 0 clamp(24px,3vw,36px);padding:14px 18px;background:rgba(232,137,107,.1);border-left:2px solid var(--acc);font:12.5px/1.6 ui-monospace,Menlo,monospace;color:rgba(30,24,21,.72)">PLACEHOLDER PRICING — every price and duration below is a stand-in awaiting Lily's real list.</p>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(30,24,21,.12)">
-      <div style="background:var(--gr);padding:clamp(22px,3vw,34px)">
-        <h3 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:24px">Cut and Style</h3>
-        <p style="margin:12px 0 0;font-size:14.5px;line-height:1.6;color:rgba(30,24,21,.72)">Shape, layers and a finish that still works when you dry it yourself.</p>
-        <p style="margin:16px 0 0;font-size:13px;color:var(--mut)">Suits: any length, any texture</p>
-        <p style="margin:6px 0 0;font:12px ui-monospace,Menlo,monospace;color:var(--acc)">PRICE PLACEHOLDER · 45–60 MIN</p>
-        <button data-ask="Cut and Style" class="askBtn hv hv-accTxt" style="margin-top:18px;background:transparent;border:0;padding:12px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--acc);color:var(--ink)">Ask Lily →</button>
-      </div>
-      <div style="background:var(--gr);padding:clamp(22px,3vw,34px)">
-        <h3 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:24px">Colour</h3>
-        <p style="margin:12px 0 0;font-size:14.5px;line-height:1.6;color:rgba(30,24,21,.72)">Root touch-ups through to a full tone change, matched to your skin.</p>
-        <p style="margin:16px 0 0;font-size:13px;color:var(--mut)">Suits: grown-out colour, first-timers</p>
-        <p style="margin:6px 0 0;font:12px ui-monospace,Menlo,monospace;color:var(--acc)">PRICE PLACEHOLDER · 2–3 HRS</p>
-        <button data-ask="Colour" class="askBtn hv hv-accTxt" style="margin-top:18px;background:transparent;border:0;padding:12px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--acc);color:var(--ink)">Ask Lily →</button>
-      </div>
-      <div style="background:var(--gr);padding:clamp(22px,3vw,34px)">
-        <h3 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:24px">Hair Treatment</h3>
-        <p style="margin:12px 0 0;font-size:14.5px;line-height:1.6;color:rgba(30,24,21,.72)">For dryness, frizz and damage. Usually the right first step before colour.</p>
-        <p style="margin:16px 0 0;font-size:13px;color:var(--mut)">Suits: dry, brittle or over-processed hair</p>
-        <p style="margin:6px 0 0;font:12px ui-monospace,Menlo,monospace;color:var(--acc)">PRICE PLACEHOLDER · 45 MIN</p>
-        <button data-ask="Hair Treatment" class="askBtn hv hv-accTxt" style="margin-top:18px;background:transparent;border:0;padding:12px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--acc);color:var(--ink)">Ask Lily →</button>
-      </div>
-      <div style="background:var(--gr);padding:clamp(22px,3vw,34px)">
-        <h3 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:24px">Rebonding and Smoothing</h3>
-        <p style="margin:12px 0 0;font-size:14.5px;line-height:1.6;color:rgba(30,24,21,.72)">Long-lasting smoothness. Tell Lily how straight you actually want it.</p>
-        <p style="margin:16px 0 0;font-size:13px;color:var(--mut)">Suits: thick, coarse, humidity-reactive hair</p>
-        <p style="margin:6px 0 0;font:12px ui-monospace,Menlo,monospace;color:var(--acc)">PRICE PLACEHOLDER · 3–4 HRS</p>
-        <button data-ask="Rebonding and Smoothing" class="askBtn hv hv-accTxt" style="margin-top:18px;background:transparent;border:0;padding:12px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--acc);color:var(--ink)">Ask Lily →</button>
-      </div>
-      <div style="background:var(--gr);padding:clamp(22px,3vw,34px)">
-        <h3 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:24px">Perm and Texture</h3>
-        <p style="margin:12px 0 0;font-size:14.5px;line-height:1.6;color:rgba(30,24,21,.72)">Soft movement or defined curl, from a barely-there wave upward.</p>
-        <p style="margin:16px 0 0;font-size:13px;color:var(--mut)">Suits: flat, fine or straight hair</p>
-        <p style="margin:6px 0 0;font:12px ui-monospace,Menlo,monospace;color:var(--acc)">PRICE PLACEHOLDER · 2–3 HRS</p>
-        <button data-ask="Perm and Texture" class="askBtn hv hv-accTxt" style="margin-top:18px;background:transparent;border:0;padding:12px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--acc);color:var(--ink)">Ask Lily →</button>
-      </div>
-      <div style="background:var(--gr);padding:clamp(22px,3vw,34px)">
-        <h3 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:24px">Styling and Occasion</h3>
-        <p style="margin:12px 0 0;font-size:14.5px;line-height:1.6;color:rgba(30,24,21,.72)">Blow-dry, curls or an updo for a wedding, shoot or dinner.</p>
-        <p style="margin:16px 0 0;font-size:13px;color:var(--mut)">Suits: one-off events, bridal parties</p>
-        <p style="margin:6px 0 0;font:12px ui-monospace,Menlo,monospace;color:var(--acc)">PRICE PLACEHOLDER · 30–90 MIN</p>
-        <button data-ask="Styling and Occasion" class="askBtn hv hv-accTxt" style="margin-top:18px;background:transparent;border:0;padding:12px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--acc);color:var(--ink)">Ask Lily →</button>
-      </div>
-    </div>
+    <div id="galGrid"></div>
   </div>
 </section>
 
-<section id="finder" style="padding:clamp(56px,8vw,110px) clamp(20px,5vw,64px);background:#F3EDE7">
+<section id="services" class="sect" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <header class="secHead" style="margin-bottom:clamp(24px,4vw,40px)">
+      <h2 class="h2">Services</h2>
+      <p class="lede">Not sure which one you need? <a href="#finder">Answer four questions</a> and we'll narrow it down.</p>
+    </header>
+    <p class="note" style="margin:0 0 clamp(24px,3vw,36px)">Prices are a guide. Where a range is shown, the final price depends on your hair's length, thickness and condition — Lily confirms before starting.</p>
+    <div id="svcGrid"></div>
+  </div>
+</section>
+
+<section id="finder" class="sect" style="background:#F3EDE7">
   <div style="max-width:840px;margin:0 auto">
-    <p style="margin:0 0 14px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)">Find my service · works without AI</p>
-    <h2 style="margin:0 0 clamp(24px,4vw,40px);font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(30px,4.4vw,56px);line-height:1.05">Four questions.<br>One recommendation.</h2>
+    <p class="eyebrow">Find my service · works without AI</p>
+    <h2 class="h2" style="margin-bottom:clamp(24px,4vw,40px)">Four questions.<br>One recommendation.</h2>
 
     <div id="quizActiveWrap">
-      <div style="background:var(--gr);padding:clamp(24px,4vw,40px)">
+      <div style="background:var(--gr);padding:clamp(22px,4vw,40px)">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
-          <span id="quizCounter" style="font:12px ui-monospace,Menlo,monospace;color:var(--mut)">Question 1 of 4</span>
+          <span id="quizCounter" style="font:12px ui-monospace,Menlo,monospace;color:var(--mut);white-space:nowrap">Question 1 of 4</span>
           <div style="flex:1;height:1px;background:rgba(30,24,21,.15);position:relative"><div id="quizBar" style="position:absolute;left:0;top:0;bottom:0;background:var(--acc);width:0;transition:width .35s ease"></div></div>
         </div>
-        <h3 id="quizQuestion" style="margin:0 0 22px;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(22px,3vw,32px);line-height:1.2"></h3>
+        <h3 id="quizQuestion" style="margin:0 0 22px;font-size:clamp(21px,3vw,32px);line-height:1.2"></h3>
         <div id="quizOptions" style="display:flex;flex-wrap:wrap;gap:10px"></div>
-        <button id="quizBack" class="hv" style="margin-top:26px;background:transparent;border:0;padding:8px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);cursor:pointer">← Back</button>
+        <button id="quizBack" class="hv hv-accTxt" style="margin-top:26px;background:transparent;border:0;padding:10px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);cursor:pointer">← Back</button>
       </div>
     </div>
 
     <div id="quizDoneWrap" style="display:none">
-      <div style="background:var(--gr);padding:clamp(24px,4vw,40px)">
-        <p style="margin:0 0 10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)">Based on your answers</p>
-        <h3 id="quizPrimary" style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(26px,3.6vw,42px);line-height:1.1"></h3>
-        <p id="quizWhy" style="margin:14px 0 0;max-width:48ch;font-size:15.5px;line-height:1.65;color:rgba(30,24,21,.72)"></p>
-        <div id="quizAlsoWrap" style="margin-top:26px;padding-top:22px;border-top:1px solid rgba(30,24,21,.12)">
+      <div style="background:var(--gr);padding:clamp(22px,4vw,40px)">
+        <p class="eyebrow" style="margin-bottom:10px">Based on your answers</p>
+        <h3 id="quizPrimary" style="margin:0;font-size:clamp(25px,3.6vw,42px);line-height:1.1"></h3>
+        <p id="quizWhy" style="margin:14px 0 0;max-width:48ch;font-size:15.5px;line-height:1.65;color:rgba(30,24,21,.75)"></p>
+        <div id="quizAlsoWrap" style="margin-top:26px;padding-top:22px;border-top:1px solid var(--line)">
           <p style="margin:0 0 12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)">Worth asking about</p>
           <div id="quizAlso" style="display:flex;flex-wrap:wrap;gap:8px"></div>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px">
-          <button id="quizSend" class="hv hv-inkToAcc" style="background:var(--ink);color:#fff;border:0;border-radius:999px;padding:16px 30px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:50px">Send This To Lily</button>
-          <button id="quizReset" class="hv hv-accLine" style="background:transparent;border:1px solid rgba(30,24,21,.25);border-radius:999px;padding:16px 26px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:50px">Start again</button>
+          <button id="quizSend" class="btn btn-ink hv hv-inkToAcc" style="padding:16px 30px;min-height:50px">Send This To Lily</button>
+          <button id="quizReset" class="btn btn-line hv hv-accLine" style="padding:16px 26px;min-height:50px">Start again</button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="studio" style="padding:clamp(56px,8vw,110px) clamp(20px,5vw,64px);background:var(--dk);color:#fff">
+<section id="book" class="sect" style="border-top:1px solid var(--line)">
+  <div style="max-width:840px;margin:0 auto">
+    <p class="eyebrow">Reserve your spot</p>
+    <h2 class="h2">Book an Appointment</h2>
+    <p style="margin:18px 0 clamp(26px,4vw,38px);max-width:52ch;font-size:15.5px;line-height:1.65;color:rgba(30,24,21,.75)">Pick a service and a time — the request opens in WhatsApp, and Lily confirms the slot herself. Nothing is final until she replies.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin-bottom:22px">
+      <label class="field">Your name
+        <input id="bookName" autocomplete="given-name" placeholder="First name is enough">
+      </label>
+      <label class="field">Phone (optional)
+        <input id="bookPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="So Lily can reach you">
+      </label>
+      <label class="field">Service
+        <select id="bookService"></select>
+      </label>
+      <label class="field">Preferred date
+        <input id="bookDate" type="date">
+      </label>
+    </div>
+
+    <p style="margin:0 0 10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)">Preferred time</p>
+    <div id="bookSlots" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px"></div>
+
+    <label class="field" style="margin-bottom:22px">Notes (optional)
+      <textarea id="bookNotes" rows="3" placeholder="Anything Lily should know — hair history, inspiration, allergies"></textarea>
+    </label>
+
+    <button id="bookSend" class="btn btn-acc hv hv-accBg" style="padding:17px 32px;min-height:52px;width:100%;font-size:13.5px">Send Booking Request</button>
+    <p id="bookMsg" style="margin:14px 0 0;font-size:13px;line-height:1.55;color:var(--acc);min-height:1.2em" role="status" aria-live="polite"></p>
+    <p style="margin:6px 0 0;font-size:12.5px;line-height:1.55;color:var(--mut)">Sends via WhatsApp — Lily replies herself to confirm the slot. For anything urgent, message instead of booking.</p>
+  </div>
+</section>
+
+<section id="studio" class="sect" style="background:var(--dk);color:#fff">
   <div style="max-width:1100px;margin:0 auto">
-    <p style="margin:0 0 14px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.5)">Lily's AI Studio</p>
-    <h2 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(30px,4.4vw,56px);line-height:1.05">Describe it, or show it.<br>We'll translate.</h2>
-    <p style="margin:18px 0 clamp(28px,4vw,44px);max-width:52ch;font-size:15.5px;line-height:1.65;color:rgba(255,255,255,.66)">Three tools that turn what you saw on TikTok into something Lily can quote on. Everything here is a starting point — Lily confirms the service and the price.</p>
+    <p class="eyebrow" style="color:rgba(255,255,255,.5)">Lily's AI Studio</p>
+    <h2 class="h2">Describe it, or show it.<br>We'll translate.</h2>
+    <p style="margin:18px 0 clamp(26px,4vw,44px);max-width:52ch;font-size:15.5px;line-height:1.65;color:rgba(255,255,255,.66)">Three tools that turn what you saw on TikTok into something Lily can quote on. Everything here is a starting point — Lily confirms the service and the price.</p>
 
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:clamp(24px,3vw,34px)">
-      <button data-tab="0" class="tabBtn hv" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:13px 22px;font-size:13px;cursor:pointer;min-height:46px;transition:background .3s,border-color .3s">Hair consultation</button>
-      <button data-tab="1" class="tabBtn hv" style="background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:13px 22px;font-size:13px;cursor:pointer;min-height:46px;transition:background .3s,border-color .3s">Show us what you want</button>
-      <button data-tab="2" class="tabBtn hv" style="background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:13px 22px;font-size:13px;cursor:pointer;min-height:46px;transition:background .3s,border-color .3s">Style preview</button>
+      <button data-tab="0" class="tabBtn hv" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:13px 22px;font-size:13px;cursor:pointer;min-height:46px">Hair consultation</button>
+      <button data-tab="1" class="tabBtn hv" style="background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:13px 22px;font-size:13px;cursor:pointer;min-height:46px">Show us what you want</button>
+      <button data-tab="2" class="tabBtn hv" style="background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:13px 22px;font-size:13px;cursor:pointer;min-height:46px">Style preview</button>
     </div>
 
     <div id="studioTab0">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,48px);align-items:start">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,4vw,48px);align-items:start">
         <div>
-          <h3 style="margin:0 0 16px;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:26px">Tell us about your hair</h3>
-          <textarea id="aiText" rows="5" placeholder="My hair is very dry and frizzy. I want it smoother but I don't want it to look completely straight." style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:#fff;padding:16px;font-size:15px;line-height:1.6;resize:vertical"></textarea>
+          <h3 style="margin:0 0 16px;font-size:25px">Tell us about your hair</h3>
+          <textarea id="aiText" rows="5" placeholder="My hair is very dry and frizzy. I want it smoother but I don't want it to look completely straight." style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:#fff;padding:16px;font-size:16px;line-height:1.6;resize:vertical"></textarea>
           <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px">
-            <button id="runAi" class="hv hv-accBg" style="background:var(--acc);color:#fff;border:0;border-radius:999px;padding:15px 28px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:48px">Get a recommendation</button>
-            <button id="aiExample" class="hv hv-whiteLine" style="background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:15px 24px;font-size:13px;cursor:pointer;min-height:48px">Use the example</button>
+            <button id="runAi" class="btn btn-acc hv hv-accBg">Get a recommendation</button>
+            <button id="aiExample" class="btn btn-wht hv hv-whiteLine" style="text-transform:none;letter-spacing:0">Use the example</button>
           </div>
         </div>
-        <div id="aiResult" style="display:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:clamp(22px,3vw,32px)">
-          <p style="margin:0 0 8px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.5)">Your hair goal</p>
-          <p id="aiGoal" style="margin:0 0 26px;font-family:'Gilda Display',Georgia,serif;font-size:clamp(21px,2.6vw,28px);line-height:1.25"></p>
-          <p style="margin:0 0 10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.5)">You may want to consider</p>
+        <div id="aiResult" style="display:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:clamp(20px,3vw,32px)">
+          <p class="eyebrow" style="color:rgba(255,255,255,.5);margin-bottom:8px">Your hair goal</p>
+          <p id="aiGoal" style="margin:0 0 26px;font-family:var(--serif);font-size:clamp(20px,2.6vw,28px);line-height:1.25"></p>
+          <p class="eyebrow" style="color:rgba(255,255,255,.5);margin-bottom:10px">You may want to consider</p>
           <p id="aiService" style="margin:0 0 6px;font-size:19px"></p>
           <p id="aiNote" style="margin:0 0 24px;font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.66)"></p>
-          <div id="aiPointsWrap">
-            <ul id="aiPoints" style="margin:0 0 26px;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px"></ul>
-          </div>
-          <button id="aiSend" class="hv" style="background:#fff;color:var(--ink);border:0;border-radius:999px;padding:15px 28px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:48px">Ask Lily About This →</button>
+          <ul id="aiPoints" style="margin:0 0 26px;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px"></ul>
+          <button id="aiSend" class="btn hv" style="background:#fff;color:var(--ink)">Ask Lily About This →</button>
           <p style="margin:18px 0 0;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.45)">AI recommendations are only a starting point. Lily will confirm the most suitable service and the final price.</p>
         </div>
       </div>
     </div>
 
     <div id="studioTab1" style="display:none">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,48px);align-items:start">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,4vw,48px);align-items:start">
         <div>
-          <h3 style="margin:0 0 16px;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:26px">Upload the screenshot you saved</h3>
+          <h3 style="margin:0 0 16px;font-size:25px">Upload the screenshot you saved</h3>
           <p style="margin:0 0 18px;font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.66)">The hairstyle you couldn't describe. Attach it here, then send it straight to Lily — she will read it herself.</p>
-          <label style="display:block;border:1px dashed rgba(255,255,255,.3);padding:clamp(28px,5vw,52px) 20px;text-align:center;cursor:pointer;background:rgba(255,255,255,.04)">
+          <label style="display:block;border:1px dashed rgba(255,255,255,.3);padding:clamp(26px,5vw,52px) 20px;text-align:center;cursor:pointer;background:rgba(255,255,255,.04)">
             <input id="inspFile" type="file" accept="image/*" style="display:none">
             <span style="display:block;font-size:15px;margin-bottom:6px">Choose an inspiration image</span>
             <span style="display:block;font-size:12.5px;color:rgba(255,255,255,.45)">JPG or PNG · stays on your device</span>
           </label>
           <div id="inspPreviewWrap" style="display:none;margin-top:16px">
             <div id="inspPreview" role="img" aria-label="Your inspiration" style="width:100%;aspect-ratio:4/5;max-height:360px;background-size:cover;background-position:center"></div>
-            <button id="runInsp" class="hv hv-accBg" style="margin-top:14px;background:var(--acc);color:#fff;border:0;border-radius:999px;padding:15px 28px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:48px">Analyse this look</button>
+            <button id="runInsp" class="btn btn-acc hv hv-accBg" style="margin-top:14px">Analyse this look</button>
           </div>
         </div>
-        <div id="inspResult" style="display:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:clamp(22px,3vw,32px)">
-          <p style="margin:0 0 16px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.5)">What we see</p>
+        <div id="inspResult" style="display:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:clamp(20px,3vw,32px)">
+          <p class="eyebrow" style="color:rgba(255,255,255,.5);margin-bottom:16px">What we see</p>
           <p style="margin:0 0 24px;font-size:15.5px;line-height:1.65;color:rgba(255,255,255,.78)">Live image analysis isn't available on this version of the site — but your photo is ready to go. Send it to Lily on WhatsApp and she'll tell you the length, colour and services it would take, honestly.</p>
-          <button id="inspSend" class="hv" style="background:#fff;color:var(--ink);border:0;border-radius:999px;padding:15px 28px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:48px">Send My Photo To Lily →</button>
+          <button id="inspSend" class="btn hv" style="background:#fff;color:var(--ink)">Send My Photo To Lily →</button>
           <p style="margin:18px 0 0;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.45)">What's achievable depends on your hair's condition, length and colour history. Lily will tell you honestly.</p>
         </div>
       </div>
     </div>
 
     <div id="studioTab2" style="display:none">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,48px);align-items:start">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,4vw,48px);align-items:start">
         <div>
-          <h3 style="margin:0 0 16px;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:26px">Your photo, next to the look</h3>
+          <h3 style="margin:0 0 16px;font-size:25px">Your photo, next to the look</h3>
           <p style="margin:0 0 18px;font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.66)">Add your own photo and pick a look. You'll get a side-by-side plus a plain-language list of what would actually have to change.</p>
-          <label style="display:block;border:1px dashed rgba(255,255,255,.3);padding:clamp(22px,4vw,36px) 20px;text-align:center;cursor:pointer;background:rgba(255,255,255,.04)">
+          <label style="display:block;border:1px dashed rgba(255,255,255,.3);padding:clamp(20px,4vw,36px) 20px;text-align:center;cursor:pointer;background:rgba(255,255,255,.04)">
             <input id="vizFile" type="file" accept="image/*" style="display:none">
             <span style="display:block;font-size:15px">Choose your photo</span>
           </label>
-          <p style="margin:20px 0 10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.5)">Target look</p>
+          <p class="eyebrow" style="color:rgba(255,255,255,.5);margin:20px 0 10px">Target look</p>
           <div id="vizChoices" style="display:flex;flex-wrap:wrap;gap:8px"></div>
-          <button id="runViz" class="hv hv-accBg" style="margin-top:20px;background:var(--acc);color:#fff;border:0;border-radius:999px;padding:15px 28px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:48px">Add a photo first</button>
+          <button id="runViz" class="btn btn-acc hv hv-accBg" style="margin-top:20px">Add a photo first</button>
         </div>
-        <div id="vizResult" style="display:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:clamp(22px,3vw,32px)">
+        <div id="vizResult" style="display:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:clamp(20px,3vw,32px)">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px">
             <div>
               <div id="vizPhotoImg" role="img" aria-label="Your photo" style="width:100%;aspect-ratio:3/4;background-size:cover;background-position:center"></div>
               <p style="margin:8px 0 0;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5)">You now</p>
             </div>
             <div>
-              <div id="vizTargetImg" role="img" aria-label="Target look" style="width:100%;aspect-ratio:3/4;background-size:cover;background-position:center"></div>
+              <div id="vizTargetImg" role="img" aria-label="Target look" style="width:100%;aspect-ratio:3/4;background-size:cover;background-position:50% 18%"></div>
               <p id="vizTargetName" style="margin:8px 0 0;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5)"></p>
             </div>
           </div>
-          <p style="margin:0 0 12px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.5)">What would have to change</p>
+          <p class="eyebrow" style="color:rgba(255,255,255,.5);margin-bottom:12px">What would have to change</p>
           <ul id="vizSteps" style="margin:0 0 22px;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px"></ul>
-          <button id="vizSend" class="hv" style="background:#fff;color:var(--ink);border:0;border-radius:999px;padding:15px 28px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:48px">Ask Lily If This Suits Me →</button>
+          <button id="vizSend" class="btn hv" style="background:#fff;color:var(--ink)">Ask Lily If This Suits Me →</button>
           <p style="margin:18px 0 0;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.45)">Style preview — a reference comparison, not a rendering of your hair. Actual results vary with condition, length and colour history.</p>
         </div>
       </div>
@@ -369,40 +553,83 @@ input,textarea,select,button{font:inherit;color:inherit}
   </div>
 </section>
 
-<section style="padding:clamp(56px,8vw,110px) clamp(20px,5vw,64px)">
-  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,64px);align-items:center">
+<section class="sect">
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(28px,5vw,64px);align-items:center">
     <div>
-      <p style="margin:0 0 14px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)">Seen us on TikTok?</p>
-      <h2 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(28px,4vw,50px);line-height:1.06">The video brought you here.<br>Now find your look.</h2>
-      <p style="margin:18px 0 28px;max-width:42ch;font-size:15.5px;line-height:1.65;color:rgba(30,24,21,.72)">New transformations go up weekly. Every one of them started as a message.</p>
+      <p class="eyebrow">Seen us on TikTok?</p>
+      <h2 class="h2" style="font-size:clamp(26px,4vw,50px);line-height:1.06">The video brought you here.<br>Now find your look.</h2>
+      <p style="margin:18px 0 28px;max-width:42ch;font-size:15.5px;line-height:1.65;color:rgba(30,24,21,.75)">New transformations go up weekly. Every one of them started as a message.</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px">
-        <a href="https://www.tiktok.com/@lilyhairbeauty" target="_blank" rel="noopener" aria-label="Follow Lily on TikTok" class="hv hv-accLine" style="border:1px solid rgba(30,24,21,.25);border-radius:999px;padding:14px 24px;font-size:13px;color:var(--ink);min-height:48px;display:inline-flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>TikTok</a>
-        <a href="https://www.instagram.com/lilyhairbeauty" target="_blank" rel="noopener" aria-label="Follow Lily on Instagram" class="hv hv-accLine" style="border:1px solid rgba(30,24,21,.25);border-radius:999px;padding:14px 24px;font-size:13px;color:var(--ink);min-height:48px;display:inline-flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>Instagram</a>
+        <a href="https://www.tiktok.com/@lilyhai6" target="_blank" rel="noopener" class="btn btn-line hv hv-accLine" style="text-transform:none;letter-spacing:0;font-size:14px"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>@lilyhai6 on TikTok</a>
       </div>
-      <p style="margin:22px 0 0;font:12px/1.6 ui-monospace,Menlo,monospace;color:rgba(30,24,21,.55)">SAMPLE LINKS — point these at Lily's real TikTok and Instagram.</p>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-      <div style="aspect-ratio:9/16;background-image:url('images/h_s_2.jpeg');background-size:cover;background-position:50% 30%"></div>
-      <div style="aspect-ratio:9/16;margin-top:clamp(16px,4vw,40px);background-image:url('images/h_s_6.jpeg');background-size:cover;background-position:50% 30%"></div>
+      <picture>
+        <source type="image/avif" srcset="images/hair_styles/03-back-milk-tea-balayage-400.avif 400w, images/hair_styles/03-back-milk-tea-balayage-800.avif 800w" sizes="(max-width:680px) 45vw, 22vw">
+        <img src="images/hair_styles/03-back-milk-tea-balayage-800.webp" srcset="images/hair_styles/03-back-milk-tea-balayage-400.webp 400w, images/hair_styles/03-back-milk-tea-balayage-800.webp 800w" sizes="(max-width:680px) 45vw, 22vw" width="800" height="1000" alt="Milk tea balayage, three-quarter back view" loading="lazy" decoding="async" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 15%;display:block">
+      </picture>
+      <picture>
+        <source type="image/avif" srcset="images/hair_styles/06-back-blue-lavender-ombre-400.avif 400w, images/hair_styles/06-back-blue-lavender-ombre-800.avif 800w" sizes="(max-width:680px) 45vw, 22vw">
+        <img src="images/hair_styles/06-back-blue-lavender-ombre-800.webp" srcset="images/hair_styles/06-back-blue-lavender-ombre-400.webp 400w, images/hair_styles/06-back-blue-lavender-ombre-800.webp 800w" sizes="(max-width:680px) 45vw, 22vw" width="800" height="1000" alt="Blue lavender ombré, back view" loading="lazy" decoding="async" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 15%;display:block;margin-top:clamp(16px,4vw,40px)">
+      </picture>
     </div>
   </div>
 </section>
 
-<footer style="background:var(--dk);color:#fff;padding:clamp(48px,7vw,88px) clamp(20px,5vw,64px) 32px">
-  <div style="max-width:1240px;margin:0 auto">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(28px,4vw,56px);padding-bottom:clamp(32px,4vw,52px);border-bottom:1px solid rgba(255,255,255,.14)">
+<section id="contact" class="sect" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <header class="secHead" style="margin-bottom:clamp(24px,4vw,44px)">
+      <h2 class="h2">Find Us</h2>
+      <p class="lede">One chair, one pair of hands. Come say hi — or message first.</p>
+    </header>
+    <div id="contactGrid">
+      <div class="cCard">
+        <p class="k"><svg width="15" height="15" viewBox="0 0 24 24" fill="var(--acc)" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 8.5c0 5.25 7 13.5 7 13.5s7-8.25 7-13.5C19 5.13 15.87 2 12 2zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>Address</p>
+        <p class="v">Lot 8054, Block 1,<br>Sibu Jaya Shopping Centre 2,<br>Sibu Jaya, 96000 Sibu, Sarawak</p>
+        <button id="viewMap" class="hv hv-accTxt" style="margin-top:14px;background:transparent;border:0;padding:10px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--acc);color:var(--ink)">View map ↑</button>
+      </div>
+      <div class="cCard">
+        <p class="k"><svg width="15" height="15" viewBox="0 0 24 24" fill="var(--acc)" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.2 1.2-1.7 1.2-.5 0-.9.2-3-.8-2.6-1.2-4.2-4-4.3-4.2-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.1.2-.3.3-.1.6.1.3.6 1.2 1.4 1.9 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.7-.1 1.3z"/></svg>Phone &amp; WhatsApp</p>
+        <p class="v"><a href="tel:+60198647308" style="color:inherit;border-bottom:1px solid rgba(30,24,21,.2)">+60 19-864 7308</a></p>
+        <p style="margin:8px 0 0;font-size:12.5px;line-height:1.5;color:var(--mut)">Same number for both. WhatsApp is fastest.</p>
+        <button id="contactTalk" class="hv hv-accTxt" style="margin-top:12px;background:transparent;border:0;padding:10px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--acc);color:var(--ink)">Message Lily →</button>
+      </div>
+      <div class="cCard">
+        <p class="k"><svg width="15" height="15" viewBox="0 0 24 24" fill="var(--acc)" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>Email</p>
+        <p class="v"><a href="mailto:lilyhousesalon40@gmail.com" style="color:inherit;border-bottom:1px solid rgba(30,24,21,.2);word-break:break-word">lilyhousesalon40@gmail.com</a></p>
+        <p style="margin:8px 0 0;font-size:12.5px;line-height:1.5;color:var(--mut)">For anything that needs a paper trail.</p>
+      </div>
+      <div class="cCard">
+        <p class="k"><svg width="15" height="15" viewBox="0 0 24 24" fill="var(--acc)" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>Opening Hours</p>
+        <dl class="oh">
+          <dt id="ohDays"></dt><dd id="ohRange"></dd>
+          <dt id="ohShutDay"></dt><dd id="ohShutVal"></dd>
+        </dl>
+        <p id="ohNow" class="ohNow" hidden><span class="ohDot"></span><span id="ohNowText"></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:var(--dk);color:#fff;padding:clamp(44px,7vw,88px) var(--pad) 32px">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(28px,4vw,56px);padding-bottom:clamp(30px,4vw,52px);border-bottom:1px solid rgba(255,255,255,.14)">
       <div>
-        <img src="assets/lily-logo.png" alt="Lily Hair and Beauty House" style="height:52px;width:auto;display:block;margin-bottom:18px">
-        <p style="margin:0;max-width:30ch;font-size:14.5px;line-height:1.65;color:rgba(255,255,255,.6)">A small studio. One pair of hands. Message Lily and she'll answer herself.</p>
+        <img src="assets/lily-logo-220.webp" srcset="assets/lily-logo-220.webp 220w, assets/lily-logo-440.webp 440w" sizes="110px" width="220" height="105" alt="Lily Hair and Beauty House" loading="lazy" style="height:52px;width:auto;display:block;margin-bottom:18px">
+        <p style="margin:0;max-width:30ch;font-size:14.5px;line-height:1.65;color:rgba(255,255,255,.6)">A small studio in Sibu Jaya. One pair of hands. Message Lily and she'll answer herself.</p>
       </div>
       <div>
-        <p style="margin:0 0 14px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.45)">Visit</p>
-        <p style="margin:0;font:13px/1.9 ui-monospace,Menlo,monospace;color:rgba(255,255,255,.7)">ADDRESS PLACEHOLDER<br>OPENING HOURS PLACEHOLDER</p>
+        <p class="eyebrow" style="color:rgba(255,255,255,.45)">Visit</p>
+        <address style="margin:0;font:13px/1.9 ui-monospace,Menlo,monospace;color:rgba(255,255,255,.7);font-style:normal">Lot 8054, Block 1<br>Sibu Jaya Shopping Centre 2<br>Sibu Jaya, 96000 Sibu, Sarawak</address>
+        <p id="hoursFooter" style="margin:12px 0 0;font:13px/1.8 ui-monospace,Menlo,monospace;color:rgba(255,255,255,.55)"></p>
+        <button id="footMap" class="hv" style="margin-top:12px;background:transparent;border:0;padding:8px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#fff;cursor:pointer;border-bottom:1px solid var(--acc)">View map ↑</button>
       </div>
       <div>
-        <p style="margin:0 0 14px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.45)">Talk to Lily</p>
-        <button id="footTalk" class="hv hv-accBg" style="background:var(--acc);color:#fff;border:0;border-radius:999px;padding:15px 28px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:48px">WhatsApp Lily</button>
-        <p style="margin:14px 0 0;font:12px/1.6 ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)">SAMPLE NUMBER +60 12-345 6789</p>
+        <p class="eyebrow" style="color:rgba(255,255,255,.45)">Talk to Lily</p>
+        <button id="footTalk" class="btn btn-acc hv hv-accBg">WhatsApp Lily</button>
+        <p style="margin:14px 0 0;font:12.5px/1.6 ui-monospace,Menlo,monospace;color:rgba(255,255,255,.6)"><a href="tel:+60198647308" style="color:inherit">+60 19-864 7308</a></p>
+        <p style="margin:8px 0 0"><a href="mailto:lilyhousesalon40@gmail.com" style="font:12.5px/1.6 ui-monospace,Menlo,monospace;color:rgba(255,255,255,.6);word-break:break-word">lilyhousesalon40@gmail.com</a></p>
+        <p style="margin:10px 0 0"><a href="https://www.tiktok.com/@lilyhai6" target="_blank" rel="noopener" style="font-size:13px;color:rgba(255,255,255,.6)">@lilyhai6 on TikTok</a></p>
       </div>
     </div>
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding-top:22px;font-size:12.5px;color:rgba(255,255,255,.45)">
@@ -412,23 +639,53 @@ input,textarea,select,button{font:inherit;color:inherit}
   </div>
 </footer>
 
-<div id="enqWrap" style="display:none;position:fixed;inset:0;z-index:80;justify-content:flex-end;background:rgba(20,16,14,.55)">
-  <div id="enqBackdrop" style="position:absolute;inset:0"></div>
-  <aside style="position:relative;width:min(480px,100vw);height:100%;overflow-y:auto;background:var(--gr);padding:clamp(22px,4vw,38px)">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:26px">
+<button id="fab" aria-label="Message Lily on WhatsApp">
+  <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.2 1.2-1.7 1.2-.5 0-.9.2-3-.8-2.6-1.2-4.2-4-4.3-4.2-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.1.2-.3.3-.1.6.1.3.6 1.2 1.4 1.9 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.7-.1 1.3z"/></svg>
+  <span>WhatsApp Lily</span>
+</button>
+
+<div id="mapWrap" class="ovl" role="dialog" aria-modal="true" aria-labelledby="mapTitle">
+  <div class="ovlBg" data-close="map"></div>
+  <div id="mapSheet">
+    <div id="grabber"></div>
+    <div class="ovlHead" style="margin-bottom:16px">
       <div>
-        <p style="margin:0 0 8px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)">Talk to Lily</p>
-        <h3 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(24px,3.4vw,34px);line-height:1.12">Your enquiry, written for you</h3>
+        <p class="eyebrow" style="margin-bottom:8px">Find us</p>
+        <h3 id="mapTitle" style="margin:0;font-size:clamp(21px,3vw,30px)">Lily Hair and Beauty House</h3>
+        <p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:rgba(30,24,21,.75)">Lot 8054, Block 1, Sibu Jaya Shopping Centre 2, Sibu Jaya, 96000 Sibu, Sarawak</p>
+        <p id="hoursMap" style="margin:6px 0 0;font-size:13.5px;line-height:1.6;color:var(--mut)"></p>
       </div>
-      <button id="closeEnq" aria-label="Close" style="background:transparent;border:1px solid rgba(30,24,21,.2);border-radius:50%;width:40px;height:40px;flex:0 0 auto;cursor:pointer;font-size:16px">×</button>
+      <button id="closeMap" class="xBtn" aria-label="Close map">×</button>
+    </div>
+    <div style="aspect-ratio:16/10;background:rgba(30,24,21,.06);overflow:hidden;border-radius:8px">
+      <iframe id="mapFrame" title="Map to Lily Hair and Beauty House, Sibu Jaya" data-src="https://www.google.com/maps?q=Lily%20Hair%20and%20Beauty%20House%2C%20Lot%208054%20Block%201%2C%20Sibu%20Jaya%20Shopping%20Centre%202%2C%20Sibu%20Jaya%2C%2096000%20Sibu%2C%20Sarawak%2C%20Malaysia&amp;z=17&amp;hl=en&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen style="border:0;width:100%;height:100%;display:block"></iframe>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px">
+      <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Lily%20Hair%20and%20Beauty%20House%2C%20Lot%208054%20Block%201%2C%20Sibu%20Jaya%20Shopping%20Centre%202%2C%20Sibu%20Jaya%2C%2096000%20Sibu%2C%20Sarawak%2C%20Malaysia" target="_blank" rel="noopener" class="btn btn-acc hv hv-accBg">Directions</a>
+      <a href="https://waze.com/ul?q=Lily%20Hair%20and%20Beauty%20House%2C%20Lot%208054%20Block%201%2C%20Sibu%20Jaya%20Shopping%20Centre%202%2C%20Sibu%20Jaya%2C%2096000%20Sibu%2C%20Sarawak%2C%20Malaysia&amp;navigate=yes" target="_blank" rel="noopener" class="btn btn-line hv hv-accLine">Open in Waze</a>
+      <button id="mapTalk" class="btn btn-line hv hv-accLine">Message Lily</button>
+    </div>
+    <p style="margin:14px 0 0;font:11.5px/1.5 ui-monospace,Menlo,monospace;color:rgba(30,24,21,.5)">Inside Sibu Jaya Shopping Centre 2. Message Lily if you can't find the lot.</p>
+  </div>
+</div>
+
+<div id="enqWrap" class="ovl" role="dialog" aria-modal="true" aria-labelledby="enqTitle">
+  <div class="ovlBg" data-close="enq"></div>
+  <aside id="enqPanel">
+    <div class="ovlHead" style="margin-bottom:24px">
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Talk to Lily</p>
+        <h3 id="enqTitle" style="margin:0;font-size:clamp(23px,3.4vw,34px);line-height:1.12">Your enquiry, written for you</h3>
+      </div>
+      <button id="closeEnq" class="xBtn" aria-label="Close">×</button>
     </div>
 
     <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:22px">
-      <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)">Your name
-        <input id="enqName" placeholder="First name is enough" style="background:#fff;border:1px solid rgba(30,24,21,.18);padding:14px;font-size:15px;letter-spacing:0;text-transform:none;color:var(--ink);min-height:48px">
+      <label class="field">Your name
+        <input id="enqName" autocomplete="given-name" placeholder="First name is enough">
       </label>
-      <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)">Where did you find Lily?
-        <select id="enqSource" style="background:#fff;border:1px solid rgba(30,24,21,.18);padding:14px;font-size:15px;letter-spacing:0;text-transform:none;color:var(--ink);min-height:48px">
+      <label class="field">Where did you find Lily?
+        <select id="enqSource">
           <option value="TikTok">TikTok</option>
           <option value="Instagram">Instagram</option>
           <option value="Facebook">Facebook</option>
@@ -440,7 +697,7 @@ input,textarea,select,button{font:inherit;color:inherit}
     </div>
 
     <p style="margin:0 0 10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)">Message Lily will receive <span style="text-transform:none;letter-spacing:.02em;opacity:.65">— edit freely before sending</span></p>
-    <textarea id="enqMessage" rows="11" spellcheck="false" style="margin:0 0 18px;padding:18px;background:#fff;border:1px solid rgba(30,24,21,.18);font:13.5px/1.7 'Public Sans',system-ui,sans-serif;color:rgba(30,24,21,.85);width:100%;box-sizing:border-box;resize:vertical"></textarea>
+    <textarea id="enqMessage" rows="10" spellcheck="false" style="margin:0 0 18px;padding:16px;background:#fff;border:1px solid rgba(30,24,21,.18);font:14px/1.7 var(--sans);color:rgba(30,24,21,.85);width:100%;resize:vertical"></textarea>
 
     <div id="enqImgWrap" style="display:none;gap:12px;align-items:center;margin-bottom:18px;padding:12px;background:rgba(232,137,107,.1)">
       <div id="enqImg" role="img" aria-label="Attached inspiration" style="width:56px;height:56px;flex:0 0 auto;background-size:cover;background-position:center"></div>
@@ -448,214 +705,552 @@ input,textarea,select,button{font:inherit;color:inherit}
     </div>
 
     <div style="display:flex;flex-direction:column;gap:10px">
-      <a id="waLink" href="#" target="_blank" rel="noopener" style="background:#25D366;color:#fff;border-radius:999px;padding:17px 28px;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;text-align:center;min-height:52px;display:flex;align-items:center;justify-content:center">Open WhatsApp</a>
-      <button id="copyMsg" class="hv hv-accLine" style="background:transparent;border:1px solid rgba(30,24,21,.25);border-radius:999px;padding:16px 26px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:50px">Copy message instead</button>
+      <a id="waLink" href="#" target="_blank" rel="noopener" class="btn" style="background:var(--wa);color:#fff;padding:17px 28px;min-height:52px;font-size:13.5px">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.2 1.2-1.7 1.2-.5 0-.9.2-3-.8-2.6-1.2-4.2-4-4.3-4.2-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.1.2-.3.3-.1.6.1.3.6 1.2 1.4 1.9 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.7-.1 1.3z"/></svg>
+        Open WhatsApp
+      </a>
+      <button id="copyMsg" class="btn btn-line hv hv-accLine" style="padding:16px 26px;min-height:50px">Copy message instead</button>
     </div>
-    <p style="margin:18px 0 0;font:12px/1.6 ui-monospace,Menlo,monospace;color:rgba(30,24,21,.5)">SAMPLE NUMBER — points at +60 12-345 6789. Swap for Lily's real WhatsApp before launch.</p>
+    <p style="margin:16px 0 0;font:12px/1.6 ui-monospace,Menlo,monospace;color:rgba(30,24,21,.5)">Goes to +60 19-864 7308.</p>
   </aside>
 </div>
 
-<div id="ownerWrap" style="display:none;position:fixed;inset:0;z-index:90;align-items:center;justify-content:center;padding:clamp(12px,3vw,32px);background:rgba(20,16,14,.6)">
-  <div id="ownerBackdrop" style="position:absolute;inset:0"></div>
-  <div style="position:relative;width:min(720px,100%);max-height:90vh;overflow-y:auto;background:var(--gr);padding:clamp(22px,4vw,38px)">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px">
+<div id="ownerWrap" class="ovl" role="dialog" aria-modal="true" aria-labelledby="ownerTitle">
+  <div class="ovlBg" data-close="owner"></div>
+  <div id="ownerPanel">
+    <div class="ovlHead">
       <div>
-        <p style="margin:0 0 8px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)">Owner view</p>
-        <h3 style="margin:0;font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:clamp(24px,3.4vw,34px)">New enquiries</h3>
+        <p class="eyebrow" style="margin-bottom:8px">Owner view</p>
+        <h3 id="ownerTitle" style="margin:0;font-size:clamp(23px,3.4vw,34px)">New enquiries</h3>
       </div>
-      <button id="closeOwner" aria-label="Close" style="background:transparent;border:1px solid rgba(30,24,21,.2);border-radius:50%;width:40px;height:40px;flex:0 0 auto;cursor:pointer;font-size:16px">×</button>
+      <button id="closeOwner" class="xBtn" aria-label="Close">×</button>
     </div>
-    <div id="leadsList" style="display:none;flex-direction:column;gap:1px;background:rgba(30,24,21,.12)"></div>
+    <div id="leadsList" style="display:none;flex-direction:column;gap:1px;background:var(--line)"></div>
     <button id="clearLeads" style="display:none;margin-top:18px;background:transparent;border:0;padding:8px 0;font-size:12.5px;color:var(--mut);text-decoration:underline;cursor:pointer">Clear all</button>
-    <p id="noLeads" style="margin:0;padding:28px;background:#fff;border:1px solid rgba(30,24,21,.12);font-size:14.5px;line-height:1.6;color:rgba(30,24,21,.7)">No enquiries yet. Send one from anywhere on the site and it lands here — service, goal and where they found Lily, ready for a reply.</p>
+    <p id="noLeads" style="margin:0;padding:26px;background:#fff;border:1px solid var(--line);font-size:14.5px;line-height:1.6;color:rgba(30,24,21,.7)">No enquiries yet. Send one from anywhere on the site and it lands here — service, goal and where they found Lily, ready for a reply.</p>
     <p style="margin:20px 0 0;font:12px/1.6 ui-monospace,Menlo,monospace;color:rgba(30,24,21,.5)">DEMO STORAGE — enquiries are kept in this browser only, so the funnel is visible without a backend.</p>
   </div>
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "Lily Hair and Beauty House",
+  "description": "Hair salon in Sibu Jaya, Sarawak. Cuts, colour, treatments, rebonding, perms and occasion styling.",
+  "image": "https://lily-beauty.baratech.my/assets/apple-touch-icon.png",
+  "telephone": "+60198647308",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Lot 8054, Block 1, Sibu Jaya Shopping Centre 2",
+    "addressLocality": "Sibu Jaya, Sibu",
+    "postalCode": "96000",
+    "addressRegion": "Sarawak",
+    "addressCountry": "MY"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.tiktok.com/@lilyhai6"
+  ],
+  "priceRange": "RM20–RM280",
+  "email": "lilyhousesalon40@gmail.com"
+}
+</script>
 
 <script>
 (function(){
 'use strict';
 
+/* ================= Config ================= */
+var WA = '60198647308';       // Lily's WhatsApp, international format, no +
+var SHOW_AI_STUDIO = false;   // AI Studio runs on local fallbacks only — flip to true to re-enable
+var GSAP_MIN_WIDTH = 900;     // below this the hero uses the built-in scroll fallback (saves ~70KB of JS)
+
+// Opening hours. 24-hour clock; shutDays uses 0 = Sunday ... 6 = Saturday.
+// Whether the studio is open is a fact about Sibu, not about the visitor's
+// device, so the clock is always read in the studio's own timezone.
+// This is the only place opening hours are written. The contact card, the footer,
+// the map panel and the mobile menu are all generated from it by paintHoursText().
+var HOURS = {open:9, close:18, shutDays:[1]};
+var TZ = 'Asia/Kuching';
+
 /* ================= Data ================= */
+var IMG = 'images/hair_styles/';
 var LOOKS = [
-  {num:'01',name:'Natural',service:'Cut and Style',desc:'Where most people start. Ends tidied, shape corrected, nothing changed that you would have to maintain. The honest baseline before any decision.',suits:'Any length or texture',upkeep:'Trim every 8-10 weeks',img:'images/h_s_4.jpeg',pos:'50% 30%'},
-  {num:'02',name:'Long Curls',service:'Cut and Style',desc:'Length kept, weight taken out through the mid-lengths so the hair moves instead of hanging. The most requested look in the studio.',suits:'Shoulder length and longer',upkeep:'Reshape every 10-12 weeks',img:'images/h_s_1.jpeg',pos:'50% 28%'},
-  {num:'03',name:'Milk Tea Brown',service:'Colour',desc:'A warmer tone through the mid-lengths and ends, kept soft at the root so regrowth blends instead of forming a line.',suits:'Natural dark or previously coloured hair',upkeep:'Gloss refresh every 8 weeks',img:'images/h_s_6.jpeg',pos:'50% 30%'},
-  {num:'04',name:'Short Bob',service:'Cut and Style',desc:'A shorter, sharper outline with the weight held at the front. Reads dramatic in photos, takes less time to dry than the length it replaced.',suits:'Fine to medium hair',upkeep:'Trim every 5-6 weeks',img:'images/h_s_3.webp',pos:'25% 50%'},
-  {num:'05',name:'Rebonding',service:'Cut, Colour and Styling',desc:'The full combination: shape, tone and finish planned together. This is the one Lily books a longer appointment for.',suits:'Anyone ready for a full change',upkeep:'Plan for two visits',img:'images/h_s_5.jpeg',pos:'50% 30%'}
+  {num:'01', file:IMG+'01-front-see-through-bangs', angle:'Front view', name:'See-through Bangs', service:'Hair Cut',
+   desc:'A soft, airy fringe that breaks up the forehead without committing to a blunt bangs line. Grows out kindly — it blends into a face-framing layer instead of hitting an awkward stage.',
+   suits:'Most face shapes, straight to lightly wavy hair', upkeep:'Fringe trim every 3-4 weeks'},
+  {num:'02', file:IMG+'02-side-short-bob', angle:'Side profile', name:'Short Bob', service:'Hair Cut',
+   desc:'A shorter, sharper outline with the weight held at the front. Reads dramatic in photos, and takes a fraction of the time to dry compared with the length it replaced.',
+   suits:'Fine to medium hair that needs the illusion of thickness', upkeep:'Trim every 5-6 weeks'},
+  {num:'03', file:IMG+'03-back-milk-tea-balayage', angle:'Three-quarter back', name:'Milk Tea Balayage', service:'Hair Dye',
+   desc:'Warmth painted through the mid-lengths and ends, kept deliberately soft at the root so regrowth blends instead of forming a line you have to chase every month.',
+   suits:'Natural dark hair, and previously coloured hair in good condition', upkeep:'Gloss refresh every 8 weeks'},
+  {num:'04', file:IMG+'06-back-blue-lavender-ombre', angle:'Back, head turned', name:'Blue Lavender Ombré', service:'Hair Dye',
+   desc:'The one people stop you about. Dark at the root falling into blue and then lavender — it needs lifting first, so condition decides how far the colour can go in one sitting.',
+   suits:'Healthy hair with little previous box dye', upkeep:'Toner every 4-6 weeks, cold washes'},
+  {num:'05', file:IMG+'04-back-boho-braid', angle:'Full back', name:'Boho Braid', service:'Styling (price on request)',
+   desc:'A relaxed braid dressed out by hand so it looks lived-in rather than pulled tight. Built to survive a full day of photos, a dinner, and the drive home.',
+   suits:'Shoulder length and longer', upkeep:'Styled on the day, no commitment'},
+  {num:'06', file:IMG+'05-back-rebonding-glass-hair', angle:'Full back', name:'Rebonding Glass Hair', service:'Rebonding',
+   desc:'The full smoothing service, finished to a mirror shine. This is the one Lily blocks a longer appointment for, and the one that changes your morning routine the most.',
+   suits:'Thick, coarse or humidity-reactive hair', upkeep:'Root touch-up every 5-6 months'}
 ];
-var SERVICES = ['Cut and Style','Colour','Hair Treatment','Rebonding and Smoothing','Perm and Texture','Styling and Occasion'];
+var SERVICE_INFO = [
+  {name:'Hair Cut', price:'RM 20 / RM 28', desc:'Men RM 20, ladies RM 28. A shape that still works when you dry it yourself at home.', suits:'Any length, any texture'},
+  {name:'Hair Perm', price:'RM 100 – 200', desc:'Soft movement or defined curl, from a barely-there wave upward.', suits:'Flat, fine or straight hair'},
+  {name:'Digital Perm', price:'RM 150 – 280', desc:'Heat-set curls that fall looser and hold their shape after washing.', suits:'Medium to long hair in good condition'},
+  {name:'Rebonding', price:'RM 180 – 250', desc:'Long-lasting smoothness. Tell Lily how straight you actually want it.', suits:'Thick, coarse, humidity-reactive hair'},
+  {name:'Hair Colour (Black)', price:'RM 100 – 150', desc:'Back to a clean, even black — greys covered and tone evened out.', suits:'Grey coverage, faded box colour'},
+  {name:'Hair Dye', price:'RM 100 – 200', desc:'Root touch-ups through to a full tone change, matched to your skin.', suits:'Grown-out colour, first-timers'},
+  {name:'Hair Treatment', price:'RM 80 – 150', desc:'For dryness, frizz and damage. Usually the right first step before colour.', suits:'Dry, brittle or over-processed hair'},
+  {name:'Keratin Treatment', price:'RM 150 – 180', desc:'Smooths and seals the hair so it dries faster and behaves in humidity.', suits:'Frizz-prone hair you still want movement in'},
+  {name:'Scalp Treatment', price:'RM 180', desc:'Works on the scalp rather than the lengths — for flaking, itch or oiliness.', suits:'Irritated, oily or flaking scalps'}
+];
+var SERVICES = SERVICE_INFO.map(function(s){ return s.name; });
+var BA = [
+  {kicker:'Colour', title:'Black to Milk Tea', flip:false,
+   before:IMG+'01-front-see-through-bangs', beforeAlt:'Before — natural black hair with a soft fringe',
+   after:IMG+'03-back-milk-tea-balayage',   afterAlt:'After — warm milk tea balayage through the mid-lengths',
+   body:'A warmer, softer colour designed for a natural everyday look. The root was left deliberately deep so the regrowth line blends away instead of announcing itself six weeks later.',
+   quote:'She wanted something she would not have to touch up every six weeks.',
+   service:'Hair Dye', goal:'The Milk Tea balayage look', extra:'I want a warmer colour that grows out naturally without a hard root line.'},
+  {kicker:'Hair Cut', title:'Long to Short Bob', flip:true,
+   before:IMG+'05-back-rebonding-glass-hair', beforeAlt:'Before — long straight hair past the shoulders',
+   after:IMG+'02-side-short-bob',             afterAlt:'After — a short jaw-length bob',
+   body:'Years of length taken off in one appointment. The weight sits forward along the jaw, so the shape holds its outline all day without needing to be re-styled after lunch.',
+   quote:'Her brief: short enough to feel like a decision, not so short that it needs daily work.',
+   service:'Hair Cut', goal:'The Short Bob look', extra:'I am ready to take real length off and go to a jaw-length bob.'},
+  {kicker:'Creative colour', title:'Black to Blue Lavender', flip:false,
+   before:IMG+'04-back-boho-braid',           beforeAlt:'Before — natural black hair braided back',
+   after:IMG+'06-back-blue-lavender-ombre',   afterAlt:'After — blue melting into lavender through the lengths',
+   body:'Lifted first, then toned in two passes so the blue falls into lavender rather than stopping in a band. Dark hair needs the lift before the colour, and the lift is what the condition has to survive.',
+   quote:'Booked as two visits, six weeks apart, to protect the ends.',
+   service:'Hair Dye', goal:'The Blue Lavender ombré look', extra:'I have dark hair and I want a blue-to-lavender ombré. Please tell me honestly what it would take.'}
+];
 var QUIZ = [
-  {id:'goal',q:'What are you looking for?',opts:['A new hairstyle','Hair colour','A hair treatment','Rebonding or smoothing','Styling for an event','I am not sure yet']},
+  {id:'goal',q:'What are you looking for?',opts:['A haircut','Colour or dye','Curls or a perm','Straighter, smoother hair','A treatment','I am not sure yet']},
   {id:'length',q:'How long is your hair right now?',opts:['Short','Shoulder length','Long']},
-  {id:'concern',q:'What bothers you most about it?',opts:['Dry and frizzy','Damaged or breaking','Flat, no volume','Grown-out colour','Hard to manage','Nothing in particular']},
+  {id:'concern',q:'What bothers you most about it?',opts:['Dry and frizzy','Damaged or breaking','Flat, no volume','Grown-out colour','Itchy or oily scalp','Nothing in particular']},
   {id:'maint',q:'How much styling are you happy to do daily?',opts:['As little as possible','A few minutes','I enjoy styling']}
 ];
-var WA = '60123456789';       // SAMPLE NUMBER — swap for Lily's real WhatsApp before launch
-var HERO_LEN = 520;           // hero scroll length in vh
-var SHOW_AI_STUDIO = false;   // AI Studio runs on local fallbacks only (no real AI backend) — false hides the section + nav link; flip to true to re-enable
+var TIMES = ['9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM'];
 
 /* ================= State ================= */
 var state = {
-  look:0, tab:0, step:0, answers:{}, result:null,
+  look:0, tab:0, step:0, answers:{}, result:null, menu:false,
   aiText:'', aiBusy:false, ai:null,
   inspImg:'', inspBusy:false, insp:false,
   vizPhoto:'', vizLook:1, vizBusy:false, viz:null,
-  enqOpen:false, enq:null, enqName:'', enqSource:'TikTok', enqEdited:false, copied:false,
-  ownerOpen:false, leads:[]
+  enq:null, enqName:'', enqSource:'TikTok', enqEdited:false, copied:false, bookSlot:'',
+  leads:[]
 };
 var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-var st = null; // ScrollTrigger instance (null => native scroll fallback)
+var st = null;                // ScrollTrigger instance (null => native scroll fallback)
+var openStack = [];           // stack of open overlay elements, topmost last
+var lastFocus = null;
 
 /* ================= Helpers ================= */
 function $(id){ return document.getElementById(id); }
-function setVis(el, on, d){ el.style.display = on ? (d || '') : 'none'; }
+function setVis(el, on, d){ if (el) el.style.display = on ? (d || '') : 'none'; }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+/* <picture> with AVIF first, WebP fallback, at the three widths we ship */
+function pic(base, alt, sizes, o){
+  o = o || {};
+  var ws = o.widths || [400,800,1200];
+  var set = function(ext){ return ws.map(function(w){ return base + '-' + w + '.' + ext + ' ' + w + 'w'; }).join(', '); };
+  var fb = base + '-' + (o.fallback || 800) + '.webp';
+  return '<picture>' +
+    '<source type="image/avif" srcset="' + set('avif') + '" sizes="' + esc(sizes) + '">' +
+    '<img src="' + esc(fb) + '" srcset="' + set('webp') + '" sizes="' + esc(sizes) + '" width="1200" height="1490" alt="' + esc(alt) + '"' +
+      (o.cls ? ' class="' + o.cls + '"' : '') +
+      (o.eager ? ' fetchpriority="high" decoding="async"' : ' loading="lazy" decoding="async"') +
+    '></picture>';
+}
+
+/* ================= Overlays (scroll lock, transitions, focus, Esc) ================= */
+function lockScroll(on){
+  document.body.classList.toggle('lock', on);
+  document.documentElement.style.overflow = on ? 'hidden' : '';
+}
+function openOvl(el){
+  if (openStack.indexOf(el) > -1) return;
+  if (!openStack.length) lastFocus = document.activeElement;
+  openStack.push(el);
+  el.classList.add('show');
+  lockScroll(true);
+  // rAF gives the browser a frame to apply the closed state first; the timeout is a
+  // fallback for throttled tabs, where rAF can be suspended and the panel never opens
+  var reveal = function(){ el.classList.add('open'); };
+  requestAnimationFrame(function(){ requestAnimationFrame(reveal); });
+  setTimeout(reveal, 60);
+  var first = el.querySelector('.xBtn');
+  if (first) setTimeout(function(){ try { first.focus({preventScroll:true}); } catch(e){} }, 60);
+}
+function closeOvl(el){
+  var i = openStack.indexOf(el);
+  if (i < 0) return;
+  openStack.splice(i, 1);
+  el.classList.remove('open');
+  var finish = function(){
+    if (openStack.indexOf(el) < 0) el.classList.remove('show');
+    if (!openStack.length && !state.menu){
+      lockScroll(false);
+      if (lastFocus){ try { lastFocus.focus({preventScroll:true}); } catch(e){} lastFocus = null; }
+    }
+  };
+  if (reduce) finish(); else setTimeout(finish, 420);
+}
+function closeTop(){ if (openStack.length) closeOvl(openStack[openStack.length - 1]); }
+
+/* ================= Nav + mobile menu ================= */
+var nav = $('nav'), burger = $('burger'), mnav = $('mobileNav'), fab = $('fab'), track = $('top');
+function setMenu(on){
+  state.menu = on;
+  document.body.classList.toggle('menu', on);
+  burger.setAttribute('aria-expanded', on ? 'true' : 'false');
+  burger.setAttribute('aria-label', on ? 'Close menu' : 'Open menu');
+  mnav.setAttribute('aria-hidden', on ? 'true' : 'false');
+  if (on){
+    mnav.style.display = 'flex';
+    lockScroll(true);
+    var reveal = function(){ if (state.menu) mnav.classList.add('open'); };
+    requestAnimationFrame(function(){ requestAnimationFrame(reveal); });
+    setTimeout(reveal, 60);
+  } else {
+    mnav.classList.remove('open');
+    if (!openStack.length) lockScroll(false);   // released now, so an anchor jump is not blocked
+    setTimeout(function(){ if (!state.menu) mnav.style.display = 'none'; }, reduce ? 0 : 300);
+  }
+}
+var fabBlockers = [];
+function paintNav(){
+  nav.classList.toggle('past', window.scrollY > (track.offsetHeight - 90));
+  // the floating button appears past the hero, but never on top of a section that
+  // already carries its own full-width WhatsApp CTA
+  var show = window.scrollY > window.innerHeight * 0.9;
+  for (var i = 0; show && i < fabBlockers.length; i++){
+    var r = fabBlockers[i].getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) show = false;
+  }
+  fab.classList.toggle('on', show);
+}
 
 /* ================= Hero scroll engine ================= */
-var track = $('top'), stage = $('stage'), heroHead = $('heroHead'), heroEnd = $('heroEnd'), nav = $('nav');
-
-function paint(p){
-  var layers = stage.querySelectorAll('[data-hl]');
-  var n = layers.length; if(!n) return;
-  var seg = Math.min(n - 1 - 1e-6, Math.max(0, p) * (n - 1));
-  var i = Math.floor(seg), f = seg - i;
-  var e = f < 0.5 ? 2*f*f : 1 - Math.pow(-2*f + 2, 2)/2;
-  for (var k = 0; k < n; k++){
-    layers[k].style.opacity = k === i ? (1 - e) : (k === i + 1 ? e : 0);
-    var sc = 1.02 + (k === i ? e*0.04 : (k === i + 1 ? (1 - e)*0.04 : 0));
-    layers[k].style.transform = 'scale(' + sc + ')';
-  }
-  var idx = Math.round(seg);
-  var rails = document.querySelectorAll('[data-rail]');
-  for (var r = 0; r < rails.length; r++){
-    rails[r].style.opacity = r === idx ? '1' : '.5';
-    rails[r].style.borderTopColor = r === idx ? 'var(--acc)' : 'rgba(255,255,255,.28)';
-  }
-  heroHead.style.opacity = Math.max(0, 1 - p*5);
-  heroEnd.style.opacity = Math.max(0, Math.min(1, (p - 0.84)/0.1));
-  if (state.look !== idx){ state.look = idx; updateLook(); }
+var stage = $('stage'), strip = $('heroStrip'), heroHead = $('heroHead'), heroEnd = $('heroEnd');
+function buildHeroStrip(){
+  var html = '';
+  LOOKS.forEach(function(c, i){
+    html +=
+      '<article class="hc">' +
+        '<div class="hcFrame">' +
+          pic(c.file, c.name + ', ' + c.angle.toLowerCase(), '(max-width:680px) 62vw, 30vw', {eager: i === 0, fallback: 800}) +
+        '</div>' +
+        '<div class="hcCap">' +
+          '<span style="font-size:11px;letter-spacing:.22em;color:var(--acc)">' + c.num + '</span>' +
+          '<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-left:12px">' + esc(c.angle) + '</span>' +
+          '<h3>' + esc(c.name) + '</h3>' +
+          '<p style="margin:4px 0 0;font-size:12.5px;color:rgba(255,255,255,.55)">' + esc(c.service) + '</p>' +
+        '</div>' +
+        '<button class="hcHit" type="button" data-hc="' + i + '" aria-label="' + esc(c.name + ' — see this look') + '"></button>' +
+      '</article>';
+  });
+  strip.innerHTML = html;
+  strip.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('[data-hc]') : null;
+    if (!b) return;
+    setLook(Number(b.getAttribute('data-hc')));
+    var looks = $('looks');
+    if (looks) window.scrollTo({top: looks.offsetTop - 60, behavior: reduce ? 'auto' : 'smooth'});
+  });
+}
+function heroSync(p, idx){
+  idx = Math.min(LOOKS.length - 1, Math.max(0, idx));
+  var pad = function(n){ return (n < 10 ? '0' : '') + n; };
+  var count = $('heroCount'), prog = $('heroProg');
+  if (count) count.textContent = pad(idx + 1) + ' / ' + pad(LOOKS.length);
+  if (prog) prog.style.width = (p * 100) + '%';
+  heroHead.style.opacity = Math.max(0, 1 - p * 5);
+  heroEnd.style.opacity = Math.max(0, Math.min(1, (p - 0.84) / 0.1));
   paintNav();
 }
-function paintNav(){
-  var past = window.scrollY > track.offsetHeight - 90;
-  nav.style.background = past ? 'rgba(251,248,245,.94)' : 'transparent';
-  nav.style.color = past ? 'var(--ink)' : '#fff';
-  nav.style.borderBottomColor = past ? 'rgba(30,24,21,.1)' : 'rgba(255,255,255,0)';
-  nav.style.backdropFilter = past ? 'blur(10px)' : 'none';
-}
-function goLook(i){
-  if (reduce){ state.look = i; updateLook(); paint(i/(LOOKS.length-1)); return; }
-  var span = track.offsetHeight - window.innerHeight;
-  window.scrollTo({top: track.offsetTop + span * (i/(LOOKS.length-1)) + 2, behavior:'smooth'});
-}
-function tryGsap(n){
-  if (reduce) return;
-  if (window.gsap && window.ScrollTrigger){
-    window.gsap.registerPlugin(window.ScrollTrigger);
-    st = window.ScrollTrigger.create({
-      trigger: track, start:'top top', end:'bottom bottom',
-      onUpdate: function(s){ paint(s.progress); }, onRefresh: function(s){ paint(s.progress); }
-    });
-    paintNav();
-    return;
-  }
-  if (n < 12) setTimeout(function(){ tryGsap(n+1); }, 220);
+function paint(p){
+  var maxX = Math.max(0, strip.scrollWidth - stage.clientWidth);
+  strip.style.transform = 'translateX(' + (-p * maxX) + 'px)';
+  heroSync(p, Math.round(p * (LOOKS.length - 1)));
 }
 function native(){
-  if (!st){
-    var span = track.offsetHeight - window.innerHeight;
-    var p = span > 0 ? Math.min(1, Math.max(0, (window.scrollY - track.offsetTop) / span)) : 0;
-    paint(p);
-  } else {
-    paintNav();
-  }
+  if (st){ paintNav(); return; }
+  var span = track.offsetHeight - window.innerHeight;
+  var p = span > 0 ? Math.min(1, Math.max(0, (window.scrollY - track.offsetTop) / span)) : 0;
+  paint(p);
 }
 var queued = false;
 function onScroll(){
-  if (!queued){
-    queued = true;
-    requestAnimationFrame(function(){ queued = false; native(); });
-  }
+  if (queued) return;
+  queued = true;
+  requestAnimationFrame(function(){ queued = false; native(); });
 }
-window.addEventListener('scroll', onScroll, {passive:true});
-window.addEventListener('resize', onScroll, {passive:true});
+function loadGsap(cb){
+  if (reduce || window.innerWidth < GSAP_MIN_WIDTH) return cb(false);
+  var base = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/';
+  var add = function(f, done){
+    var s = document.createElement('script');
+    s.src = base + f; s.async = true;
+    s.onload = done; s.onerror = function(){ cb(false); };
+    document.head.appendChild(s);
+  };
+  add('gsap.min.js', function(){ add('ScrollTrigger.min.js', function(){ cb(!!(window.gsap && window.ScrollTrigger)); }); });
+}
+function setupGsap(){
+  var gsap = window.gsap;
+  gsap.registerPlugin(window.ScrollTrigger);
+  var sync = function(p){ heroSync(p, Math.round(p * (LOOKS.length - 1))); };
+  var tween = gsap.to(strip, {
+    x: function(){ return -Math.max(0, strip.scrollWidth - stage.clientWidth); },
+    ease:'none',
+    scrollTrigger:{ trigger:track, start:'top top', end:'bottom bottom', scrub:.6, invalidateOnRefresh:true,
+      onUpdate:function(s){ sync(s.progress); }, onRefresh:function(s){ sync(s.progress); } }
+  });
+  st = tween.scrollTrigger;
+  strip.querySelectorAll('.hc').forEach(function(card){
+    var img = card.querySelector('img');
+    if (!img) return;
+    gsap.fromTo(img, { xPercent:-6, scale:1.12 }, { xPercent:6, scale:1.12, ease:'none',
+      scrollTrigger:{ trigger:card, containerAnimation:tween, start:'left right', end:'right left', scrub:true } });
+  });
+  // measurements settle only once fonts and the first images are in
+  window.addEventListener('load', function(){ window.ScrollTrigger.refresh(); });
+  paintNav();
+}
+/* Card reveal is CSS + IntersectionObserver rather than ScrollTrigger, so the
+   cards already on screen at load are revealed on both the GSAP and mobile paths. */
+function observeCards(){
+  var cards = strip.querySelectorAll('.hc');
+  if (!window.IntersectionObserver){
+    cards.forEach(function(c){ c.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  cards.forEach(function(c){ io.observe(c); });
+}
 
 /* ================= Look detail ================= */
+function buildLookStage(){
+  var stageEl = $('lookStage'), thumbs = $('lookThumbs'), sh = '', th = '';
+  LOOKS.forEach(function(l, i){
+    sh += '<div data-ls="' + i + '" style="opacity:' + (i ? 0 : 1) + ';position:absolute;inset:0">' +
+            pic(l.file, l.name, '(max-width:860px) 92vw, 44vw', {eager:false, fallback:800}) +
+          '</div>';
+    th += '<button class="lookThumb" type="button" data-lt="' + i + '" aria-current="' + (i ? 'false' : 'true') + '" aria-label="' + esc(l.name) + '">' +
+            '<img src="' + l.file + '-400.webp" width="400" height="496" alt="" loading="lazy" decoding="async">' +
+          '</button>';
+  });
+  stageEl.innerHTML = sh;
+  thumbs.innerHTML = th;
+  thumbs.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('[data-lt]') : null;
+    if (b) setLook(Number(b.getAttribute('data-lt')));
+  });
+}
+function setLook(i){
+  state.look = Math.max(0, Math.min(LOOKS.length - 1, i));
+  updateLook();
+}
 function updateLook(){
-  var look = LOOKS[state.look] || LOOKS[0];
-  var next = LOOKS[(state.look + 1) % LOOKS.length];
+  var look = LOOKS[state.look];
   $('lookNum').textContent = 'Look ' + look.num + ' — selected';
   $('lookName').textContent = look.name;
   $('lookDesc').textContent = look.desc;
   $('lookService').textContent = look.service;
   $('lookSuits').textContent = look.suits;
   $('lookUpkeep').textContent = look.upkeep;
-  var A = $('lookImgA'), B = $('lookImgB');
-  A.style.backgroundImage = "url('" + look.img + "')";
-  A.style.backgroundPosition = look.pos;
-  B.style.backgroundImage = "url('" + next.img + "')";
-  B.style.backgroundPosition = next.pos;
+  $('lookStage').querySelectorAll('[data-ls]').forEach(function(el){
+    el.style.opacity = Number(el.getAttribute('data-ls')) === state.look ? 1 : 0;
+  });
+  $('lookThumbs').querySelectorAll('[data-lt]').forEach(function(el){
+    el.setAttribute('aria-current', Number(el.getAttribute('data-lt')) === state.look ? 'true' : 'false');
+  });
 }
 
-/* ================= Before/after sliders ================= */
-function bindBA(){
-  var nodes = document.querySelectorAll('[data-ba]');
-  for (var i = 0; i < nodes.length; i++){
-    (function(node){
-      var range = node.querySelector('[data-ba-range]');
-      var after = node.querySelector('[data-ba-after]');
-      var line = node.querySelector('[data-ba-line]');
-      if (!range || !after || !line) return;
-      var upd = function(){
-        after.style.clipPath = 'inset(0 0 0 ' + range.value + '%)';
-        line.style.left = range.value + '%';
-      };
-      range.addEventListener('input', upd);
-      upd();
-    })(nodes[i]);
+/* ================= Before / after ================= */
+var ARROWS = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 7.5 5 12l4.5 4.5M14.5 7.5 19 12l-4.5 4.5"/></svg>';
+function buildBA(){
+  var host = $('baList'), sizes = '(max-width:820px) 92vw, 44vw', html = '';
+  BA.forEach(function(it, i){
+    html +=
+      '<article class="ba' + (it.flip ? ' flip' : '') + '" data-ba="' + i + '">' +
+        '<div class="baFrame" data-frame>' +
+          pic(it.before, it.beforeAlt, sizes, {cls:'baBefore', fallback:800}) +
+          '<div class="baAfterWrap">' + pic(it.after, it.afterAlt, sizes, {fallback:800}) + '</div>' +
+          '<div class="baLine"></div>' +
+          '<button class="baHandle" type="button" role="slider" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% revealed" aria-label="' + esc(it.title) + ' — drag to compare before and after">' + ARROWS + '</button>' +
+          '<span class="baHint">Drag the handle</span>' +
+          '<span class="baTag l">Before</span><span class="baTag r">After</span>' +
+        '</div>' +
+        '<div>' +
+          '<p style="margin:0 0 12px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--acc)">' + esc(it.kicker) + '</p>' +
+          '<h3 style="margin:0;font-size:clamp(24px,3.4vw,40px);line-height:1.1">' + esc(it.title) + '</h3>' +
+          '<p style="margin:16px 0 0;max-width:42ch;font-size:15.5px;line-height:1.65;color:rgba(30,24,21,.75)">' + esc(it.body) + '</p>' +
+          '<p style="margin:14px 0 0;font-size:13.5px;line-height:1.6;color:var(--mut)"><em>' + esc(it.quote) + '</em></p>' +
+          '<button class="btn btn-line hv hv-accLine" data-want="' + i + '" style="margin-top:24px;font-size:12.5px">I Want This Look</button>' +
+        '</div>' +
+      '</article>';
+  });
+  host.innerHTML = html;
+  host.querySelectorAll('[data-frame]').forEach(bindBA);
+  host.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('[data-want]') : null;
+    if (!b) return;
+    var it = BA[Number(b.getAttribute('data-want'))];
+    openEnq({service:it.service, goal:it.goal, extra:it.extra, origin:'transformations'});
+  });
+}
+/* Dragging is bound to the handle only, so a swipe anywhere else on the photo
+   still scrolls the page — the usual mobile complaint with these sliders. */
+function bindBA(frame){
+  var handle = frame.querySelector('.baHandle');
+  var p = 50, dragging = false;
+  function set(v){
+    p = Math.max(0, Math.min(100, v));
+    frame.style.setProperty('--p', p + '%');
+    handle.setAttribute('aria-valuenow', Math.round(p));
+    handle.setAttribute('aria-valuetext', Math.round(p) + '% revealed');
   }
+  function pctFrom(e){
+    var r = frame.getBoundingClientRect();
+    return r.width ? ((e.clientX - r.left) / r.width) * 100 : 50;
+  }
+  handle.addEventListener('pointerdown', function(e){
+    dragging = true;
+    handle.classList.add('drag');
+    frame.classList.add('touched');
+    try { handle.setPointerCapture(e.pointerId); } catch(err){}
+    e.preventDefault();
+  });
+  handle.addEventListener('pointermove', function(e){ if (dragging) set(pctFrom(e)); });
+  function end(e){
+    if (!dragging) return;
+    dragging = false;
+    handle.classList.remove('drag');
+    try { handle.releasePointerCapture(e.pointerId); } catch(err){}
+  }
+  handle.addEventListener('pointerup', end);
+  handle.addEventListener('pointercancel', end);
+  handle.addEventListener('lostpointercapture', end);
+  handle.addEventListener('keydown', function(e){
+    var step = e.shiftKey ? 10 : 2, k = e.key;
+    if (k === 'ArrowLeft' || k === 'ArrowDown') set(p - step);
+    else if (k === 'ArrowRight' || k === 'ArrowUp') set(p + step);
+    else if (k === 'Home') set(0);
+    else if (k === 'End') set(100);
+    else return;
+    e.preventDefault();
+    frame.classList.add('touched');
+  });
+  /* a plain tap on the frame jumps the divider there; a tap can never be a scroll */
+  frame.addEventListener('click', function(e){
+    if (handle.contains(e.target)) return;
+    set(pctFrom(e));
+    frame.classList.add('touched');
+  });
+  set(50);
+}
+
+/* ================= Gallery ================= */
+function buildGallery(){
+  var html = '';
+  LOOKS.forEach(function(l, i){
+    html += '<button class="galTile" type="button" data-gal="' + i + '" aria-label="' + esc('Ask Lily about the ' + l.name + ' style') + '">' +
+      // the grid caps at 1240px / 6 columns, so past 1000px the tile stops growing
+      pic(l.file, l.name + ' — ' + l.service, '(max-width:600px) 47vw, (max-width:1000px) 31vw, 200px', {widths:[400,800], fallback:400}) +
+      '<span>' + esc(l.name) + '</span></button>';
+  });
+  var grid = $('galGrid');
+  grid.innerHTML = html;
+  grid.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('[data-gal]') : null;
+    if (!b) return;
+    var l = LOOKS[Number(b.getAttribute('data-gal'))];
+    openEnq({service:l.service, goal:'The "' + l.name + '" style from the gallery', origin:'gallery'});
+  });
+}
+
+/* ================= Services ================= */
+function buildServices(){
+  var html = '';
+  SERVICE_INFO.forEach(function(s){
+    html += '<div class="svc">' +
+      '<h3>' + esc(s.name) + '</h3>' +
+      '<p style="margin:12px 0 0;font-size:14.5px;line-height:1.6;color:rgba(30,24,21,.75)">' + esc(s.desc) + '</p>' +
+      '<p style="margin:16px 0 0;font-size:13px;color:var(--mut)">Suits: ' + esc(s.suits) + '</p>' +
+      '<div class="row"><span style="font-family:var(--serif);font-size:20px;color:var(--acc)">' + esc(s.price) + '</span>' + (s.dur ? '<span class="pill">' + esc(s.dur) + '</span>' : '') + '</div>' +
+      '<button data-ask="' + esc(s.name) + '" class="hv hv-accTxt" style="margin-top:18px;background:transparent;border:0;padding:12px 0;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--acc);color:var(--ink);align-self:flex-start">Ask Lily →</button>' +
+      '</div>';
+  });
+  var grid = $('svcGrid');
+  grid.innerHTML = html;
+  grid.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('[data-ask]') : null;
+    if (b) openEnq({service:b.getAttribute('data-ask'), origin:'services'});
+  });
 }
 
 /* ================= Quiz ================= */
 function pickQuiz(id, val){
   state.answers[id] = val;
-  state.step = state.step + 1;
+  state.step += 1;
   if (state.step >= QUIZ.length) state.result = recommend(state.answers);
   renderQuiz();
 }
 function recommend(a){
   var s = {}; SERVICES.forEach(function(k){ s[k] = 0; });
-  var add = function(k, n){ s[k] = (s[k] || 0) + n; };
-  if (a.goal === 'A new hairstyle') add('Cut and Style', 5);
-  if (a.goal === 'Hair colour') add('Colour', 5);
-  if (a.goal === 'A hair treatment') add('Hair Treatment', 5);
-  if (a.goal === 'Rebonding or smoothing') add('Rebonding and Smoothing', 5);
-  if (a.goal === 'Styling for an event') add('Styling and Occasion', 5);
-  if (a.goal === 'I am not sure yet') { add('Cut and Style', 2); add('Hair Treatment', 2); }
-  if (a.concern === 'Dry and frizzy') { add('Hair Treatment', 4); add('Rebonding and Smoothing', 2); }
-  if (a.concern === 'Damaged or breaking') { add('Hair Treatment', 5); add('Cut and Style', 2); }
-  if (a.concern === 'Flat, no volume') { add('Perm and Texture', 4); add('Cut and Style', 3); }
-  if (a.concern === 'Grown-out colour') add('Colour', 4);
-  if (a.concern === 'Hard to manage') { add('Rebonding and Smoothing', 3); add('Cut and Style', 3); }
-  if (a.maint === 'As little as possible') { add('Rebonding and Smoothing', 2); add('Cut and Style', 1); }
-  if (a.maint === 'I enjoy styling') { add('Styling and Occasion', 1); add('Perm and Texture', 1); }
-  if (a.length === 'Short') add('Cut and Style', 1);
+  var add = function(k, n){ if (k in s) s[k] = s[k] + n; };
+  if (a.goal === 'A haircut') add('Hair Cut', 5);
+  if (a.goal === 'Colour or dye') { add('Hair Dye', 5); add('Hair Colour (Black)', 3); }
+  if (a.goal === 'Curls or a perm') { add('Hair Perm', 5); add('Digital Perm', 4); }
+  if (a.goal === 'Straighter, smoother hair') { add('Rebonding', 5); add('Keratin Treatment', 4); }
+  if (a.goal === 'A treatment') { add('Hair Treatment', 5); add('Scalp Treatment', 3); }
+  if (a.goal === 'I am not sure yet') { add('Hair Cut', 2); add('Hair Treatment', 2); }
+  if (a.concern === 'Dry and frizzy') { add('Hair Treatment', 4); add('Keratin Treatment', 3); }
+  if (a.concern === 'Damaged or breaking') { add('Hair Treatment', 5); add('Hair Cut', 2); }
+  if (a.concern === 'Flat, no volume') { add('Hair Perm', 4); add('Digital Perm', 3); add('Hair Cut', 2); }
+  if (a.concern === 'Grown-out colour') { add('Hair Dye', 4); add('Hair Colour (Black)', 3); }
+  if (a.concern === 'Itchy or oily scalp') add('Scalp Treatment', 6);
+  if (a.maint === 'As little as possible') { add('Rebonding', 2); add('Hair Cut', 1); }
+  if (a.maint === 'I enjoy styling') { add('Digital Perm', 1); add('Hair Perm', 1); }
+  if (a.length === 'Short') add('Hair Cut', 1);
   var ranked = Object.keys(s).sort(function(x, y){ return s[y] - s[x]; }).filter(function(k){ return s[k] > 0; });
-  var primary = ranked[0] || 'Cut and Style';
   var goal = goalText(a);
   var why = 'You want ' + goal.toLowerCase() + '.';
   if (a.concern === 'Damaged or breaking' || a.concern === 'Dry and frizzy') why += ' Because condition is the first thing you mentioned, Lily will usually treat the hair before anything permanent.';
+  else if (a.concern === 'Itchy or oily scalp') why += ' Scalp comes first — the lengths can wait until it has settled.';
   else if (a.maint === 'As little as possible') why += ' Since you want minimal daily styling, the shape and finish matter more than the length.';
   else why += ' This is the service that gets you there in one appointment.';
-  return {primary: primary, also: ranked.slice(1, 3), why: why, goal: goal};
+  return {primary: ranked[0] || 'Hair Cut', also: ranked.slice(1, 3), why: why, goal: goal};
 }
 function goalText(a){
   if (a.concern === 'Dry and frizzy') return 'Smoother, easier-to-manage hair';
   if (a.concern === 'Damaged or breaking') return 'Healthier hair before any big change';
   if (a.concern === 'Flat, no volume') return 'More volume and movement';
   if (a.concern === 'Grown-out colour') return 'Colour that looks fresh again';
-  if (a.concern === 'Hard to manage') return 'Hair that behaves with less effort';
-  if (a.goal === 'Styling for an event') return 'A finished look for one occasion';
+  if (a.concern === 'Itchy or oily scalp') return 'A calmer, more comfortable scalp';
   return 'A new look that suits me';
 }
 function renderQuiz(){
@@ -673,11 +1268,13 @@ function renderQuiz(){
     q.opts.forEach(function(o){
       var b = document.createElement('button');
       b.className = 'hv hv-opt';
+      b.type = 'button';
       b.textContent = o;
-      b.style.cssText = 'background:transparent;border:1px solid rgba(30,24,21,.25);border-radius:999px;padding:14px 22px;font-size:14.5px;cursor:pointer;min-height:48px;text-align:left';
+      b.style.cssText = 'background:transparent;border:1px solid rgba(30,24,21,.25);border-radius:999px;padding:14px 22px;font-size:15px;cursor:pointer;min-height:48px;text-align:left';
       b.addEventListener('click', function(){ pickQuiz(q.id, o); });
       box.appendChild(b);
     });
+    setVis($('quizBack'), state.step > 0, 'inline-block');
   } else {
     $('quizPrimary').textContent = res.primary;
     $('quizWhy').textContent = res.why;
@@ -695,25 +1292,33 @@ function renderQuiz(){
 
 /* ================= AI Studio (local fallbacks only) ================= */
 function renderStudio(){
-  var tabs = document.querySelectorAll('.tabBtn');
-  for (var i = 0; i < tabs.length; i++){
-    var active = Number(tabs[i].getAttribute('data-tab')) === state.tab;
-    tabs[i].style.background = active ? 'rgba(255,255,255,.14)' : 'transparent';
-  }
+  document.querySelectorAll('.tabBtn').forEach(function(b){
+    var active = Number(b.getAttribute('data-tab')) === state.tab;
+    b.style.background = active ? 'rgba(255,255,255,.14)' : 'transparent';
+    b.setAttribute('aria-selected', active ? 'true' : 'false');
+  });
   setVis($('studioTab0'), state.tab === 0);
   setVis($('studioTab1'), state.tab === 1);
   setVis($('studioTab2'), state.tab === 2);
 }
-
 function aiFallback(t){
   var s = t.toLowerCase();
-  var service = 'Cut and Style', goal = 'A change that suits your hair', note = 'A consultation is the safest first step.';
+  var service = 'Hair Cut', goal = 'A change that suits your hair', note = 'A consultation is the safest first step.';
   if (/friz|dry|rough|damag|brittle|split/.test(s)) { service='Hair Treatment'; goal='Smoother, easier-to-maintain hair'; note='Condition first. Treatment before anything permanent protects the result.'; }
-  else if (/straight|rebond|smooth|keratin/.test(s)) { service='Rebonding and Smoothing'; goal='Smoother hair that still has movement'; note='How straight you want it changes the method, so say it out loud.'; }
-  else if (/colour|color|dye|blonde|brown|highlight|root/.test(s)) { service='Colour'; goal='A tone that suits you and grows out well'; note='Colour history decides what is achievable in one session.'; }
-  else if (/curl|perm|wave|volume|flat/.test(s)) { service='Perm and Texture'; goal='More movement and volume'; note='Texture services need healthy ends to hold.'; }
-  else if (/wedding|event|dinner|party|updo/.test(s)) { service='Styling and Occasion'; goal='A finished look for one occasion'; note='Book a trial if the date matters.'; }
+  else if (/straight|rebond|smooth|keratin/.test(s)) { service='Rebonding'; goal='Smoother hair that still has movement'; note='How straight you want it changes the method, so say it out loud.'; }
+  else if (/colour|color|dye|blonde|brown|highlight|root/.test(s)) { service='Hair Dye'; goal='A tone that suits you and grows out well'; note='Colour history decides what is achievable in one session.'; }
+  else if (/curl|perm|wave|volume|flat/.test(s)) { service='Hair Perm'; goal='More movement and volume'; note='Texture services need healthy ends to hold.'; }
+  else if (/scalp|itch|dandruff|flak|oily/.test(s)) { service='Scalp Treatment'; goal='A calmer, more comfortable scalp'; note='The scalp is treated before the lengths.'; }
   return {goal:goal, service:service, note:note, points:['Bring a photo of what you like','Say what you disliked about your last cut or colour','Mention any chemical services in the last year']};
+}
+function bullets(ul, items){
+  ul.innerHTML = '';
+  items.forEach(function(t){
+    var li = document.createElement('li');
+    li.textContent = t;
+    li.style.cssText = 'padding-left:16px;border-left:1px solid var(--acc);font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.8)';
+    ul.appendChild(li);
+  });
 }
 function renderAi(){
   $('runAi').textContent = state.aiBusy ? 'Reading...' : 'Get a recommendation';
@@ -722,18 +1327,11 @@ function renderAi(){
   $('aiGoal').textContent = state.ai.goal;
   $('aiService').textContent = state.ai.service;
   $('aiNote').textContent = state.ai.note;
-  var ul = $('aiPoints');
-  ul.innerHTML = '';
-  state.ai.points.forEach(function(pt){
-    var li = document.createElement('li');
-    li.textContent = pt;
-    li.style.cssText = 'padding-left:16px;border-left:1px solid var(--acc);font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.8)';
-    ul.appendChild(li);
-  });
+  bullets($('aiPoints'), state.ai.points);
 }
-
 function onFile(input, cb){
-  var f = input.files && input.files[0]; if (!f) return;
+  var f = input.files && input.files[0];
+  if (!f) return;
   var rd = new FileReader();
   rd.onload = function(){ cb(rd.result); };
   rd.readAsDataURL(f);
@@ -749,13 +1347,11 @@ function buildVizChoices(){
   box.innerHTML = '';
   LOOKS.forEach(function(l, i){
     var b = document.createElement('button');
+    b.type = 'button';
     b.textContent = l.name;
     b.className = 'hv';
     b.style.cssText = 'background:transparent;border:1px solid ' + (i === state.vizLook ? 'var(--acc)' : 'rgba(255,255,255,.25)') + ';color:#fff;border-radius:999px;padding:11px 18px;font-size:13px;cursor:pointer;min-height:44px';
-    b.addEventListener('click', function(){
-      state.vizLook = i; state.viz = null;
-      buildVizChoices(); renderViz();
-    });
+    b.addEventListener('click', function(){ state.vizLook = i; state.viz = null; buildVizChoices(); renderViz(); });
     box.appendChild(b);
   });
 }
@@ -766,33 +1362,24 @@ function renderViz(){
   if (!show) return;
   var look = LOOKS[state.vizLook];
   $('vizPhotoImg').style.backgroundImage = "url('" + state.vizPhoto + "')";
-  $('vizTargetImg').style.backgroundImage = "url('" + look.img + "')";
-  $('vizTargetImg').style.backgroundPosition = look.pos;
+  $('vizTargetImg').style.backgroundImage = "url('" + look.file + "-800.webp')";
   $('vizTargetName').textContent = look.name;
-  var ul = $('vizSteps');
-  ul.innerHTML = '';
-  state.viz.steps.forEach(function(stp){
-    var li = document.createElement('li');
-    li.textContent = stp;
-    li.style.cssText = 'padding-left:16px;border-left:1px solid var(--acc);font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.8)';
-    ul.appendChild(li);
-  });
+  bullets($('vizSteps'), state.viz.steps);
 }
 
 /* ================= Enquiry drawer ================= */
 function openEnq(ctx){
-  state.enqOpen = true; state.enq = ctx || {}; state.copied = false; state.enqEdited = false;
+  state.enq = ctx || {}; state.copied = false; state.enqEdited = false;
+  if (state.menu) setMenu(false);
   renderEnquiry();
-}
-function closeEnq(){
-  state.enqOpen = false;
-  renderEnquiry();
+  openOvl($('enqWrap'));
+  setTimeout(function(){ try { $('enqName').focus({preventScroll:true}); } catch(e){} }, 380);
 }
 function message(){
   var c = state.enq || {};
   var name = state.enqName.trim();
-  var L = ['Hi Lily 👋', ''];
   var found = {'TikTok':'on TikTok','Instagram':'on Instagram','Facebook':'on Facebook','Google':'on Google','A friend':'through a friend','Other':'through another channel'};
+  var L = ['Hi Lily 👋', ''];
   L.push('I found you ' + (found[state.enqSource] || 'online') + ' and used the website' + (c.origin ? ' ' + c.origin : '') + '.');
   L.push('');
   if (c.service) L.push('Interested in: ' + c.service);
@@ -800,7 +1387,7 @@ function message(){
   if (c.extra) L.push(c.extra);
   L.push('');
   L.push('Could you let me know if this is the right service for me and what it would cost?');
-  if (name) { L.push(''); L.push('- ' + name); }
+  if (name){ L.push(''); L.push('- ' + name); }
   return L.join('\n');
 }
 function refreshMessage(){
@@ -809,17 +1396,15 @@ function refreshMessage(){
   $('waLink').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(box.value);
 }
 function renderEnquiry(){
-  setVis($('enqWrap'), state.enqOpen, 'flex');
-  if (!state.enqOpen) return;
   refreshMessage();
   var hasImg = !!(state.enq && state.enq.image);
   setVis($('enqImgWrap'), hasImg, 'flex');
   if (hasImg) $('enqImg').style.backgroundImage = "url('" + state.enq.image + "')";
-  $('copyMsg').textContent = state.copied ? 'Copied' : 'Copy message instead';
+  $('copyMsg').textContent = state.copied ? 'Copied ✓' : 'Copy message instead';
 }
 function saveLead(){
   var c = state.enq || {};
-  var lead = {
+  persist([{
     id: Date.now(),
     name: state.enqName.trim() || 'Unnamed enquiry',
     service: c.service || 'General enquiry',
@@ -828,18 +1413,14 @@ function saveLead(){
     origin: c.origin || 'website',
     status: 'New',
     at: new Date().toLocaleString()
-  };
-  persist([lead].concat(state.leads));
+  }].concat(state.leads));
 }
 function loadLeads(){ try { return JSON.parse(localStorage.getItem('lily.leads.v1') || '[]'); } catch(e){ return []; } }
 function persist(leads){
   state.leads = leads;
   try { localStorage.setItem('lily.leads.v1', JSON.stringify(leads)); } catch(e){}
-  updateLeadCount();
+  $('leadCount').textContent = String(leads.length);
   renderOwner();
-}
-function updateLeadCount(){
-  $('leadCount').textContent = String(state.leads.length);
 }
 
 /* ================= Owner view ================= */
@@ -854,86 +1435,220 @@ function renderOwner(){
     var row = document.createElement('div');
     row.style.cssText = 'background:var(--gr);padding:18px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start';
     var left = document.createElement('div');
-    var nm = document.createElement('p'); nm.style.cssText = 'margin:0 0 4px;font-size:17px'; nm.textContent = l.name;
-    var sv = document.createElement('p'); sv.style.cssText = 'margin:0 0 6px;font-size:14px;color:var(--acc)'; sv.textContent = l.service;
-    var gl = document.createElement('p'); gl.style.cssText = 'margin:0 0 6px;font-size:13.5px;line-height:1.5;color:rgba(30,24,21,.7)'; gl.textContent = l.goal;
-    var mt = document.createElement('p'); mt.style.cssText = 'margin:0;font:11.5px ui-monospace,Menlo,monospace;color:var(--mut)'; mt.textContent = String(l.source).toUpperCase() + ' / ' + l.origin + ' / ' + l.at;
-    left.appendChild(nm); left.appendChild(sv); left.appendChild(gl); left.appendChild(mt);
+    [['margin:0 0 4px;font-size:17px', l.name],
+     ['margin:0 0 6px;font-size:14px;color:var(--acc)', l.service],
+     ['margin:0 0 6px;font-size:13.5px;line-height:1.5;color:rgba(30,24,21,.7)', l.goal],
+     ['margin:0;font:11.5px ui-monospace,Menlo,monospace;color:var(--mut)', String(l.source).toUpperCase() + ' / ' + l.origin + ' / ' + l.at]
+    ].forEach(function(pair){
+      var p = document.createElement('p');
+      p.style.cssText = pair[0];
+      p.textContent = pair[1];
+      left.appendChild(p);
+    });
     var btn = document.createElement('button');
+    btn.type = 'button';
     btn.textContent = l.status;
     btn.style.cssText = 'background:transparent;border:1px solid rgba(30,24,21,.2);border-radius:999px;padding:9px 15px;font-size:12px;cursor:pointer;white-space:nowrap;min-height:40px';
     btn.addEventListener('click', function(){
-      persist(state.leads.map(function(x){ return x.id === l.id ? Object.assign({}, x, {status: x.status === 'New' ? 'Contacted' : 'New'}) : x; }));
+      persist(state.leads.map(function(x){
+        return x.id === l.id ? Object.assign({}, x, {status: x.status === 'New' ? 'Contacted' : 'New'}) : x;
+      }));
     });
     row.appendChild(left); row.appendChild(btn);
     box.appendChild(row);
   });
 }
 
+/* ================= Booking ================= */
+function buildBookService(){
+  var sel = $('bookService');
+  sel.innerHTML = '';
+  SERVICES.forEach(function(s){
+    var o = document.createElement('option');
+    o.value = s; o.textContent = s;
+    sel.appendChild(o);
+  });
+}
+function buildBookSlots(){
+  var box = $('bookSlots');
+  box.innerHTML = '';
+  TIMES.forEach(function(t){
+    var on = t === state.bookSlot;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = t;
+    b.className = 'hv';
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    b.style.cssText = 'background:' + (on ? 'var(--ink)' : 'transparent') + ';color:' + (on ? '#fff' : 'var(--ink)') + ';border:1px solid ' + (on ? 'var(--ink)' : 'rgba(30,24,21,.25)') + ';border-radius:999px;padding:11px 18px;font-size:13px;cursor:pointer;min-height:44px';
+    b.addEventListener('click', function(){ state.bookSlot = (state.bookSlot === t ? '' : t); buildBookSlots(); });
+    box.appendChild(b);
+  });
+}
+function sendBooking(){
+  var name = $('bookName').value.trim(), svc = $('bookService').value;
+  var d = $('bookDate').value, ph = $('bookPhone').value.trim(), notes = $('bookNotes').value.trim();
+  var msg = $('bookMsg');
+  if (!name){
+    msg.textContent = 'Add your name so Lily knows who is asking.';
+    $('bookName').focus();
+    return;
+  }
+  msg.textContent = 'Opening WhatsApp…';
+  var L = ['Hi Lily 👋', '', "I'd like to book an appointment.", ''];
+  L.push('Name: ' + name);
+  L.push('Service: ' + svc);
+  if (d || state.bookSlot) L.push('Preferred: ' + (d || 'any date') + (state.bookSlot ? ' at ' + state.bookSlot : ''));
+  if (ph) L.push('Phone: ' + ph);
+  if (notes){ L.push(''); L.push(notes); }
+  window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(L.join('\n')), '_blank', 'noopener');
+  persist([{id:Date.now(), name:name, service:svc, goal:'Booking' + (d ? ': ' + d : '') + (state.bookSlot ? ' ' + state.bookSlot : ''), source:'Booking form', origin:'booking', status:'New', at:new Date().toLocaleString()}].concat(state.leads));
+  setTimeout(function(){ msg.textContent = 'Sent to WhatsApp — Lily replies to confirm.'; }, 700);
+}
+
+/* ================= Opening hours ================= */
+var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+function studioClock(){
+  try {
+    var parts = new Intl.DateTimeFormat('en-US', {timeZone:TZ, weekday:'short', hour:'numeric', minute:'numeric', hour12:false}).formatToParts(new Date());
+    var g = {};
+    parts.forEach(function(p){ g[p.type] = p.value; });
+    var idx = {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[g.weekday];
+    var h = parseInt(g.hour, 10) % 24;          // some locales render midnight as 24
+    if (idx === undefined || isNaN(h)) return null;
+    return {day:idx, mins:h * 60 + parseInt(g.minute, 10)};
+  } catch (e){ return null; }                    // no Intl/tz support: badge stays hidden
+}
+function clockLabel(h){
+  var suffix = h >= 12 ? 'PM' : 'AM';
+  var hh = h % 12 || 12;
+  return hh + ':00 ' + suffix;
+}
+function nextOpening(t){
+  for (var i = 0; i < 8; i++){
+    var d = (t.day + i) % 7;
+    if (HOURS.shutDays.indexOf(d) > -1) continue;
+    if (i === 0){
+      if (t.mins < HOURS.open * 60) return 'today';
+      continue;                                  // today's hours are already over
+    }
+    return i === 1 ? 'tomorrow' : DAYS[d];
+  }
+  return '';
+}
+var SHORT = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+/* Every hours string on the page is derived from HOURS, so changing the opening
+   times in one place updates the card, the footer, the map panel and the menu. */
+function openDayList(){
+  var out = [];
+  for (var i = 1; i <= 7; i++){                 // walk Mon..Sun, not Sun..Sat
+    var d = i % 7;
+    if (HOURS.shutDays.indexOf(d) < 0) out.push(d);
+  }
+  return out;
+}
+function daysLabel(){
+  var o = openDayList();
+  if (!o.length) return 'Closed';
+  if (o.length === 7) return 'Every day';
+  var contiguous = true;
+  for (var i = 1; i < o.length; i++) if ((o[i-1] + 1) % 7 !== o[i]) contiguous = false;
+  if (contiguous && o.length > 1) return SHORT[o[0]] + ' – ' + SHORT[o[o.length-1]];
+  return o.map(function(d){ return SHORT[d]; }).join(', ');
+}
+function shutLabel(full){
+  var s = HOURS.shutDays.slice().sort(function(a,b){ return a - b; });
+  return s.map(function(d){ return full ? DAYS[d] : SHORT[d]; }).join(', ');
+}
+function hoursRange(){ return clockLabel(HOURS.open) + ' – ' + clockLabel(HOURS.close); }
+function paintHoursText(){
+  var set = function(id, txt){ var el = $(id); if (el) el.textContent = txt; };
+  set('ohDays', daysLabel());
+  set('ohRange', hoursRange());
+  set('ohShutDay', shutLabel(true));
+  set('ohShutVal', HOURS.shutDays.length ? 'Closed' : '');
+  var line = daysLabel() + ' ' + hoursRange() + (HOURS.shutDays.length ? ' · ' + shutLabel(false) + ' closed' : '');
+  set('hoursMap', line);
+  set('hoursMenu', line);
+  set('hoursFooter', '');
+  var f = $('hoursFooter');
+  if (f) f.innerHTML = esc(daysLabel()) + '&nbsp;&nbsp;' + esc(hoursRange()) + '<br>' + esc(shutLabel(true)) + '&nbsp;&nbsp;Closed';
+}
+function renderHours(){
+  var box = $('ohNow'), txt = $('ohNowText');
+  if (!box || !txt) return;
+  var t = studioClock();
+  if (!t){ box.hidden = true; return; }
+  var openToday = HOURS.shutDays.indexOf(t.day) < 0;
+  var isOpen = openToday && t.mins >= HOURS.open * 60 && t.mins < HOURS.close * 60;
+  box.hidden = false;
+  box.classList.toggle('isOpen', isOpen);
+  box.classList.toggle('isShut', !isOpen);
+  txt.textContent = isOpen
+    ? 'Open now · until ' + clockLabel(HOURS.close)
+    : 'Closed · opens ' + nextOpening(t) + ' ' + clockLabel(HOURS.open);
+}
+
+/* ================= Map ================= */
+function openMap(){
+  var f = $('mapFrame');
+  if (!f.src) f.src = f.getAttribute('data-src');   // only load Google Maps once it is asked for
+  if (state.menu) setMenu(false);
+  openOvl($('mapWrap'));
+}
+
 /* ================= Wire up ================= */
 function init(){
-  document.documentElement.style.setProperty('--heroLen', reduce ? '100vh' : HERO_LEN + 'vh');
   state.leads = loadLeads();
 
-  // AI Studio feature flag
   if (!SHOW_AI_STUDIO){
-    var studioSec = $('studio'); if (studioSec) studioSec.style.display = 'none';
-    var studioLink = document.querySelector('a[href="#studio"]'); if (studioLink) studioLink.style.display = 'none';
+    setVis($('studio'), false);
+    document.querySelectorAll('a[href="#studio"]').forEach(function(a){ a.style.display = 'none'; });
   }
 
-  // hero rails
-  var rails = document.querySelectorAll('[data-rail]');
-  for (var i = 0; i < rails.length; i++){
-    (function(idx){
-      rails[idx].addEventListener('click', function(){ goLook(idx); });
-    })(i);
-  }
+  // build everything data-driven
+  buildHeroStrip();
+  observeCards();
+  fabBlockers = [$('book'), document.querySelector('footer')].filter(Boolean);
+  buildLookStage();
+  buildBA();
+  buildGallery();
+  buildServices();
+  buildBookService();
+  buildBookSlots();
+  buildVizChoices();
 
-  // look / story CTAs
+  // nav + mobile menu
+  burger.addEventListener('click', function(){ setMenu(!state.menu); });
+  mnav.addEventListener('click', function(e){
+    if (e.target.tagName === 'A') setMenu(false);
+  });
+  $('navTalk').addEventListener('click', function(){ openEnq({origin:''}); });
+  $('mnavTalk').addEventListener('click', function(){ openEnq({origin:''}); });
+  $('footTalk').addEventListener('click', function(){ openEnq({origin:''}); });
+  $('contactTalk').addEventListener('click', function(){ openEnq({origin:''}); });
+  $('mapTalk').addEventListener('click', function(){ closeOvl($('mapWrap')); openEnq({origin:'', goal:'Directions to the studio'}); });
+  fab.addEventListener('click', function(){ openEnq({origin:''}); });
+
+  // looks
   $('wantLook').addEventListener('click', function(){
     var look = LOOKS[state.look];
-    openEnq({service:look.service, goal:'The look you call "' + look.name + '"', origin:'style transformation'});
+    openEnq({service:look.service, goal:'The look you call "' + look.name + '"', origin:'lookbook'});
   });
-  $('wantStory0').addEventListener('click', function(){ openEnq({service:'Colour', goal:'The Soft Brown Transformation look', extra:'I want a warmer, softer colour that grows out naturally.', origin:'transformations'}); });
-  $('wantStory1').addEventListener('click', function(){ openEnq({service:'Rebonding and Smoothing', goal:'The Frizz to Silk look', extra:'Smoother and easier to dry, but I still want some body.', origin:'transformations'}); });
-  $('wantStory2').addEventListener('click', function(){ openEnq({service:'Cut and Style', goal:'The Lighter, Looser look', extra:'Keep my length but take out weight, and go a few shades lighter.', origin:'transformations'}); });
-
-  // service "Ask Lily" buttons
-  var asks = document.querySelectorAll('.askBtn');
-  for (var a = 0; a < asks.length; a++){
-    (function(btn){
-      btn.addEventListener('click', function(){ openEnq({service: btn.getAttribute('data-ask'), origin:'services'}); });
-    })(asks[a]);
-  }
-
-  // general enquiry buttons
-  $('navTalk').addEventListener('click', function(){ openEnq({origin:''}); });
-  $('footTalk').addEventListener('click', function(){ openEnq({origin:''}); });
 
   // quiz
-  $('quizBack').addEventListener('click', function(){
-    state.step = Math.max(0, state.step - 1); state.result = null;
-    renderQuiz();
-  });
-  $('quizReset').addEventListener('click', function(){
-    state.step = 0; state.answers = {}; state.result = null;
-    renderQuiz();
-  });
+  $('quizBack').addEventListener('click', function(){ state.step = Math.max(0, state.step - 1); state.result = null; renderQuiz(); });
+  $('quizReset').addEventListener('click', function(){ state.step = 0; state.answers = {}; state.result = null; renderQuiz(); });
   $('quizSend').addEventListener('click', function(){
-    var res = state.result; if (!res) return;
-    var answered = Object.keys(state.answers).map(function(k){ return state.answers[k]; }).join(' / ');
+    var res = state.result;
+    if (!res) return;
+    var answered = QUIZ.map(function(q){ return state.answers[q.id]; }).filter(Boolean).join(' / ');
     openEnq({service:res.primary, goal:res.goal, extra:'From the website Style Finder, I answered: ' + answered, origin:'Style Finder'});
   });
 
   // studio tabs
-  var tabs = document.querySelectorAll('.tabBtn');
-  for (var t = 0; t < tabs.length; t++){
-    (function(btn){
-      btn.addEventListener('click', function(){ state.tab = Number(btn.getAttribute('data-tab')); renderStudio(); });
-    })(tabs[t]);
-  }
-
-  // AI tab 0 — text consultation (local keyword analysis)
+  document.querySelectorAll('.tabBtn').forEach(function(btn){
+    btn.addEventListener('click', function(){ state.tab = Number(btn.getAttribute('data-tab')); renderStudio(); });
+  });
   $('aiText').addEventListener('input', function(e){ state.aiText = e.target.value; });
   $('aiExample').addEventListener('click', function(){
     state.aiText = 'My hair is very dry and frizzy. I want it smoother but I do not want it to look completely straight.';
@@ -943,60 +1658,29 @@ function init(){
     var t = (state.aiText || '').trim();
     if (!t || state.aiBusy) return;
     state.aiBusy = true; renderAi();
-    setTimeout(function(){
-      state.aiBusy = false;
-      state.ai = aiFallback(t);
-      renderAi();
-    }, 400);
+    setTimeout(function(){ state.aiBusy = false; state.ai = aiFallback(t); renderAi(); }, 400);
   });
   $('aiSend').addEventListener('click', function(){
     if (!state.ai) return;
     openEnq({service:state.ai.service, goal:state.ai.goal, extra:'I described my hair to the website assistant: "' + state.aiText.trim() + '"', origin:'AI hair consultation'});
   });
-
-  // AI tab 1 — inspiration image (attach + send; no live analysis offline)
-  $('inspFile').addEventListener('change', function(e){
-    onFile(e.target, function(data){
-      state.inspImg = data; state.insp = false;
-      renderInsp();
-    });
-  });
+  $('inspFile').addEventListener('change', function(e){ onFile(e.target, function(d){ state.inspImg = d; state.insp = false; renderInsp(); }); });
   $('runInsp').addEventListener('click', function(){
     if (!state.inspImg || state.inspBusy) return;
     state.inspBusy = true; renderInsp();
-    setTimeout(function(){
-      state.inspBusy = false; state.insp = true;
-      renderInsp();
-    }, 500);
+    setTimeout(function(){ state.inspBusy = false; state.insp = true; renderInsp(); }, 500);
   });
   $('inspSend').addEventListener('click', function(){
-    openEnq({
-      service:'General enquiry',
-      goal:'A look from my inspiration photo',
-      extra:'I have an inspiration photo to show you — I will send it as the next message in this chat.',
-      origin:'inspiration image',
-      image: state.inspImg
-    });
+    openEnq({service:'General enquiry', goal:'A look from my inspiration photo', extra:'I have an inspiration photo to show you — I will send it as the next message in this chat.', origin:'inspiration image', image:state.inspImg});
   });
-
-  // AI tab 2 — style preview (local template comparison)
-  $('vizFile').addEventListener('change', function(e){
-    onFile(e.target, function(data){
-      state.vizPhoto = data; state.viz = null;
-      renderViz();
-    });
-  });
+  $('vizFile').addEventListener('change', function(e){ onFile(e.target, function(d){ state.vizPhoto = d; state.viz = null; renderViz(); }); });
   $('runViz').addEventListener('click', function(){
     if (!state.vizPhoto || state.vizBusy) return;
     state.vizBusy = true; renderViz();
     setTimeout(function(){
       var look = LOOKS[state.vizLook];
       state.vizBusy = false;
-      state.viz = {steps:[
-        'Shape: a ' + look.name.toLowerCase() + ' outline, cut to your face shape',
-        'Service: ' + look.service,
-        'Upkeep: ' + look.upkeep
-      ]};
+      state.viz = {steps:['Shape: a ' + look.name.toLowerCase() + ' outline, cut to your face shape', 'Service: ' + look.service, 'Upkeep: ' + look.upkeep]};
       renderViz();
     }, 400);
   });
@@ -1006,37 +1690,63 @@ function init(){
   });
 
   // enquiry drawer
-  $('closeEnq').addEventListener('click', closeEnq);
-  $('enqBackdrop').addEventListener('click', closeEnq);
+  $('closeEnq').addEventListener('click', function(){ closeOvl($('enqWrap')); });
   $('enqName').addEventListener('input', function(e){ state.enqName = e.target.value; refreshMessage(); });
   $('enqSource').addEventListener('change', function(e){ state.enqSource = e.target.value; refreshMessage(); });
   $('enqMessage').addEventListener('input', function(){ state.enqEdited = true; refreshMessage(); });
-  $('waLink').addEventListener('click', function(){ saveLead(); });
+  $('waLink').addEventListener('click', saveLead);
   $('copyMsg').addEventListener('click', function(){
-    try { navigator.clipboard.writeText($('enqMessage').value); } catch(e){}
-    saveLead();
-    state.copied = true;
-    renderEnquiry();
+    var txt = $('enqMessage').value;
+    var done = function(){ saveLead(); state.copied = true; renderEnquiry(); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, done);
+    else done();
   });
 
   // owner view
-  $('openOwner').addEventListener('click', function(){ state.ownerOpen = true; setVis($('ownerWrap'), true, 'flex'); renderOwner(); });
-  $('closeOwner').addEventListener('click', function(){ state.ownerOpen = false; setVis($('ownerWrap'), false); });
-  $('ownerBackdrop').addEventListener('click', function(){ state.ownerOpen = false; setVis($('ownerWrap'), false); });
+  $('openOwner').addEventListener('click', function(){ renderOwner(); openOvl($('ownerWrap')); });
+  $('closeOwner').addEventListener('click', function(){ closeOvl($('ownerWrap')); });
   $('clearLeads').addEventListener('click', function(){ persist([]); });
+
+  // booking
+  var d = $('bookDate');
+  d.min = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  $('bookSend').addEventListener('click', sendBooking);
+
+  // map
+  $('viewMap').addEventListener('click', openMap);
+  $('footMap').addEventListener('click', openMap);
+  $('closeMap').addEventListener('click', function(){ closeOvl($('mapWrap')); });
+
+  // one handler for every backdrop + Escape
+  document.querySelectorAll('.ovlBg').forEach(function(bg){
+    bg.addEventListener('click', function(){ closeOvl(bg.parentNode); });
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key !== 'Escape') return;
+    if (openStack.length) closeTop();
+    else if (state.menu) setMenu(false);
+  });
 
   // first paint
   updateLook();
+  paintHoursText();
+  renderHours();
+  setInterval(renderHours, 60000);   // a tab left open should not show stale status
   renderQuiz();
   renderStudio();
   renderInsp();
-  buildVizChoices();
   renderViz();
-  updateLeadCount();
-  bindBA();
+  renderOwner();
+  $('leadCount').textContent = String(state.leads.length);
   paint(0);
   paintNav();
-  tryGsap(0);
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  window.addEventListener('orientationchange', onScroll, {passive:true});
+
+  // GSAP is a desktop-only enhancement; phones get the built-in fallback above
+  loadGsap(function(ok){ if (ok) setupGsap(); else native(); });
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
